@@ -1,0 +1,45 @@
+# Fossil fuel trade
+
+The trade module introduces fossil fuel extraction for coal and gas in the WITCH model. 
+Trade (net import of fossils) emerges as the difference between consumption and fossil fuel extraction.
+
+## Fossil fuel availability curves
+
+Extraction of coal and gas is modelled by means of fossil fuel availability curves, which define the relationship between cumulative extraction and the cost of producing fossil fuels.
+In fact, under the hypothesis of perfect competition in the markets, marginal costs equal fuel price, and therefore it is possible to determine the optimal amount of cumulative extraction at the regional level (**cum_prodpp**), associated to the international price (**FPRICE**). 
+
+Annual production of fossils (**prodpp**) is given by the difference between cumulative extraction in (t+1) and cumulative extraction in time (t), divided by the time step ($\Delta_t$) which is 5 years, as standard assumption.
+
+Besides, in order to avoid negative production of fossils, we impose that cumulative production cannot decrease over time:
+
+$$
+cum\_prodpp(f,t+1,n)= max\left(cum\_prodpp(f,t,n)+1e-5\times tstep,cum\_prodpp(f,t+1,n)\right)
+$$
+ 
+The availability curves have been calibrated using polynomial functions, which consider either short term forecasts (based on World Energy Outlook 2012 projections) and long term assumptions (using curves provided by the ROSE project).
+
+Given that trade emerges as the difference between consumption and extraction of fossils, the availability curves have been calibrated to assure the balance between world consumption and demand. 
+Thus the market clearing conditions are embedded in the parametrization of the availability curves.
+
+$$
+cum\_prodpp(fexs(f),t,n)= \frac{ max(0, (poly(wprice(f,t)\times scale\_factor(f), par\_poly(f,polydeg,N) )))}{twh2ej}
+$$
+
+The parameters of the availability curves (**par_poly**), vary according to the type of fuel (**f**), fossil fuel assumption (**flevel**) (see [Fossil fuel prices](mod_fossil)), region (**n**) and the degree of the polynomial function (**polydeg**).
+
+By definition, we assume that cumulative extraction is equal to zero in 2005. 
+
+$$
+cum\_prodpp(fexs(f),"1",n) = 0
+$$
+	
+In order to replicate observed data at the base year, regional cumulative extraction in 2010 is equal to the amount of actual production in 2005 multiplied by the time step (embedded in the parametrisation of the availability curves). 
+
+Since polynomial functions can replicate realistic cumulative production patterns only for a confined range of values, after 2100 we assume constant regional extraction shares.
+
+$$
+prodpp(f,t,n)= \sum_{n} Q\_PES(f,t,n) \times \left(\frac{prodpp(f,'20',n)}{\sum_{n} prodpp(f,'20',n)}\right)  \forall t > 20
+$$ 
+
+GHG emissions associated to the fossil fuel extraction sector (coal and gas) are assumed to be equal to zero. 
+

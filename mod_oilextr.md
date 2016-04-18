@@ -1,0 +1,99 @@
+# Oil extraction
+
+This module is dedicated to modelling conventional and unconventional crude oil investment and extraction in the WITCH model. Producing one unit of crude oil requires at least one unit of extractive capital. Extraction capital is accumulated through (irreversible) investments that depreciate exponentially. The rate of capital ultilisation may be equal to or less than 100%. Emissions associated with oil extraction are also calculated. 
+
+Unit costs of extractive capacity are increasing in both cumulative extraction and changes in capacity. Increasing long-run costs reflect the effects of resource depletion: lower cost resources are exploited first. This component of the cost curve is modeled as a series of cost steps between different 'grades' of oil. Transitions between steps are smoothed by inclusion of a cubic term. Inclusion of additional terms that make adjustments of capacity costly ensure that the model simulates the simultaneous extraction of resources in different regions and with different costs. 
+
+The WITCH model database provides for eight grades of oil resources in each region. (A more aggregated set of four grades has also been defined and can be used instead if desired.) Higher grades have higher base unit costs of extractive capacity and higher CO2 emissions coefficients. The higher costs are intended to reflect both increasingly difficult geologies and increasing difficulty and uncertainty of discovery. 
+
+ 
+ | Symbol                 | Definition                                     | GAMS                        | Unit       | 
+ | ------                 | ----------                                     | ----                        | ----       | 
+ | $OIL_{cap}(t,n,g)$     | Oil extraction capacity (by category)          | ''%%OILCAP(t,n,oilg)%%''    | TWh        | 
+ | $\Delta CAP(t,n,g)$    | Additional oil capacity (by category)          | ''%%ADDOILCAP(t,n,oilg)%%'' | TWh        | 
+ | $I_{OILCAP}(t,n,g)$    | Oil investment (by category)                   | ''%%I_OIL(t,n,oilg)%%''     | Trillion $ | 
+ | $OIL_{capcost}(t,n,g)$ | Oil Investment cost (by category)              | ''%%COST_OIL(t,n,oilg)%%''  | T$ per TWh | 
+ | $OIL_{prod}(t,n,g)$    | Oil production (by category)                   | ''%%OILPROD(t,n,oilg)%%''   | TWh        | 
+ |                        | Cumulative production (by category)            | ''%%CUM_OIL(t,n,oilg)%%''   | TWh        | 
+ |                        | Total Oil investment (all categories)          | ''%%I_OUT(t,n)%%''          | Trillion $ | 
+ |                        | Total oil production (all categories)          | ''%%Q_OUT(oil,t,n)%%''      | TWh        | 
+ |                        | Emissions from oil extraction (all categories) | ''%%Q_EMI_OUT(t,n)%%''      | Gt-eqC     | 
+
+## Oil production
+
+    
+[Eq. **eqoilprod**] Production of crude oil cannot exceed the extraction capacity available for any given category in any given region. However, capacity may be underused if the rate of production is falling rapidly.
+$$
+OIL_{prod}(t,n,g)\leq OIL_{cap}(t,n,g)
+$$ 
+
+[Eq. **eqcum_oil_max**] Cumulative oil production (**CUM_OIL**) in each category in each region is bounded by the total oil resources in place (**resmax_oil**).
+
+## Extraction capacity
+
+[Eq. **eqoilcap**] The oil extraction capacity is built cumulatively over time. It is subjected to depreciation rate, and it can be increased by means of dedicated investment in the oil extraction sector. 
+
+$$
+   OIL_{cap}(t+1,n,g) =OIL_{cap}(t,n,g) \times (1-\delta_{oilg})^{\Delta_t} +{\Delta_t}\times \Delta CAP(t,n,g)
+$$
+where $\Delta_{\text{t}}=5$ is the duration of one time step in years.
+
+For the current version of WITCH, the following parameter is used by default:
+
+ | $\delta_{oilg}$ | depreciation rate | ''%%delta_oilg%%'' | 0.1 | 
+ | --------------- | ----------------- | ------------------ | --- | 
+
+[Eq. **eqoilprod_t0**] At the base year (2005) both oil capacity and oil production are assumed to be equal to the observed extraction data 
+(source: Enerdata).
+
+
+## Oil investment cost
+
+ 
+[Eq. **eqi_oil**] Investments for oil extraction are equal to the expenditure for financing the expansion of oil capacity ($\Delta CAP$):
+$$
+   I_{OILCAP}(t,n,g)= \Delta CAP(t,n,g) \times  OIL_{capcost}(t,n,g)
+$$
+The amount of investment needed to increase the oil capacity is then governed by the investment cost function.
+
+[Eq. **eqcost_oil**]  The cost of oil extraction capacity function has short-term increasing marginal extraction cost. The cost of additional oil capacity is governed by three elements:
+
+ 1.  a specific investment cost that represents a cost floor (specific to each category) (**$\lambda(g)$**). 
+ 2.  a short term cost component that becomes large if investments exceed a certain threshold to mimic adjustment costs and reduce incentive to over-invest in oil extraction capacity
+ 3.  a long term cost component that is inversely related to remaining oli resources for each category, to reflect resource depletion effects and smooth the transition from a lower (cheaper) to a higher (more expensive) category of oil
+
+$$
+   OIL_{capcost}(t,n,g)= \lambda(g)+ \phi(g) \Delta CAP(t,n,g)^{1/\psi}   +\phi(g)\left(\left[\frac{\Delta CAP(t,n,g)}{\zeta(n,g)}\right]^\psi-1\right)+\mu(g)\left(\frac{\sum_{s=1}^{t-1}OIL_{prod}(t,n,g)}{\theta OIL_{res}(t,n,g))}\right)^\chi 
+$$
+
+
+ | Symbol             | Definition                                     | GAMS                          | Unit       | 
+ | ------             | ----------                                     | ----                          | ----       | 
+ | $\lambda(g)$       | Fixed floor cost component (by categories)     | ''%%data_oilcost(n,oilg)%%''  | T$ per TWh | 
+ | $\zeta(n,g)$       | Annual Expansion threshold                     | ''%%esp_cap(n,oilg)%%''       | TWh        | 
+ | $\mu(g)$           | Fixed floor cost difference (among categories) | ''%%cum_param_oil(n,oilg)%%'' | T$ per TWh | 
+ | $OIL_{res}(t,n,g)$ | Oil resources                                  | ''%%resmax_oil(n,oilg)%%''    | TWh        | 
+
+
+For the current version of WITCH, the following parameter are used by default:
+ | Symbol          | Default value | 
+ | ------          | ------------- | 
+ | $\delta_{oilg}$ | 0.1           | 
+ | $\theta$        | 1             | 
+ | $\chi$          | 3             | 
+## Emission from Oil extraction
+
+Emissions from the oil extraction sector (**emi_st_oil**) are given in terms of the stoichiometric coefficient for emissions from oil combustion. We assume that the ratio of extraction to combustion emissions increases by category and that there are no extraction emissions for the first category. The idea behind this assumption is that non conventional oil requires higher consumption of energy for extraction, and thus higher emissions. 
+ | Symbol | Definition                                    | GAMS                       | Unit        | 
+ | ------ | ----------                                    | ----                       | ----        | 
+ |        | Stoichiometric coefficient for oil extraction | ''%%emi_st_oil(n,oilg)%%'' | GtC per TWh | 
+
+[Eq. **eqq_emi_out_oil**] Total emissions are then computed by summing the quantities emitted over all categories
+
+## References
+
+
+*  Massetti, E. and Sferra, F. (2010). A Numerical Analysis of Optimal Extraction and Trade of Oil under Climate Policy, FEEM Working Papers 2010: 113, Fondazione Eni Enrico Mattei, Venice, Italy. 
+
+
+

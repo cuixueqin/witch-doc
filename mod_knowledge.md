@@ -1,0 +1,155 @@
+# Research and Development
+
+One of the main features of the WITCH model is the characterisation
+of endogenous technical change.
+Albeit difficult to model, technological innovation is key to
+the decoupling of economic activity from environmental degradation,
+and the ability to induce it using appropriate policy
+instruments is essential for a successful climate agreement,
+as highlighted also in the Bali Action Plan. 
+
+Both innovation and diffusion processes are modelled.
+We distinguish dedicated R&D investments for enhancing energy efficiency
+from investments aimed at facilitating the competitiveness of
+innovative low carbon technologies (backstops) in both the electric
+and non-electric sectors.
+The returns to R&D investment depend on the stock of previously accumulated knowledge. Higher knowledge stock facilitates generation of new, energy saving innovations. In addition, international spillovers of knowledge are
+accounted for to mimic the flow of ideas and knowledge across
+countries. 
+
+ | Symbol        | Definition                           | GAMS                   | Unit       | 
+ | ------        | ----------                           | ----                   | ----       | 
+ | $HE(n,t)$     | R&D Capital in energy efficiency     | ''%%K_RD('en',t,n)%%'' | Trillion $ | 
+ | $RD_{j}(n,t)$ | R&D Capital in backstop technologies | ''%%K_RD(rd,t,n)%%''   | Trillion $ | 
+ | $SPILL(n,t)$  | Spillover knowledge                  | ''%%SPILL(rd,t,n)%%''  | Trillion $ | 
+ | $wcum_{j}(t)$ | Cumulated Installed Capacity         | ''%%wcum(jrd,t)%%''    | Trillion $ | 
+
+
+ | Symbol        | Definition                            | GAMS                    | 
+ | ------        | ----------                            | ----                    | 
+ | $\delta_{RD}$ | Depreciation rate for R&D knowledge   | ''%%delta_RD('en')%%''  | 
+ | $a$           | Internal spillover                    | ''%%crda('en',t,n)%%''  | 
+ | $b$           | Elasticity w.r.t. R&D Investment      | ''%%crdb('en')%%''      | 
+ | $c$           | Elasticity w.r.t. own past knowledge  | ''%%crdc('en',t,n)%%''  | 
+ | $d$           | Elasticity w.r.t. spillover knowledge | ''%%crdd('en')%%''      | 
+ | $lbrrate$     | Learning by Searching Coefficient     | ''%%lbr_rate('jrd')%%'' | 
+ | $lbdrate$     | Learning by Doing Coefficient         | ''%%lbd_rate('jrd')%%'' | 
+
+## Knowledge stock for energy efficiency
+
+[Eq. **eqk_rd_en**]
+The stock of knowledge evolves according to the perpetual rule.
+
+$$
+    HE(n,t+1) = HE(n,t) (1-\delta_{RD})^{\Delta_{t}} + 
+                \Delta_{t} a I_{RD}^b \times HE(n,t)^c \times SPILL(t,n)^d
+$$
+
+At each point in time, new ideas are produced using a Cobb-Douglas combination
+between domestic investments, $I_{RD}$, the existing stock of knowledge,
+$HE$ and the knowledge of other countries, $SPILL$.
+
+The contribution of foreign knowledge to the production of new domestic ideas
+depends on the interaction between two terms: the first describes the 
+absorptive capacity whereas the second captures the distance from the
+technology frontier, which is represented by the stock of knowledge
+in OECD countries (USA, OLDEURO, NEWEURO, CAJANZ and KOSAU).
+
+[Eq. **eqspill_coop**]
+Cooperation :
+internalises the externalities due the spillovers (but only optimises over the regions inside the coalition)
+
+$$
+    SPILL(t,n) = \frac{HE(t,n)}{\sum_{n\in \text{OECD}} HE(t,n)} \times
+                 \left(
+                 \sum_{n\in \text{OECD}} HE(t,n) - HE(t,n)
+                 \right)
+$$
+
+The knowledge stock dedicated for energy efficiency is combined with energy supply and autonomous energy efficiency improvement to form energy services. Energy services are then used as an input in production of final good (see equations [Eq. **eqq_y**] and [Eq. **eqq_fen_**])
+
+## Knowledge stock in backstop technologies
+
+[Eq. **eqk_rd_type1**]
+RD stock accumulates with the perpetual rule and with the contribution of
+international knowledge spillovers, $SPILL$
+
+$$
+    RD_{j}(n,t+1) = RD_{j}(n,t) (1-\delta_{RD})^{\Delta_{t}} + 
+                \Delta_{t} I_{RD}^b \times SPILL_{j}(t,n)^d
+$$
+
+The spillovers in backstop technologies are determined analogously to spillovers in energy efficiency related knowledge:
+
+
+$$
+    SPILL_{j}(t,n) = \frac{RD_{j}(n,t)}{\sum_{n\in \text{OECD}} RD_{j}(n,t)} \times
+                 \left(
+                 \sum_{n\in \text{OECD}} RD_{j}(n,t) - RD_{j}(n,t)
+                 \right)
+$$
+
+The knowledge stock in backstop technologies is used to lower installation costs, $SC$. The installation costs are determined by a two factor learning curve: 1 percent drop in installation costs can be achieved upon $\frac{1}{lbr\_rate}$% increase in backstop technology knowledge stock (//learning by searching//) or $\frac{1}{lbr\_rate}$% increase in stock of experience in utilising the technology (following the *learning by doing* principle). The stock of experience is proxied with total installed capacity in the world (equation [Eq. **eqmcost_inv_back_lbd**]).
+
+
+
+`<todo @jan>`To put Learning curve`</todo>`
+## Two Factor Learning Curve
+
+We predict the future costs of the backstop technologies, $SC$ using the Two Factor Learning Curve (e.g. Klaassen et al., 2005 and Söderholm and Sundqvist, 2007). The costs can decrease as a result of accumulation of experience (learning by doing) or investment in research and development (learning by searching). In our model, the stock of experience is proxied with world cumulated installed capacity, $wcum$. The accumulation of R&D knowledge stock is described in the section above. The two factor learning curve takes the form
+
+$$
+\frac{SC_{j}(t,n)}{SC_{j}(0,n)} = \left( \frac{RD_{j}(t,n)}{RD_{j}(0,n)} \right)^{lbrrate} \left( \frac{wcum_{j}(t,n)}{wcum_{j}(0,n)} \right)^{lbdrate} 
+$$
+
+where $lbr\_rate$ and $lbd\_rate$ are learning by doing and learning by searching parameters respecitvely.
+
+[Eq. **eqmcost_inv_back**]
+[Eq. **eqmcost_inv_back_lbd**]
+
+
+## Innovations
+
+ | Symbol    | Definition                                      | GAMS            | 
+ | ------    | ----------                                      | ----            | 
+ | $kpat0$   | knowledge stock in 2005                         | ''%%kpat0%%''   | 
+ | $pat0$    | annual flow of patents in 2005                  | ''%%pat0%%''    | 
+ | $enintg0$ | 5 years decline in energy intensity (2005-2010) | ''%%enintg0%%'' | 
+ | $peng0$   | 5 years growth in energy price (2005-2010)      | ''%%peng0%%''   | 
+ | $gdpg0$   | 5 years growth in gdp (2005-2010)               | ''%%gdpg0%%''   | 
+
+
+$$
+\frac{PAT(t,n)}{pat0(n)} = \left(\frac{K_{PAT}(t,n)}{kpat0(n)}\right)^{\beta_{spill domestic}}
+\left(\frac{\sum_{n\in \text{OECD}} K_{PAT}(t,n)}{\sum_{n\in \text{OECD}} kpat0(n)}\right)^{\beta_{spill int}}
+\left(\frac{ESC_{PAT}(t,n)}{ESC_{PAT}(0,n)}\right)^{\beta_{enexp}}
+$$
+
+growth for the frontier countries:
+$$
+\frac{A_{ENTECH}(t+1,n)}{A_{ENTECH}(t,n)} =  \left(\frac{Y(t+1,n)}{Y(t,n)}\right) ^{\beta_{y}} *\left(1+const_{eneff}+tstep*\beta_{enrd}*\sum_{n\in \text{OECD}} PAT(t,n) \right)
+$$
+
+$$
+1+\frac{1-\rho}{\rho}enintg0 - \frac{1}{\rho}*peng0 = 1+ \beta_{y}*gdpg0+  const_{eneff}+tstep*\beta_{enrd}*\sum_{n\in \text{OECD}} pat0(n)
+$$
+
+$$
+1+\frac{1-\rho}{\rho}enintg0 - \frac{1}{\rho}*peng0 = 1+ \beta_{y}*gdpg0+  const_{eneff}+tstep*\beta_{enrd}*\sum_{n\in \text{OECD}} pat0(n)
+$$
+
+growth for the developing countries:
+
+$$
+RBENIM(t,n)=\left(\frac{ENINT(t,n)}{ENINT(t,'usa')}\right)^{\frac{1-\rho}{-\rho}}*\left(\frac{GDPPC(t,n)}{GDPPC(t,'usa')}\right)^{\beta_{y}}
+$$
+
+$$
+\frac{A_{ENTECH}(t+1,n)}{A_{ENTECH}(t,n)} =  const*IMINNSWITCH(t,n)*\left(\frac{GDPPC(t,n)}{GDPPC(t,'usa')}\right)^{\beta_{yim}}
+$$
+$$
+IM(t,n)=\left(\frac{RBENIM(t,n)}{RBENIM('1',n)}\right) ^{\beta_{conv}}
+$$
+$$
+IN(t,n)=1+tstep*\beta_{enrd}*\sum_{n} PAT(t,n)
+$$

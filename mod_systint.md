@@ -1,0 +1,116 @@
+# System integration
+
+The system integration module is dedicated to modelling the issues related to the integration of variable renewable energies (VRE) - specifically wind and solar photovoltaics (PV) - into the electrical grid.  
+
+
+## System integration
+
+The relevant variables and parameters in this section are:
+
+ | Notation              | Variable                     | GAMS                       | Unit     | 
+ | --------              | --------                     | ----                       | ----     | 
+ | $K_{EN}(jel,t,n)$     | Electric capacity            | ''%%K_EN(jel,t,n)%%''      | TW       | 
+ | $Q_{EN}(jel,t,n)$     | Electric energy generation   | ''%%Q_EN(jel,t,n)%%''      | TWh      | 
+ | $SHARE_{EL}(jel,t,n)$ | Share in the electricity mix | ''%%SHARE_EL(jel,t,n)%%''  | unitless | 
+ | $c(n)$                | Peak load fraction           | ''%%firm_coeff(n)%%''      | unitless | 
+ | $cf$                  | Capacity factor              | ''%%cap_factor%%''         | unitless | 
+ | $cv(SHARE_{EL})$      | Capacity value               | ''%%cap_value(jel,t,n)%%'' | unitless | 
+ | $f(jel)$              | Flexibility coefficient      | ''%%flex_coeff(jel)%%''    | unitless | 
+
+The limitation to VRE penetration into the electrical grid is modelled through two constraints, described in [Sullivan et al. (2013)](http://www.sciencedirect.com/science/article/pii/S2211467X13000023):
+
+ 1.  A constraint on the installed capacity of the power generation fleet
+ 2.  A constraint on the flexibility of the power generation fleet
+
+### Capacity constraint
+
+The capacity constraint guarantees that sufficient capacity is built to meet the instantaneous peak electricity demand. In particular, the so called firm
+capacity must be at least 1.5-2 times (calibrated on the different regions) as the yearly average load, the latter being simply calculated as the
+yearly energy demand divided by the yearly hours (8760). The firm capacity represents the capacity that is considered guaranteed. For non-intermittent technologies it is simply the nameplate capacity. For intermittent technologies, the firm capacity is calculated multiplying the installed capacity by two parameters: the capacity factor and the capacity value. The capacity factor is the ratio between the actual energy output over a time period and the maximum theoretical output which would be achievable by running the plant at the nameplate capacity over the same time period. It substantially indicates the average capacity in normalised terms. The capacity value is a factor decreasing with increasing penetration in the electricity mix (starting from 0.9 with no penetration) which indicates that for intermittent technologies not only is the average capacity not always guaranteed (thus the 0.9 even with no penetration), but this fact becomes more and more critical with increasing levels of VRE penetration.
+
+In formula [Eq. **eqfirm_capacity**]: 
+
+$$
+	\sum_{jel(non-int)} K_{EN}(jel_{non-int},t,n) + \sum_{jel(int)}^{ } K_{EN}(jel_{int},t,n) \cdot cf \cdot cv(SHARE_{EL}) \geq c(n) \cdot Q_{EN}(jel,t,n)/8760
+$$
+
+where:
+
+$$
+	SHARE_{EL}(jel,t,n) = Q_{EN}(jel,t,n) / Q_{EN}('el',t,n)
+$$
+
+### Flexibility constraint
+
+The flexibility constraint requires that the annual average energy production be sufficiently flexible to be borne by the grid and to be able
+to follow the load. All energy technologies are assigned a value from -1 to 1 accounting for their grade of flexibility. Negative values are
+assigned to inflexible, intermittent technologies (i.e. VREs). Zero is assigned to those technologies which are not inflexible, but, due to technical
+constraints, cannot assure flexibility to follow the load (e.g. nuclear and concentrated solar power, CSP, which we assume coupled with a thermal
+storage which guarantees some dispatchability). Higher and higher positive coefficients are instead assigned to the progressively more flexible
+technologies, up to 1 which characterises storage, that by definition provides full flexibility (storage is not accounted for in WITCH yet, though). Gas is assigned 0.5 because in WITCH we only model Combined Cyles: Combustion Turbines would be characterised by full flexibility (1). A
+negative value (-0.1) is also assigned to the overall demand, in order to account for the fact that the grid itself requires some flexibility to meet
+changes and uncertainty in the load.
+
+ | Power technology | Flexibility coefficient | 
+ | ---------------- | ----------------------- | 
+ | Load             | -0.1                    | 
+ | Wind             | -0.08                   | 
+ | PV               | -0.05                   | 
+ | CSP              | 0                       | 
+ | Nuclear          | 0                       | 
+ | Coal             | 0.15                    | 
+ | Oil              | 0.3                     | 
+ | Biomass          | 0.3                     | 
+ | Gas              | 0.5                     | 
+ | Hydro            | 0.5                     | 
+
+The constraint is then formulated so that the sum of the energy generated by the different technologies weighted on the corresponding flexibility
+coefficients, which can be called flexible generation, result higher or equal than 0.
+ 
+In formula [Eq. **eqflex_eval**] and [Eq. **eqflex_constr**]:
+
+$$
+	\sum_{jel} Q_{EN}(jel,t,n) \times f(jel) + Q_{EN}(el,t,n) \times f(LOAD) \geq 0 
+$$
+
+## Electrical grid
+
+The relevant variables and parameters in this section are:
+
+
+ | Notation                     | Variable                             | WITCH                             | Unit     | 
+ | --------                     | --------                             | -----                             | ----     | 
+ | $K_{EN\_GRID}(t,n)$          | Capital of the electrical grid       | ''%%K_EN_GRID(t,n)%%''            | TW       | 
+ | $I_{EN\_GRID}(t,n)$          | Investments in the electrical grid   | ''%%I_EN_GRID(t,n)%%''            | T$       | 
+ | $delta\_grid(t,n)$           | Grid depreciation rate               | ''%%grid_delta(t,n)%%''           | unitless | 
+ | $grid\_cost$                 | Grid specific investment cost        | ''%%grid_cost%%''                 | T$/TW    | 
+ | $transm\_cost(jel,distance)$ | Distance-dependant transmission cost | ''%%transm_cost(jel,distance)%%'' | T$/TW    | 
+
+
+[Eq. **eqk_en_grid**]
+Analogously to the power generation technologies, grid capital accumulates as follows:
+
+$$
+   K_{EN\_GRID}(t+1,n) = K_{EN\_GRID}(t,n)\left(1-\delta\_grid(t+1,n)\right)^{\Delta_t} +
+                \Delta_t \cdot \frac{I_{EN\_GRID}(t,n)}{grid\_cost}
+$$
+
+[Eq. **eqk_en_grid_to_k_en**]
+The grid capital stock is adjusted to power capacity, taking into account a linear relationship between grid capacity and the capacity of
+traditional power generation technologies, and an additional grid stock requirement for i) connecting wind and solar plants located far from load
+centres or shore, and ii) building a wider interconnection for the integration of VREs (curtailment reduction,
+dispatchability increase, etc.), the latter exponentially increasing with VRE penetration. 
+
+\begin{align*}
+   K_{EN\_GRID}(t,n) &= \sum_{jel(standard)} K_{EN}(jel_{standard},t,n)\\
+                     &+ \sum_{jel} \sum_{distance} K_{EN}(jel,t,n) \cdot \frac{transm\_cost(jel,distance)}{grid\_cost}\\
+		     &+ \sum_{jel(VRE)} K_{EN}(jel_{VRE},t,n) \cdot (1 + a \cdot SHARE_{EL}(jel_{VRE},t,n)^{b})
+\end{align*}
+where a and b are two numerical coefficients.
+
+	
+## References
+
+
+*  Sullivan, P., Krey, V., Riahi, K., 2013. Impacts of considering electric sector variability and reliability in the MESSAGE model. Energy Strategy Reviews, 1, 157-163
+ 

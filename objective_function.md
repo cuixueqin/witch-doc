@@ -1,0 +1,66 @@
+# Welfare
+
+In WITCH, a social planner maximises the total discounted welfare $W$ of each coalition $clt$.
+The regional utility function at any point in time and each region is based on a power or 
+constant relative risk aversion (CRRA) function of the consumption per capita. 
+Given the type of cooperation, the objective function can take different forms.
+
+## Utility function
+
+[Eq. **equtility**] For each region $n$, intertemporal utility is computed as discounted sum of utility: 
+
+$$ W(n) = \sum_{t} l(t,n) \frac{\left(\frac{C(t,n)}{l(t,n)}\right)^{1-\eta}-1}{1-\eta} \beta^t. $$
+
+The pure time preference discount factor $\beta$ in any case is given by the geometric discounting rule:
+
+$$ \beta = ({1+\rho})^{\Delta_{t}} $$
+
+where $\Delta_{t}=5$ is the duration of one time step in years.
+
+
+## Welfare of coalitions
+
+The WITCH model can be run in a non-cooperative mode, where each region $n$ acts as one player maximising its welfare. In this case, the set of players or coalitions $clt$ consists each of a single region.
+
+In the cooperative mode, different coalitions can be formed including the Grand Coalition containing all regions.
+With cooperation, there are hence one or several coalitions $clt$, who maximise welfare in their member region(s). The coalition $clt$ maximises a sum of the welfare of the member regions. There are several welfare concepts admissible to aggregate welfare across coalition members. 
+
+The default option is a (disentangled) Utilitarian solution, taking into account inequality across regions through a degree of inequality aversion. This welfare concept is related to Epstein-Zin preferences and welfare of a coalition $clt$ is given by the equation
+
+$$ W(clt)= \sum_{t=1}^{T} \left[\frac{1}{1-\eta}\left(\left(\sum_{n \in clt}l(t,n) (\frac{C(t,n)}{l(t,n)} \right )^{1-\gamma}\right)^{\frac{1-\eta}{1-\gamma}}-1\right] \beta^t $$
+
+Note that by default, we consider no inequality aversion($gamma=0$), since this equalises marginal welfare across regions, leads to a unique social cost of carbon, and is quantitatively similar to the common use of Negishi weights (Negishi, 1960). As an alternative, time varying Negishi weights (Nordhaus and Yang, 1996) can be used in which case the welfare function has the form of
+
+$$ W^{Negishi}(clt) = \sum_{t}\sum_{n\in clt} w_{t,n} l(t,n) \frac{\left(\frac{C(t,n)}{l(t,n)}\right)^{1-\eta}-1}{1-\eta} \beta^t$$
+
+where $w_{t,n}$ are the time- and region-specific Negishi weights which are computed as 
+
+$$ w_{t,n}=\frac{\frac{1}{c(t,n)^{\eta}}}{\sum_{n' \in clt}\frac{1}{c(t,n')^{-\eta}}}. $$
+
+
+
+ | Symbol    | Definition              | GAMS                   | Unit           | 
+ | ------    | ----------              | ----                   | ----           | 
+ | $W(clt)$  | Aggregated welfare      | ''%%UTILITY%%''        | unitless       | 
+ | $w_{t,n}$ | Negishi weights         | ''%%w_negishi(t,n)%%'' | unitless       | 
+ | $C(t,n)$  | Consumption             | ''%%Q('CC',t,n)%%''    | Trillion $     | 
+ | $l(t,n)$  | Population              | ''%%l(t,n)%%''         | Million people | 
+ | $\beta$   | Utility discount factor | ''%%stpf(t)%%''        | unitless       | 
+
+	
+For the current version of WITCH, the following parameters are used by default:
+
+ | Symbol   | Definition                    | GAMS            | Default value | 
+ | ------   | ----------                    | ----            | ------------- | 
+ | $\eta$   | Inverse of IES                | ''%%eta%%''     | 1.5           | 
+ | $\rho$   | Pure rate of time preference  | ''%%srtp(t)%%'' | 1.0%          | 
+ | $\gamma$ | Degree or inequality aversion | ''%%gamma%%''   | 0.0           | 
+
+## References
+
+
+*  Negishi, Takashi. “Welfare Economics and Existence of an Equilibrium for a Competitive Economy.” Metroeconomica 12, no. 2–3 (1960): 92–97.
+
+*  Nordhaus, William D., and Zili Yang. “A Regional Dynamic General-Equilibrium Model of Alternative Climate-Change Strategies.” The American Economic Review 86, no. 4 (September 1, 1996): 741–65.
+
+

@@ -1,0 +1,79 @@
+# Solar power
+
+This module is dedicated to modeling the specific issues related to the solar power technology. The module describes both solar PV (PhotoVoltaics) and CSP (Concentrated Solar Power).
+
+
+# Supply curves
+
+The supply curves are provided by the German Aerospace Centre (DLR, Deutsches Zentrum für Luft- Raumfahrt) and the Potsdam Institute for Climate Impact Research (PIK, Potsdam Institut für Klimafolgenforschung), see [Pietzcker et al. (2014)](http://www.sciencedirect.com/science/article/pii/S0306261914008149).
+
+The curves provide the maximum amount of capacity which can be installed in each region as a function of:
+
+ 1.  capacity factor / full load hours (solar_class in the model) - Twenty-six classes: from 350 to 2450 h/yr for PV, from 700 to 6600 h/yr for CSP (which is modelled in a SM2 configuration, i.e. with a 6h-thermal storage)
+ 2.  distance from load centres (solar_distance in the model) - Two classes: near (1-50 km), far (50-100 km)
+
+
+# Other technical data
+
+
+ | Parameter                 | PV            | CSP           | 
+ | ---------                 | --            | ---           | 
+ | Global capacity           | 3 GW (2005)   | 0.4 GW (2005) | 
+ |                           | 38 GW (2010)  | 1 GW (2010)   | 
+ |                           | 153 GW (2015) | 6 GW (2015)   | 
+ | Base year investment cost | 4650 USD/kW   | 6123 USD/kW   | 
+ | Lifetime                  | 20 years      | 20 years      | 
+ | O&M cost                  | 43 USD/kW     | 120 USD/kW    | 
+ | Learning rate             | 16.5%         | 10%           | 
+ | Floor cost                | 500 USD/kW    | 1500 USD/kW   | 
+
+The capacity is fixed up to the year 2015 in order to allow the model capturing the tremendous growth which has been taking place in recent years and which otherwise would not be replicated.
+
+Investment costs are the same in all regions and decline over time through a learning-by-doing process (learning-by-researching is not modeled). The decline rate depends on the cumulative capacity installed worldwide and on the learning rate.
+
+
+## Modeling
+
+The relevant variables in this section (apart from the constraint on the competition area, see next section) are:
+
+ | Variable                       | WITCH                                            | Unit | 
+ | --------                       | -----                                            | ---- | 
+ | PV electric capacity           | ''%%K_EN_PV(solar_distance,solar_class,t,n)%%''  | TW   | 
+ | PV electric energy generation  | ''%%Q_EN_PV(solar_distance,solar_class,t,n)%%''  | TWh  | 
+ | PV investments                 | ''%%I_EN_PV(solar_distance,solar_class,t,n)%%''  | T$   | 
+ | CSP electric capacity          | ''%%K_EN_CSP(solar_distance,solar_class,t,n)%%'' | TW   | 
+ | CSP electric energy generation | ''%%Q_EN_CSP(solar_distance,solar_class,t,n)%%'' | TWh  | 
+ | CSP investments                | ''%%I_EN_CSP(solar_distance,solar_class,t,n)%%'' | T$   | 
+
+The equations which combine these variables perfectly replicate the scheme described in the "[Energy sector](mod_energy)" module, although in this case the variables are specifically defined per capacity factor classes and distance from load centres. A set of additional equations sum the specific variables in the corresponding aggregate for the whole PV and CSP technologies, respectively.
+
+The penetration of PV technologies is subject not only to cost considerations, but also to the constraints related to the system integration of intermittent technologies (See "[System integration](mod_systint)").
+
+
+## Competition area
+
+Differently from the two wind technologies, which are by definition installed in two different areas, PV and CSP partially compete for the same land. Indeed, CSP requires types of ground characterized by a lower slope, so the curves provide information on the "PV-only" area and the "Competition" area, where both PV and CSP can be installed. The module thus reports the total installable PV capacity (PV-only + Competition) and the total installable CSP capacity(Competition), but adds a constraint on land occupation in the Competition area.
+
+The relevant variables and parameters in this section are:
+
+ | Notation                   | Variable             | GAMS                                | Unit      | 
+ | --------                   | --------             | ----                                | ----      | 
+ | $K_{EN}(jel_{solar},t,n)$  | Electric capacity    | ''%%K_EN(jel_solar,t,n)%%''         | TW        | 
+ | $dens(jel_{solar},n)$      | Installation density | ''%%inst_density(n,jel_solar)%%''   | MW/km$^2$ | 
+ | $area(solar_{distance},n)$ | Competition area     | ''%%inst_area(n,solar_distance)%%'' | km²      | 
+
+In formula [Eq. **eqk_en_solar_comp**]: 
+
+$$
+	\sum_{jel_{solar}} K_{EN}(jel_{solar},t,n) * 1e6 / dens(jel_{solar},n) ≤ area(solar_{distance},n)
+$$
+
+However, given the huge amount of the available resource, which is much higher than the capacity installed in any scenario, the constraint is practically non-binding everywhere.
+
+## References
+
+
+*  Pietzcker, R.C., Stetter, D., Manger, S., and Luderer, G. (2014). Using the sun to decarbonize the power sector: The economic potential of photovoltaics and concentrating solar power, Applied Energy, 135, 704-720
+    
+
+

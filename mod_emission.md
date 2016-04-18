@@ -1,0 +1,141 @@
+# Carbon emissions
+
+## CO2 emissions
+
+
+[Eq. **eqq_emi_co2**]
+[Eq. **eqq_emi_co2ind**]
+[Eq. **eqq_emi_in**]
+[Eq. **eqq_emi_oghg**]
+
+Total CO2 emissions are the sum of CO2 emissions from fossil-fuel and industry and from land-use change
+minus emissions from avoided deforestation
+
+$$
+    Q_{CO2}(t,n) = Q_{CO2ind}(t,n) + Q_{CO2lu}(t,n) - Q_{redd}(t,n)
+$$
+
+Emissions from land-use change (and REDD) are provided by the [land-use](mod_landuse) module.
+
+CO2 emissions from fossil-fuel and industry are the energy consumed multiplied the stochiometric coefficient **emi_sf** plus the emissions from extraction minus stored emissions.
+$$
+    Q_{CO2ind}(t,n) = \sum_f \left( emi_st(f)\times Q_f(t,n) \right) +
+                      \sum_f EX_f(t,n) -
+                      Q_{CCS}(t,n)
+$$
+
+ | Notation          | Variable                           | GAMS                         | Unit   | 
+ | --------          | --------                           | ----                         | ----   | 
+ | $Q_{CO2}(t,n)$    | CO2 emissions                      | ''%%Q_EMI('co2',t,n)%%''     | GtC-eq | 
+ | $Q_{CO2ind}(t,n)$ | CO2 emissions from fossil-fuel     | ''%%Q_EMI('co2ind',t,n)%%''  | GtC-eq | 
+ | $Q_{CO2lu}(t,n)$  | CO2 emissions from land-use change | ''%%Q_EMI('co2lu',t,n)%%''   | GtC-eq | 
+ | $Q_{redd}(t,n)$   | Avoided emissions from REDD        | ''%%Q_EMI('redd',t,n)%%''    | GtC-eq | 
+ | $Q_{CCS}(t,n)$    | CCS emissions                      | ''%%Q_EMI('ccs',t,n)%%''     | GtC-eq | 
+ | $EX_f(t,n)$       | CO2 emissions from extraction      | ''%%Q_EMI_OUT('co2',t,n)%%'' | GtC-eq | 
+
+## Other greenhouse gas emissions
+
+The other Kyoto greenhouse gases are CH4, N2O, short-lived and long-lived F-gases.
+
+$$
+    Q_{oghg}(t,n) = emi\_baseline(oghg,t,n) \times (1 - ABAT(oghg,t,n) \times emi\_abat\_max(oghg,t,n))
+$$
+
+$emi\_abat\_max$ is the maximum possible abatment expressed as a share of baseline emissions ($emi\_baseline$). The baseline emissions are following the [ EPA projections](http://www.epa.gov/climatechange/EPAactivities/economics/nonco2projections.html).
+
+ | $Q_{oghg}(t,n)$  | other ghg emissions | Q_EMI(oghg,t,n) | GtC-eq | 
+ | ---------------  | ------------------- | --------------- | ------ | 
+ | $ABAT(oghg,t,n)$ | level of abatment   | ABAT(oghg,t,n)  | [0-1]  | 
+
+## Carbon market clearing
+
+
+[Eq. **eq_mkt_clearing**] Globally, the sum of regional net import carbon permits 
+has to be equal to zero.
+
+$$
+    \sum_n Q_{nip}(n,t) = 0
+$$
+
+ | Notation       | Variable                     | GAMS                     | Unit   | 
+ | --------       | --------                     | ----                     | ----   | 
+ | $Q_{nip}(t,n)$ | net import of carbon permits | ''%%Q_EMI('nip',t,n)%%'' | GtC-eq | 
+
+## Emission costs
+
+[Eq. **eqcost_emi_co2**] The CO2 emission costs are equal 
+to the carbon permit price times the amount of net import of carbon permits.
+
+$$
+    C_{CO2}(n,t) = p_{nip}(n,t) \times Q_{nip}(n,t)
+$$
+
+ | Notation       | Variable                     | GAMS                        | Unit      | 
+ | --------       | --------                     | ----                        | ----      | 
+ | $C_{CO2}(n,t)$ | CO2 costs                    | ''%%COST_EMI('co2',t,n)%%'' | T$        | 
+ | $Q_{nip}(t,n)$ | net import of carbon permits | ''%%Q_EMI('nip',t,n)%%''    | GtC-eq    | 
+ | $p_{nip}(n,t)$ | carbon permits price         | ''%%CPRICE('nip',t,n)%%''   | T$/GtC-eq | 
+
+
+[Eq. **eqcost_emi_oghg**]
+The non-CO2 GHG emission costs are based on marginal abatement curves.
+
+\begin{align*}
+    C_{e}(n,t) =& ref_e(n,t) \times \overline{abat}_e(n,t) \times
+                 \left(
+                    a_e \times ABAT_e(n,t) +
+                    \frac{b_e}{c_e} \times 
+                    \exp\left(
+                          c_e \times ABAT_e(n,t) - 1
+                        \right)
+                 \right), \\& \forall e \in \{CH_4, N_2O, slf, llf\}
+\end{align*}
+where $a_e$, $b_e$ and $c_e$ are the coefficient of
+the  marginal abatement curves.
+
+ | Notation                 | Variable                  | GAMS                           | Unit   | 
+ | --------                 | --------                  | ----                           | ----   | 
+ | $C_{e}(n,t)$             | Non-CO2 emission costs    | ''%%COST_EMI(oghg,t,n)%%''     | T$     | 
+ | $ref_e(n,t)$             | Baseline emissions        | ''%%emi_baseline(oghg,t,n)%%'' | GtC-eq | 
+ | $\overline{abat}_e(n,t)$ | Maximum abatement         | ''%%emi_abat_max(oghg,t,n)%%'' | [0,1]  | 
+ | $ABAT_e(n,t)$            | Non-CO2 emission abatment | ''%%ABAT(t,n)%%''              | [0,1]  | 
+
+[Eq. **eqcost_emi_ccs**]
+The cost of the CCS is computed as
+
+$$
+    C_{e}(n,t) = C_{CCS}(n,t) \times Q_{e}(n,t), \forall e \in \{CCS\}
+$$
+
+$C_{CCS}$ is computed in the [ carbon capture and storage](mod_ccs) module.
+
+ | Notation     | Variable            | GAMS                    | Unit   | 
+ | --------     | --------            | ----                    | ----   | 
+ | $C_{e}(n,t)$ | Emission sink costs | ''%%COST_EMI(e,t,n)%%'' | T$     | 
+ | $Q_{e}(t,n)$ | Emission sink       | ''%%Q_EMI(e,t,n)%%''    | GtC-eq | 
+
+## Bank and borrowing
+
+[Eq. **eqcum_emi_sav**]
+Permit emission savings are the sum of existing savings plus net emission savings
+
+$$
+    M_{SAV}(t+1,n) = M_{SAV}(t,n) + \Delta_t \times Q_{SAV}(t,n)
+$$
+
+[Eq. **eqq_emi_sav_nospec**]
+To avoid speculation,
+emission savings are bounded by net import of carbon permits.
+(only when the global variable **non_speculation** is set to true)  
+
+$$
+    Q_{SAV}(t,n) \le  bigM \times \left( |Q_{nip}(t,n)| - Q_{nip}(t,n) \right)
+$$
+
+$bigM$ is a very high level maximum trade of emissions. 
+
+ | Notation       | Variable                     | GAMS                       | Unit   | 
+ | --------       | --------                     | ----                       | ----   | 
+ | $M_{SAV}(t,n)$ | Accumulated emission savings | ''%%CUM_EMI('sav',t,n)%%'' | GtC-eq | 
+ | $Q_{SAV}(t,n)$ | Emission savings             | ''%%Q_EMI('sav',t,n)%%''   | GtC-eq | 
+

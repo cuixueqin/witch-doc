@@ -1,0 +1,60 @@
+# Wind power
+
+This module is dedicated to modelling the specific issues related to the wind power technology. The module distinguishes between onshore and offshore wind.
+
+
+# Supply curves
+
+The supply curves are provided by the National Renewable Energy Laboratory (NREL). The reference for the offshore curves is [Arent et al. (2012)](http://www.nrel.gov/docs/fy13osti/55049.pdf), while the reference for the onshore curves is a forthcoming paper (to be included in the special issue of the ADVANCE project).
+
+The curves provide the maximum amount of capacity which can be installed in each region as a function of:
+
+ 1.  capacity factor / full load hours (onshore and offshore) (wind_class in the model) - Nine classes: 9%, 20%, 24%, 28%, 32%, 36%, 40%, 44%, 48%
+ 2.  distance from load centres (onshore only) (wind_distance in the model) - Three classes: near (0-50 miles), transitional (50-100 miles), far (100-5000 m)
+ 3.  distance from shore (offshore only) (wind_distance in the model) - Three classes: near (5-20 nautical miles), transitional (20-50 nautical miles), far (50-100 nautical miles)
+ 4.  sea depth (offshore only) (wind_depth in the model) - Three classes: shallow (0-30 m), transitional (30-60 m), deep (60-1000 m)
+
+
+# Other technical data
+
+
+ | Parameter                 | Onshore wind  | Offshore wind              | 
+ | ---------                 | ------------  | -------------              | 
+ | Global capacity           | 63 GW (2005)  | 0 GW (2005)                | 
+ |                           | 195 GW (2010) | 3 GW (2010)                | 
+ |                           | 379 GW (2015) | 10 GW (2015)               | 
+ | Base year investment cost | 1467 USD/kW   | 2641 USD/kW (shallow)      | 
+ |                           |               | 2861 USD/kW (transitional) | 
+ |                           |               | 3081 USD/kW (deep)         | 
+ | Lifetime                  | 30 years      | 30 years                   | 
+ | O&M cost                  | {25,30} \$/kW | 2 $\times$ onshore         | 
+ | Learning rate             | 10%           | 13%                        | 
+ | Cross learning            | 80%           | 80%                        | 
+ | Floor cost                | 500 USD/kW    | 900 USD/kW                 | 
+
+The capacity is fixed up to the year 2015 in order to allow the model capturing the tremendous growth which has been taking place in recent years and which otherwise would not be replicated.
+
+Investment costs are the same in all regions and decline over time through a learning-by-doing process (learning-by-researching is not modelled). The decline rate depends on the cumulative capacity installed worldwide and on the learning rate. The cross learning parameter indicates the share of the installed capacity of wind onshore (offshore) which is accounted for to calculate the cost reduction of wind offshore (onshore). 
+
+
+## Modeling
+
+The relevant variables in this section are:
+
+ | Variable                            | GAMS                                                          | Unit | 
+ | --------                            | ----                                                          | ---- | 
+ | Onshore electric capacity           | ''%%K_EN_WINDON(wind_distance,wind_class,t,n)%%''             | TW   | 
+ | Onshore electric energy generation  | ''%%Q_EN_WINDON(wind_distance,wind_class,t,n)%%''             | TWh  | 
+ | Onshore investments                 | ''%%I_EN_WINDON(wind_distance,wind_class,t,n)%%''             | T$   | 
+ | Offshore electric capacity          | ''%%K_EN_WINDOFF(wind_distance,wind_depth,wind_class,t,n)%%'' | TW   | 
+ | Offshore electric energy generation | ''%%Q_EN_WINDOFF(wind_distance,wind_depth,wind_class,t,n)%%'' | TWh  | 
+ | Offshore investments                | ''%%I_EN_WINDOFF(wind_distance,wind_depth,wind_class,t,n)%%'' | T$   | 
+
+The equations which combine these variables perfectly replicate the scheme described in the "[Energy sector](mod_energy)" module, although in this case the variables are specifically defined per capacity factor classes, distance from load centres / shore and depth. A set of additional equations sum the specific variables in the corresponding aggregate for the whole onshore and offshore technologies, respectively.
+
+The penetration of wind technologies is subject not only to cost considerations, but also to the constraints related to the system integration of intermittent technologies (See "[System integration](mod_systint)").
+
+## References
+
+
+*  Arent, D., Sullivan, P., Heimiller, D., Lopez, A., Eurek, K., Badger, J., Ejsing-Jorgensen, H., Kelly, M., Clarke, L., Luckow, P. (2012). Improved offshore wind resource assessment in global climate stabilization scenarios, NREL (National Renewable Energy Laboratories) technical report No. TP-6A20-55049

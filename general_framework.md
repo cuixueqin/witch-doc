@@ -1,0 +1,63 @@
+# General Framework
+
+WITCH – World Induced Technical Change Hybrid – is an integrated assessment model designed to assess climate change mitigation and adaptation policies. It has been developed and is maintained at the [Fondazione Eni Enrico Mattei](http://www.feem.it) and the [Centro Euro-Mediterraneo sui Cambiamenti Climatici](http://www.cmcc.it). 
+
+WITCH consists of a dynamic global model that integrates in a unified framework the most important elements of climate change.
+The economy is modeled through an inter-temporal optimal growth model which captures the long term economic growth dynamics.
+A compact representation of the energy sector is fully integrated (hard linked) with the rest of the economy so that energy
+investments and resources are chosen optimally, together with the other macroeconomic variables. Land use mitigation options
+are available through a soft link with a land use and forestry model ([GLOBIOM](http://www.iiasa.ac.at/web/home/research/modelsData/GLOBIOM/GLOBIOM.en.html)). A climate model ([MAGICC](http://www.magicc.org)) is used to compute
+the future climate. Climate change impacts the economic output through a damage function, depending also
+on the rate of investments in adaptation.
+This allows accounting for **the complete dynamic of climate change mitigation and adaptation**.   
+
+## Methodology and features
+
+WITCH represents the world in a number (currently 13) of representative native regions (or coalitions of regions);
+for each it generates optimal mitigation and adaptation strategies for the long term (2005 to 2100),
+as a result of a maximization process in which the welfare of each region (or coalition of regions)
+is chosen strategically and simultaneously to other regions. This makes it possible to capture regional
+free-riding behaviors and strategic interaction induced by the presence of global externalities.
+The non-cooperative, simultaneous, open membership game with full information, is implemented
+through an iterative algorithm which yields the open-loop Nash equilibrium.
+In this game-theoretic set-up, regional strategic actions interrelate through GHG emissions, dependence
+on exhaustible natural resources, trade of oil and carbon permits, and technological R&D spillovers.
+
+The endogenous representation of R&D diffusion and innovation processes constitute a distinguishing feature of WITCH,
+allowing to describe how R&D investments in energy efficiency and carbon free technologies integrate the currently
+available mitigation options. The model features multiple externalities, both on the climate and the innovation side.
+The technology externalities are modeled via international spillovers of knowledge and experience across countries and time.
+In each country, the productivity of low carbon mitigation technologies and of energy depend on the region stock
+of energy R&D and by the global cumulative installed capacity, two proxies for knowledge and experience respectively.
+The R&D stock depends on domestic investments, domestic knowledge stock, and foreign knowledge stock through international spillovers.
+The spillover term  depends on the interaction between the countries’ absorptive capacity,
+and the distance of each region from the technology frontier. This formulation of technical change affects
+both decarbonization as well as energy savings.
+
+
+## Policy Applications
+
+
+A distinctive feature of WITCH is the ability to assess the optimal response to climate policies
+with all degrees of cooperation (from non-cooperative to fully cooperative),
+by appropriately defining the coalition structure.
+In the cooperative solution all externalities are internalized and therefore it can be interpreted as a first-best solution.
+The Nash equilibrium instead can be seen as a second-best solution. 
+
+The model can also perform both cost effective analysis, as well as cost benefit analysis,
+depending on whether exogenous constraints are placed on the climate (e.g. emissions caps or carbon taxes)
+and whether the climate feedback on the economy is activated. Please note that by definition
+the non-cooperative setting cannot handle global constraints; global constraints can be implemented
+via a recursive procedure in which regional policies (e.g. cap and trade or carbon taxes) are adjusted
+till the global cap is met.
+
+The model is calibrated for some predefined policies. They are used as benchmark or as 
+a starting point for further policy assessments. Below is an illustrated set of these predefined policies:   
+
+*  Business as usual (BAU);
+
+*  Concentration target of 450 ppm;
+
+*  Radiative forcing target at 2.8 W/m$^2$ in 2100;
+
+*  Global temperature increase limits at 2 degree Celsius.

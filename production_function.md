@@ -1,0 +1,18 @@
+{{::ces-nest-witch_6.png?200|}}====== Production function ======
+
+
+The production side of the economy is very aggregated.
+Each region produces one single commodity that can be used for consumption or investments.
+The final good ($Y$) is produced using capital
+($K$), labor ($L$) and energy services ($ES$).
+In the first place capital and labor are
+aggregated using a Cobb-Douglas production function.
+This nest is then aggregated with energy
+services with a CES production function. 
+Equations related to the CES function are described in the [economy](mod_economy) module.
+
+Each coalition will choose the optimal inter-temporal mix of technologies
+and R&D investments in a strategic way.
+
+{{:ces-nest-witch_6.png|}}
+
