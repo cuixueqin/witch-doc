@@ -1,0 +1,12 @@
+--- 
+title: "WITCH documentation"
+author: "The WITCH team"
+date: "`r Sys.Date()`"
+site: "http://doc.witchmodel.org"
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "The WITCH model documentation"
+---
