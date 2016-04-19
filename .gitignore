@@ -1,0 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.*.Rnb.cached
+_publish.R
+libs
+*.bak
+*.pdf
+_cache
+_site
+cache
+*.html
+*_cache
+*_files
+figures

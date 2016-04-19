@@ -2,11 +2,31 @@
 title: "WITCH documentation"
 author: "The WITCH team"
 date: "`r Sys.Date()`"
-site: "http://doc.witchmodel.org"
+site: "doc.witchmodel.org"
 output: bookdown::gitbook
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: [witchdoc.bib]
 biblio-style: apalike
 link-citations: yes
 description: "The WITCH model documentation"
 ---
+
+# Introduction
+
+This documentation is the essential guide for the users of
+the WITCH integrated assessment model.
+A model overview is available in a dedicated website [http://www.witchmodel.org](http://www.witchmodel.org),
+which is strongly recommended to visit.
+
+The documentation is organized into different sections.
+The first section offers a general presentation of the model.
+The second section describes in detail the model equations,
+including the core components, the technology options and
+the policy-specific modules.
+The last section, dedicated to the GAMS implementation,
+explains how the model works and how the users can use the program code.
+
+## Copyright
+
+2006-2016 (c) Fondazione Eni Enrico Mattei
+2008-2016 (c) Centro Euro-Mediterraneo sui Cambiamenti Climatici
