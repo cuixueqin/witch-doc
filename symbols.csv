@@ -1,0 +1,9 @@
+id,Symbol,Definition,GAMS,Unit
+1,$W(clt)$,Aggregated welfare,UTILITY,unitless
+2,"$w_{t,n}$",Negishi weights,"w_negishi(t,n)",unitless 
+3,"$C(t,n)$",Consumption,"Q('CC',t,n)",Trillion $ 
+4,"$l(t,n)$",Population,"l(t,n)",Million people 
+5,"$\beta$",Utility discount factor,stpf(t),unitless
+6,"$\eta$",Inverse of IES,eta,unitless
+7,"$\rho$",Pure rate of time preference,srtp(t),unitless
+8,"$\gamma$",Degree or inequality aversion,gamma,unitless

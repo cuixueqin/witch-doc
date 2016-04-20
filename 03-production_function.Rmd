@@ -1,5 +1,4 @@
-{{::ces-nest-witch_6.png?200|}}====== Production function ======
-
+# Production function
 
 The production side of the economy is very aggregated.
 Each region produces one single commodity that can be used for consumption or investments.
@@ -13,6 +12,3 @@ Equations related to the CES function are described in the [economy](mod_economy
 
 Each coalition will choose the optimal inter-temporal mix of technologies
 and R&D investments in a strategic way.
-
-{{:ces-nest-witch_6.png|}}
-

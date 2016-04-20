@@ -7,7 +7,7 @@ Given the type of cooperation, the objective function can take different forms.
 
 ## Utility function
 
-[Eq. **equtility**] For each region $n$, intertemporal utility is computed as discounted sum of utility: 
+For each region $n$, intertemporal utility is computed as discounted sum of utility: 
 
 $$ W(n) = \sum_{t} l(t,n) \frac{\left(\frac{C(t,n)}{l(t,n)}\right)^{1-\eta}-1}{1-\eta} \beta^t. $$
 
@@ -29,7 +29,7 @@ The default option is a (disentangled) Utilitarian solution, taking into account
 
 $$ W(clt)= \sum_{t=1}^{T} \left[\frac{1}{1-\eta}\left(\left(\sum_{n \in clt}l(t,n) (\frac{C(t,n)}{l(t,n)} \right )^{1-\gamma}\right)^{\frac{1-\eta}{1-\gamma}}-1\right] \beta^t $$
 
-Note that by default, we consider no inequality aversion($gamma=0$), since this equalises marginal welfare across regions, leads to a unique social cost of carbon, and is quantitatively similar to the common use of Negishi weights (Negishi, 1960). As an alternative, time varying Negishi weights (Nordhaus and Yang, 1996) can be used in which case the welfare function has the form of
+Note that by default, we consider no inequality aversion($gamma=0$), since this equalises marginal welfare across regions, leads to a unique social cost of carbon, and is quantitatively similar to the common use of Negishi weights [@Negishi1960]. As an alternative, time varying Negishi weights [@NordhausYang1996] can be used in which case the welfare function has the form of
 
 $$ W^{Negishi}(clt) = \sum_{t}\sum_{n\in clt} w_{t,n} l(t,n) \frac{\left(\frac{C(t,n)}{l(t,n)}\right)^{1-\eta}-1}{1-\eta} \beta^t$$
 
@@ -37,30 +37,25 @@ where $w_{t,n}$ are the time- and region-specific Negishi weights which are comp
 
 $$ w_{t,n}=\frac{\frac{1}{c(t,n)^{\eta}}}{\sum_{n' \in clt}\frac{1}{c(t,n')^{-\eta}}}. $$
 
-
-
- | Symbol    | Definition              | GAMS                   | Unit           | 
- | ------    | ----------              | ----                   | ----           | 
- | $W(clt)$  | Aggregated welfare      | ''%%UTILITY%%''        | unitless       | 
- | $w_{t,n}$ | Negishi weights         | ''%%w_negishi(t,n)%%'' | unitless       | 
- | $C(t,n)$  | Consumption             | ''%%Q('CC',t,n)%%''    | Trillion $     | 
- | $l(t,n)$  | Population              | ''%%l(t,n)%%''         | Million people | 
- | $\beta$   | Utility discount factor | ''%%stpf(t)%%''        | unitless       | 
-
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 1:5,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Welfare symbolic terms'
+)
+```
 	
-For the current version of WITCH, the following parameters are used by default:
+For the current version of WITCH, the parameters are reproduced in Table \@ref(tab:welfparam).
 
- | Symbol   | Definition                    | GAMS            | Default value | 
- | ------   | ----------                    | ----            | ------------- | 
- | $\eta$   | Inverse of IES                | ''%%eta%%''     | 1.5           | 
- | $\rho$   | Pure rate of time preference  | ''%%srtp(t)%%'' | 1.0%          | 
- | $\gamma$ | Degree or inequality aversion | ''%%gamma%%''   | 0.0           | 
-
-## References
-
-
-*  Negishi, Takashi. “Welfare Economics and Existence of an Equilibrium for a Competitive Economy.” Metroeconomica 12, no. 2–3 (1960): 92–97.
-
-*  Nordhaus, William D., and Zili Yang. “A Regional Dynamic General-Equilibrium Model of Alternative Climate-Change Strategies.” The American Economic Review 86, no. 4 (September 1, 1996): 741–65.
-
-
+```{r welfparam, echo=F, tidy=FALSE}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[Symbol %in% c("$\\eta$","$\\rho$","$\\gamma$"),.(Symbol,Definition,GAMS)]
+tab[,`Default value`:=c(1.5,0.01,0)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Welfare parameters'
+)
+```

@@ -1,6 +1,6 @@
 # General Framework
 
-WITCH – World Induced Technical Change Hybrid – is an integrated assessment model designed to assess climate change mitigation and adaptation policies. It has been developed and is maintained at the [Fondazione Eni Enrico Mattei](http://www.feem.it) and the [Centro Euro-Mediterraneo sui Cambiamenti Climatici](http://www.cmcc.it). 
+WITCH – World Induced Technical Change Hybrid – is an integrated assessment model designed to assess climate change mitigation and adaptation policies. It is developed and maintained at the [Fondazione Eni Enrico Mattei](http://www.feem.it) and the [Centro Euro-Mediterraneo sui Cambiamenti Climatici](http://www.cmcc.it). 
 
 WITCH consists of a dynamic global model that integrates in a unified framework the most important elements of climate change.
 The economy is modeled through an inter-temporal optimal growth model which captures the long term economic growth dynamics.
@@ -13,13 +13,14 @@ This allows accounting for **the complete dynamic of climate change mitigation a
 
 ## Methodology and features
 
-WITCH represents the world in a number (currently 13) of representative native regions (or coalitions of regions);
-for each it generates optimal mitigation and adaptation strategies for the long term (2005 to 2100),
+WITCH represents the world in a set of representative native regions (or coalitions of regions);
+for each it generates optimal mitigation and adaptation strategies for the long term (from 2005 to 2100),
 as a result of a maximization process in which the welfare of each region (or coalition of regions)
-is chosen strategically and simultaneously to other regions. This makes it possible to capture regional
+is chosen strategically and simultaneously accordingly to other regions.
+This makes it possible to capture regional
 free-riding behaviors and strategic interaction induced by the presence of global externalities.
-The non-cooperative, simultaneous, open membership game with full information, is implemented
-through an iterative algorithm which yields the open-loop Nash equilibrium.
+The non-cooperative, simultaneous, open membership game with full information,
+is implemented through an iterative algorithm which yields the open-loop Nash equilibrium.
 In this game-theoretic set-up, regional strategic actions interrelate through GHG emissions, dependence
 on exhaustible natural resources, trade of oil and carbon permits, and technological R&D spillovers.
 

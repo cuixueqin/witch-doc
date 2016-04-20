@@ -4,54 +4,67 @@
 
 The [energy sector](mod_energy) is fully integrated with the rest of the economy.
 It is distinguished in an electric sector, a transportation sector, and an aggregated non-electric (industry, services and residential) sectors.
-The following carriers and technologies are included:
 
- | Primary Energy | Electricity                    | 
- | -------------- | -----------                    | 
- | Coal           | Coal with and without CCS      | 
- | Oil            | Oil without CCS                | 
- | Gas            | Gas with and without CCS       | 
- | Wind           | Wind onshore and offshore      | 
- | Solar          | Solar PV and CSP               | 
- | Uranium        | Nuclear LWR and advanced       | 
- | Bioenergy      | Bioenergy with and without CCS | 
- |                | Hydro power                    | 
+The primary and secondary forms of energy are
+
+ | Primary Energy | Secondary Energy | 
+ | -------------- | -----------      | 
+ | Coal           | Electricity      | 
+ | Oil            |                  | 
+ | Gas            |                  | 
+ | Uranium        |                  | 
+ | Bioenergy      |                  |
+
+
+Folowing power plant techonologies are included:
+
+| Power plant                    |
+| -----------                    | 
+| Coal with and without CCS      | 
+| Oil without CCS                | 
+| Gas with and without CCS       | 
+| Wind onshore and offshore      | 
+| Solar PV and CSP               | 
+| Nuclear LWR and advanced       | 
+| Bioenergy with and without CCS | 
+| Hydro power                    | 
 
 Technologies that are subject to endogenous technological change are: advanced biomass, wind, solar, advanced nuclear. Overall energy efficiency is also subject to endogenous technical change.
 
 ## Land Use Sector
 
-[Land use](mod_landuse) is linked to WITCH using reduced form equations obtained by a large number of scenarios of the [GLOBIOM](http://www.globiom.org/) land use and forestry model.
-[GLOBIOM](http://www.globiom.org/) provides quantities and prices of woody biomass (both residues and plantations) and 
-of avoided deforestation and afforestation mitigation options. It also provides the associated land use emissions of CO2 and CH4.
+The [land use](mod_landuse) sector is represented in the WITCH model through a soft-linkage with the [GLOBIOM](http://www.globiom.org/) land use and forestry model.
+[GLOBIOM](http://www.globiom.org/) is emulated via a response function
+obtained from a large number of scenarios varying the price of biomass (both residues and plantations) and the price of carbon emission from land-use and agriculture.
+[GLOBIOM](http://www.globiom.org/) also provides to WITCH the quantity of biomass, the CO~2~ emissions from deforestation and afforestation, CH~4~ and N~2~O emissions from agriculture.
+
+
 ## Greenhouse gases and air pollutants
 
-The model generates the following greenhouse gases, either directly, or assuming exogenous assumptions.
-Mitigation can happen through technology substitution or storage, direct abatement via MAC or end of pipe measures via emission factors.
+The model computes many emissions species,
+either directly, or assuming exogenous assumptions.
+Mitigation can happen through technology substitution or storage,
+direct abatement via MAC or end of pipe measures via emission factors.
 
- | GHG     | Source               | Mitigation           | 
- | ---     | ------               | ----------           | 
- | CO2     | Endogenous           | Substitution/Storage | 
- | CH4     | Exogenous            | MAC                  | 
- | N2O     | Exogenous            | MAC                  | 
- | F gases | Exogenous            | MAC                  | 
- | SO2     | Partially Endogenous | Emissions Factors    | 
- | VOC     | Partially Endogenous | Emissions Factors    | 
- | NOx     | Partially Endogenous | Emissions Factors    | 
- | BC      | Partially Endogenous | Emissions Factors    | 
- | OC      | Partially Endogenous | Emissions Factors    | 
- | CO      | Partially Endogenous | Emissions Factors    | 
- | NH3     | Exogenous            | RCP database         | 
+ | Emissions | Source               | Mitigation           | 
+ | ---       | ------               | ----------           | 
+ | CO~2~     | Endogenous           | Substitution/Storage | 
+ | CH~4~     | Partially endogenous | Substitution/MAC     | 
+ | N~2~O     | Partially endogenous | Substitution/MAC     | 
+ | F-gases   | Exogenous            | MAC                  | 
+ | SO2       | Partially endogenous | Emissions factors    | 
+ | VOC       | Partially endogenous | Emissions factors    | 
+ | NOx       | Partially endogenous | Emissions factors    | 
+ | BC        | Partially endogenous | Emissions factors    | 
+ | OC        | Partially endogenous | Emissions factors    | 
+ | CO        | Partially endogenous | Emissions factors    | 
+ | NH~3~     | Exogenous            | RCP database         | 
 
 ## Regions
 
-Countries included within the model are grouped into 13 regions clustered on the basis
-of geography, income and the structure of energy demand.
+The original version of the model has 13 regions consistent on the basis of
+geography, income and the structure of energy demand.
 
-
-{{ map_witch.png?nolink | WITCH regions}}
-
-The 13 regions are:
 
  | Region  | Countries                                           | 
  | ------  | ---------                                           | 
@@ -72,9 +85,8 @@ The 13 regions are:
 ## Coalitions
 
 
-WITCH features any regional aggregations in the so-called coalitions.
+WITCH features any regional cooperations in the so-called coalitions.
 By default, some coalitions are already defined:
-
 
 *  no-cooperation : each region is mapped to a coalition containing only this region.
 
@@ -94,7 +106,5 @@ information. Through the optimization process regions choose the optimal dynamic
 
 ## Temporal process
 
-
-The base year is 2005. The time horizon is 150 years, with 30 period of 5 year time step. Longer time horizon can also be run until 2300 to avoid any end-of-horizon effect, but 2150 is generally sufficient.
-Results are usually reported for the period 2005-2100 and the periods 2005 and 2010 are calibrated to Statistics.
-
+The base year is 2005. The time horizon is 150 years, with 30 periods of 5-year time step. Longer time horizon can also be run until 2300 to avoid any end-of-horizon effect, but 2150 is generally sufficient.
+Results are usually reported for the period 2005-2100 and the periods 2005, 2010 and 2015 are calibrated to the energy and economical statistics when available.
