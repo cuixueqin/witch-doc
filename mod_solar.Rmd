@@ -65,7 +65,7 @@ The relevant variables and parameters in this section are:
 In formula [Eq. **eqk_en_solar_comp**]: 
 
 $$
-	\sum_{jel_{solar}} K_{EN}(jel_{solar},t,n) * 1e6 / dens(jel_{solar},n) ≤ area(solar_{distance},n)
+	\sum_{jel_{solar}} K_{EN}(jel_{solar},t,n) * 1e6 / dens(jel_{solar},n) \le  area(solar_{distance},n)
 $$
 
 However, given the huge amount of the available resource, which is much higher than the capacity installed in any scenario, the constraint is practically non-binding everywhere.

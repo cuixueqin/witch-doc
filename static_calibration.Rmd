@@ -81,18 +81,18 @@ input symbols are collected from various sources.
 
  | Symbol                 | Definition                                                        |                 | GAMS                   | 
  | ------                 | ----------                                                        |                 | ----                   | 
- | \(P_{0,i}\)            | Price at calibration year \(\forall\) node \(i\)                  | see table below | '' P0(node,n) ''       | 
- | \(Q_{0,i}\)            | Quantity at calibration year \(\forall\) node \(i\)               | see table below | '' Q0(node,n) ''       | 
- | \(\alpha_i\)           | Coefficient multiplying factor at node \(i\)                      | unitless        | '' ALPHA(node,n) ''    | 
- | \(R\)                  | Interest rate                                                     | unitless        | '' R(node,n) ''        | 
- | \(\delta_{\text{FG}}\) | Depreciation of final good capital                                | unitless        | '' delta0('fg') ''     | 
- | \(\delta_{\text{RD}}\) | Depreciation of stock of knowledge in en.eff.                     | unitless        | '' delta_rd('en') ''   | 
- | \(\delta_j\)           | Depreciation of capital for plant of tech \(j\)                   | unitless        | '' delta_en0(jel,n) '' | 
+ | $\(P_{0,i}\)$            | Price at calibration year \(\forall\) node \(i\)                  | see table below | '' P0(node,n) ''       | 
+ | $\(Q_{0,i}\)$            | Quantity at calibration year \(\forall\) node \(i\)               | see table below | '' Q0(node,n) ''       | 
+ | $\(\alpha_i\)$           | Coefficient multiplying factor at node \(i\)                      | unitless        | '' ALPHA(node,n) ''    | 
+ | $\(R\)$                  | Interest rate                                                     | unitless        | '' R(node,n) ''        | 
+ | $\(\delta_{\text{FG}}\)$ | Depreciation of final good capital                                | unitless        | '' delta0('fg') ''     | 
+ | $\(\delta_{\text{RD}}\)$ | Depreciation of stock of knowledge in en.eff.                     | unitless        | '' delta_rd('en') ''   | 
+ | $\(\delta_j\)$           | Depreciation of capital for plant of tech \(j\)                   | unitless        | '' delta_en0(jel,n) '' | 
  | \(SC_{0,j}\)           | Average cost of investment for tech \(j\)                         | T$/TW           | '' mcost_inv0(jel,n '' | 
- | \(K_{0,j}\)            | Initial capacity for tech \(j\)                                   | TW              | '' k_en0(jel,n) ''     | 
- | \(\mu_{0,j}\)          | Capacity factor of max production of tech \(j\)                   | TWh/TW          | '' mu0(jel,n) ''       | 
- | \(oem_{0,j}\)          | Cost of operation and mantainance of tech \(j\)                   | T$/TW           | '' oem0(jel,n) ''      | 
- | \(\xi_{0,f,j}\)        | Efficiency of using fuel \(f\) in tech \(j\)                      | TWh/TWh         | '' csi0(f,jel,n) ''    | 
+ | $\(K_{0,j}\)$            | Initial capacity for tech \(j\)                                   | TW              | '' k_en0(jel,n) ''     | 
+ | $\(\mu_{0,j}\)$          | Capacity factor of max production of tech \(j\)                   | TWh/TW          | '' mu0(jel,n) ''       | 
+ | $\(oem_{0,j}\)$          | Cost of operation and mantainance of tech \(j\)                   | T$/TW           | '' oem0(jel,n) ''      | 
+ | $\(\xi_{0,f,j}\) $       | Efficiency of using fuel \(f\) in tech \(j\)                      | TWh/TWh         | '' csi0(f,jel,n) ''    | 
  | \(FC_{0,f}\)           | Cost of fuel                                                      | T$/TWh          | '' fcost(f,n) ''       | 
  | \(\rho_i\)             | 1/1-\(\rho\) is the elasticity of substitution for CES node \(i\) | unitless        | '' calirho(node) ''    | 
  | \(\phi\)               | Crowding out factor for investments in R&D (equal to 4)           | unitless        | '' rd_crowd_out ''     | 

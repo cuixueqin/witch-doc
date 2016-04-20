@@ -2,6 +2,7 @@
 title: "WITCH documentation"
 author: "The WITCH team"
 date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 bibliography: [witchdoc.bib,packages.bib]
