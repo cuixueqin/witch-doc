@@ -16,7 +16,7 @@ cache
 figures
 html
 book
-grimoire.Rproj
+*.Rproj
 _book
 packages.bib
 build
