@@ -38,12 +38,12 @@ The relevant variables in this section (apart from the constraint on the competi
 
  | Variable                       | WITCH                                            | Unit | 
  | --------                       | -----                                            | ---- | 
- | PV electric capacity           | ''%%K_EN_PV(solar_distance,solar_class,t,n)%%''  | TW   | 
- | PV electric energy generation  | ''%%Q_EN_PV(solar_distance,solar_class,t,n)%%''  | TWh  | 
- | PV investments                 | ''%%I_EN_PV(solar_distance,solar_class,t,n)%%''  | T$   | 
- | CSP electric capacity          | ''%%K_EN_CSP(solar_distance,solar_class,t,n)%%'' | TW   | 
- | CSP electric energy generation | ''%%Q_EN_CSP(solar_distance,solar_class,t,n)%%'' | TWh  | 
- | CSP investments                | ''%%I_EN_CSP(solar_distance,solar_class,t,n)%%'' | T$   | 
+ | PV electric capacity           | "K_EN_PV(solar_distance,solar_class,t,n)"  | TW   | 
+ | PV electric energy generation  | "Q_EN_PV(solar_distance,solar_class,t,n)"  | TWh  | 
+ | PV investments                 | "I_EN_PV(solar_distance,solar_class,t,n)"  | T$   | 
+ | CSP electric capacity          | "K_EN_CSP(solar_distance,solar_class,t,n)" | TW   | 
+ | CSP electric energy generation | "Q_EN_CSP(solar_distance,solar_class,t,n)" | TWh  | 
+ | CSP investments                | "I_EN_CSP(solar_distance,solar_class,t,n)" | T$   | 
 
 The equations which combine these variables perfectly replicate the scheme described in the "[Energy sector](mod_energy)" module, although in this case the variables are specifically defined per capacity factor classes and distance from load centres. A set of additional equations sum the specific variables in the corresponding aggregate for the whole PV and CSP technologies, respectively.
 
@@ -58,9 +58,9 @@ The relevant variables and parameters in this section are:
 
  | Notation                   | Variable             | GAMS                                | Unit      | 
  | --------                   | --------             | ----                                | ----      | 
- | $K_{EN}(jel_{solar},t,n)$  | Electric capacity    | ''%%K_EN(jel_solar,t,n)%%''         | TW        | 
- | $dens(jel_{solar},n)$      | Installation density | ''%%inst_density(n,jel_solar)%%''   | MW/km$^2$ | 
- | $area(solar_{distance},n)$ | Competition area     | ''%%inst_area(n,solar_distance)%%'' | km²      | 
+ | $K_{EN}(jel_{solar},t,n)$  | Electric capacity    | "K_EN(jel_solar,t,n)"         | TW        | 
+ | $dens(jel_{solar},n)$      | Installation density | "inst_density(n,jel_solar)"   | MW/km$^2$ | 
+ | $area(solar_{distance},n)$ | Competition area     | "inst_area(n,solar_distance)" | km²      | 
 
 In formula [Eq. **eqk_en_solar_comp**]: 
 

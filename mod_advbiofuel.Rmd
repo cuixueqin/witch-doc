@@ -19,5 +19,5 @@ $$
 
  | Notation             | Variable                       | GAMS                         | Unit | 
  | --------             | --------                       | ----                         | ---- | 
- | $NEL_{nelback}(t,n)$ | Non-electric backstop capacity | ''%%Q_PES('backnel',t,n)%%'' | TWh  | 
+ | $NEL_{nelback}(t,n)$ | Non-electric backstop capacity | "Q_PES('backnel',t,n)" | TWh  | 
 

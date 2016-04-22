@@ -26,12 +26,12 @@ $$
 
  | Notation          | Variable                           | GAMS                         | Unit   | 
  | --------          | --------                           | ----                         | ----   | 
- | $Q_{CO2}(t,n)$    | CO2 emissions                      | ''%%Q_EMI('co2',t,n)%%''     | GtC-eq | 
- | $Q_{CO2ind}(t,n)$ | CO2 emissions from fossil-fuel     | ''%%Q_EMI('co2ind',t,n)%%''  | GtC-eq | 
- | $Q_{CO2lu}(t,n)$  | CO2 emissions from land-use change | ''%%Q_EMI('co2lu',t,n)%%''   | GtC-eq | 
- | $Q_{redd}(t,n)$   | Avoided emissions from REDD        | ''%%Q_EMI('redd',t,n)%%''    | GtC-eq | 
- | $Q_{CCS}(t,n)$    | CCS emissions                      | ''%%Q_EMI('ccs',t,n)%%''     | GtC-eq | 
- | $EX_f(t,n)$       | CO2 emissions from extraction      | ''%%Q_EMI_OUT('co2',t,n)%%'' | GtC-eq | 
+ | $Q_{CO2}(t,n)$    | CO2 emissions                      | "Q_EMI('co2',t,n)"     | GtC-eq | 
+ | $Q_{CO2ind}(t,n)$ | CO2 emissions from fossil-fuel     | "Q_EMI('co2ind',t,n)"  | GtC-eq | 
+ | $Q_{CO2lu}(t,n)$  | CO2 emissions from land-use change | "Q_EMI('co2lu',t,n)"   | GtC-eq | 
+ | $Q_{redd}(t,n)$   | Avoided emissions from REDD        | "Q_EMI('redd',t,n)"    | GtC-eq | 
+ | $Q_{CCS}(t,n)$    | CCS emissions                      | "Q_EMI('ccs',t,n)"     | GtC-eq | 
+ | $EX_f(t,n)$       | CO2 emissions from extraction      | "Q_EMI_OUT('co2',t,n)" | GtC-eq | 
 
 ## Other greenhouse gas emissions
 
@@ -59,7 +59,7 @@ $$
 
  | Notation       | Variable                     | GAMS                     | Unit   | 
  | --------       | --------                     | ----                     | ----   | 
- | $Q_{nip}(t,n)$ | net import of carbon permits | ''%%Q_EMI('nip',t,n)%%'' | GtC-eq | 
+ | $Q_{nip}(t,n)$ | net import of carbon permits | "Q_EMI('nip',t,n)" | GtC-eq | 
 
 ## Emission costs
 
@@ -72,9 +72,9 @@ $$
 
  | Notation       | Variable                     | GAMS                        | Unit      | 
  | --------       | --------                     | ----                        | ----      | 
- | $C_{CO2}(n,t)$ | CO2 costs                    | ''%%COST_EMI('co2',t,n)%%'' | T$        | 
- | $Q_{nip}(t,n)$ | net import of carbon permits | ''%%Q_EMI('nip',t,n)%%''    | GtC-eq    | 
- | $p_{nip}(n,t)$ | carbon permits price         | ''%%CPRICE('nip',t,n)%%''   | T$/GtC-eq | 
+ | $C_{CO2}(n,t)$ | CO2 costs                    | "COST_EMI('co2',t,n)" | T$        | 
+ | $Q_{nip}(t,n)$ | net import of carbon permits | "Q_EMI('nip',t,n)"    | GtC-eq    | 
+ | $p_{nip}(n,t)$ | carbon permits price         | "CPRICE('nip',t,n)"   | T$/GtC-eq | 
 
 
 [Eq. **eqcost_emi_oghg**]
@@ -95,10 +95,10 @@ the  marginal abatement curves.
 
  | Notation                 | Variable                  | GAMS                           | Unit   | 
  | --------                 | --------                  | ----                           | ----   | 
- | $C_{e}(n,t)$             | Non-CO2 emission costs    | ''%%COST_EMI(oghg,t,n)%%''     | T$     | 
- | $ref_e(n,t)$             | Baseline emissions        | ''%%emi_baseline(oghg,t,n)%%'' | GtC-eq | 
- | $\overline{abat}_e(n,t)$ | Maximum abatement         | ''%%emi_abat_max(oghg,t,n)%%'' | [0,1]  | 
- | $ABAT_e(n,t)$            | Non-CO2 emission abatment | ''%%ABAT(t,n)%%''              | [0,1]  | 
+ | $C_{e}(n,t)$             | Non-CO2 emission costs    | "COST_EMI(oghg,t,n)"     | T$     | 
+ | $ref_e(n,t)$             | Baseline emissions        | "emi_baseline(oghg,t,n)" | GtC-eq | 
+ | $\overline{abat}_e(n,t)$ | Maximum abatement         | "emi_abat_max(oghg,t,n)" | [0,1]  | 
+ | $ABAT_e(n,t)$            | Non-CO2 emission abatment | "ABAT(t,n)"              | [0,1]  | 
 
 [Eq. **eqcost_emi_ccs**]
 The cost of the CCS is computed as
@@ -111,8 +111,8 @@ $C_{CCS}$ is computed in the [ carbon capture and storage](mod_ccs) module.
 
  | Notation     | Variable            | GAMS                    | Unit   | 
  | --------     | --------            | ----                    | ----   | 
- | $C_{e}(n,t)$ | Emission sink costs | ''%%COST_EMI(e,t,n)%%'' | T$     | 
- | $Q_{e}(t,n)$ | Emission sink       | ''%%Q_EMI(e,t,n)%%''    | GtC-eq | 
+ | $C_{e}(n,t)$ | Emission sink costs | "COST_EMI(e,t,n)" | T$     | 
+ | $Q_{e}(t,n)$ | Emission sink       | "Q_EMI(e,t,n)"    | GtC-eq | 
 
 ## Bank and borrowing
 
@@ -136,6 +136,6 @@ $bigM$ is a very high level maximum trade of emissions.
 
  | Notation       | Variable                     | GAMS                       | Unit   | 
  | --------       | --------                     | ----                       | ----   | 
- | $M_{SAV}(t,n)$ | Accumulated emission savings | ''%%CUM_EMI('sav',t,n)%%'' | GtC-eq | 
- | $Q_{SAV}(t,n)$ | Emission savings             | ''%%Q_EMI('sav',t,n)%%''   | GtC-eq | 
+ | $M_{SAV}(t,n)$ | Accumulated emission savings | "CUM_EMI('sav',t,n)" | GtC-eq | 
+ | $Q_{SAV}(t,n)$ | Emission savings             | "Q_EMI('sav',t,n)"   | GtC-eq | 
 

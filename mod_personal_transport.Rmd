@@ -18,17 +18,17 @@ The vehicle types within the module **jveh** are:
 
  | Notation                   | Variable                           | GAMS                                    | Unit                         | 
  | --------                   | --------                           | ----                                    | ----                         | 
- | $K_{EN}(jveh,t,n)$         | Number of ldvs per type            | ''%%K_EN(jveh,t,n)%%''                  | million vehicles             | 
- | $ldv\_total(t,n)$          | Total number of ldvs               | ''%%ldv_total(t,n)%%''                  | million vehicles             | 
- | $ldv\_pthc (t,n)$          | Number of ldvs per thousand capita | ''%%ldv_pthc(t,n)%%''                   | vehicles per thousand capita | 
- | $Q_{EN}(jveh,t,n)$         | Energy used by ldvs                | ''%%Q_EN(jveh,t,n)%%''                  | TWh                          | 
- | $fuel\_cons(jveh,t,n)$     | Fuel consumption per ldv           | ''%%fuel_cons(jveh,t,n)%%''             | TWh/million vehicles         | 
- | $travel\_intensity(t,n)$   | Travel Intensity                   | ''%%travel_intensity(t,n)%%''           | km/$                         | 
- | $km\_demand\_ldv(t,n)$     | Kilometre Demand                   | ''%%km_demand_ldv(t,n)%%''              | million km per year          | 
- | $km\_demand\_pv\_ldv(t,n)$ | Kilometre Demand per vehicle       | ''%%km_demand_pv_ldv(t,n)%%''           | km/vehicle per year          | 
- | $km\_dev(t,n)$             | Kilometre Deviation                | ''%%km_demand_pv_deviation_ldv(t,n)%%'' | unitless                     | 
- | $veh\_cost(jveh,t,n)$      | Vehicle cost                       | ''%%MCOST_INV(jveh,t,n)%%''             | T$/million vehicles          | 
- | $fueleff\_rate(t,n)$       | Fuel efficiency improvement rate   | ''%%fueleff_rate(t,n)%%''               | unitless                     | 
+ | $K_{EN}(jveh,t,n)$         | Number of ldvs per type            | "K_EN(jveh,t,n)"                  | million vehicles             | 
+ | $ldv\_total(t,n)$          | Total number of ldvs               | "ldv_total(t,n)"                  | million vehicles             | 
+ | $ldv\_pthc (t,n)$          | Number of ldvs per thousand capita | "ldv_pthc(t,n)"                   | vehicles per thousand capita | 
+ | $Q_{EN}(jveh,t,n)$         | Energy used by ldvs                | "Q_EN(jveh,t,n)"                  | TWh                          | 
+ | $fuel\_cons(jveh,t,n)$     | Fuel consumption per ldv           | "fuel_cons(jveh,t,n)"             | TWh/million vehicles         | 
+ | $travel\_intensity(t,n)$   | Travel Intensity                   | "travel_intensity(t,n)"           | km/$                         | 
+ | $km\_demand\_ldv(t,n)$     | Kilometre Demand                   | "km_demand_ldv(t,n)"              | million km per year          | 
+ | $km\_demand\_pv\_ldv(t,n)$ | Kilometre Demand per vehicle       | "km_demand_pv_ldv(t,n)"           | km/vehicle per year          | 
+ | $km\_dev(t,n)$             | Kilometre Deviation                | "km_demand_pv_deviation_ldv(t,n)" | unitless                     | 
+ | $veh\_cost(jveh,t,n)$      | Vehicle cost                       | "MCOST_INV(jveh,t,n)"             | T$/million vehicles          | 
+ | $fueleff\_rate(t,n)$       | Fuel efficiency improvement rate   | "fueleff_rate(t,n)"               | unitless                     | 
 
 The figure below shows how the structure of the LDV transport sector fits within WITCH.
 The composition of vehicle types (denoted in the figure as Veh-K) is determined by a Leontief function of a range of different costs. 

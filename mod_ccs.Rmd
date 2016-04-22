@@ -29,8 +29,8 @@ $$
 
  | Notation       | Variable                | GAMS                       | Unit   | 
  | --------       | --------                | ----                       | ----   | 
- | $Q_{CCS}(t,n)$ | CCS emissions           | ''%%Q_EMI('ccs',t,n)%%''   | GtC-eq | 
- | $M_{CCS}(t)$   | CCS cumulated emissions | ''%%CUM_EMI('ccs',t,n)%%'' | GtC-eq | 
+ | $Q_{CCS}(t,n)$ | CCS emissions           | "Q_EMI('ccs',t,n)"   | GtC-eq | 
+ | $M_{CCS}(t)$   | CCS cumulated emissions | "CUM_EMI('ccs',t,n)" | GtC-eq | 
 
 ## Emission cost
 
@@ -43,5 +43,5 @@ $$
 
  | Notation       | Variable  | GAMS                         | Unit       | 
  | --------       | --------  | ----                         | ----       | 
- | $C_{CCS}(n,t)$ | CCS costs | ''%%MCOST_EMI('ccs',t,n)%%'' | Trillion $ | 
+ | $C_{CCS}(n,t)$ | CCS costs | "MCOST_EMI('ccs',t,n)" | Trillion $ | 
 

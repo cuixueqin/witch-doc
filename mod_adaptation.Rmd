@@ -92,10 +92,10 @@ The table below defines the main variables of the adaptation module.
 
  | Symbol           | Definition                                 | GAMS                   | Unit       | 
  | ------           | ----------                                 | ----                   | ----       | 
- | $I_{PRADA}(t,n)$ | Investment in proactive adaptation         | ''%%I('PRADA',t,n)%%'' | Trillion $ | 
- | $I_{SCAP}(t,n)$  | Investment in specific ad. capacity        | ''%%I('SCAP',t,n)%%''  | Trillion $ | 
- | $I_{RADA}(t,n)$  | Investment in active adaptation            | ''%%I('RADA',t,n)%%''  | Trillion $ | 
- | $I_{RADA}(t,n)$  | Investment in active adaptation            | ''%%I('RADA',t,n)%%''  | Trillion $ | 
+ | $I_{PRADA}(t,n)$ | Investment in proactive adaptation         | "I('PRADA',t,n)" | Trillion $ | 
+ | $I_{SCAP}(t,n)$  | Investment in specific ad. capacity        | "I('SCAP',t,n)"  | Trillion $ | 
+ | $I_{RADA}(t,n)$  | Investment in active adaptation            | "I('RADA',t,n)"  | Trillion $ | 
+ | $I_{RADA}(t,n)$  | Investment in active adaptation            | "I('RADA',t,n)"  | Trillion $ | 
  | $\delta_{PRADA}$ | Depreciation rate - proactive adaptation   | $\delta_{PRADA}$       | $0.1$      | 
  | $\delta_{SCAP}$  | Depreciation rate  - specific ad. capacity | $\delta_{SCAP}$        | $0.03$     | 
 

@@ -7,3 +7,26 @@ id,Symbol,Definition,GAMS,Unit
 6,"$\eta$",Inverse of IES,eta,unitless
 7,"$\rho$",Pure rate of time preference,srtp(t),unitless
 8,"$\gamma$",Degree or inequality aversion,gamma,unitless
+9,"$C(t,n)$",Consumption,"Q('CC',t,n)",Trillion $ 
+10,"$I_{FG}(t,n)$",Investment in final good,"I('FG',t,n)",Trillion $
+11,"$I_j(t,n)$",Investment in energy technologies,"I_EN(jinv,t,n)",Trillion $
+12,"$I_{GRID}(t,n)$",Investment in electric grid,"I_EN_GRID(t,n)",Trillion $
+13,"$I_{OUT,f}(t,n)$",Investment in extraction,"I_OUT(f,t,n)",Trillion $
+14,"$I_{RD,j}(t,n)$",Investment in R&D,"I_RD(rd,t,n)",Trillion $
+15,"$I_{PRADA}(t,n)$",Investment in proactive adaptation,"I('PRADA',t,n)",Trillion $
+16,"$I_{SCAP}(t,n)$",Investment in specific ad. capacity,"I('SCAP',t,n)",Trillion $
+17,"$I_{RADA}(t,n)$",Investment in active adaptation,"I('RADA',t,n)",Trillion $
+18,"$Y(t,n)$",Net Output,"Q('Y',t,n)",Trillion $
+19,"$oem_j(t,n)$",O&M costs in energy technologies,"oem(j,t,n)",$/TW      
+20,"$oem\_ex_f$",O&M coefficient in extraction,"oem_ex(f)",$/TWh     
+21,"$K_j(t,n)$",Capital in energy tech.,"K_EN(j,t,n)",TW        
+22,"$Q_{OUT,f}(t,n)$",Total extraction of fuel $f$,"Q_OUT(f,t,n)",TWh 
+23,"$tfp0(n)$",Initial level of TFP,"tfp0(n)",unitless      
+24,"$C_e(t,n)$",GHG emissions costs,"COST_EMI(j,t,n)",Trillion $    
+25,"$C_f(t,n)$",Net cost of Primary Energy Supplies,"COST_PES(f,t,n)",Trillion $    
+26,"$C_j(t,n)$",Energy technology penalty costs,"COST_EN(j,t,n)",Trillion $    
+27,"$ES(t,n)$",Energy services,"Q('FEN',t,n)",Trillion $    
+28,"$K_{FG}(t,n)$",Capital in final good,"K('FG',t,n)",Trillion $    
+29,"$Q_E(ghg,t,n)$",Emissions,"Q_EMI(ghg,t,n)",Gt-eqC        
+30,"$tfp_y(t,n)$",Total factor productivity,"tfpy(t,n)",unitless      
+31,"$l(t,n)$",Population,"l(t,n)",Million people

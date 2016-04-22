@@ -19,21 +19,21 @@ countries.
 
  | Symbol        | Definition                           | GAMS                   | Unit       | 
  | ------        | ----------                           | ----                   | ----       | 
- | $HE(n,t)$     | R&D Capital in energy efficiency     | ''%%K_RD('en',t,n)%%'' | Trillion $ | 
- | $RD_{j}(n,t)$ | R&D Capital in backstop technologies | ''%%K_RD(rd,t,n)%%''   | Trillion $ | 
- | $SPILL(n,t)$  | Spillover knowledge                  | ''%%SPILL(rd,t,n)%%''  | Trillion $ | 
- | $wcum_{j}(t)$ | Cumulated Installed Capacity         | ''%%wcum(jrd,t)%%''    | Trillion $ | 
+ | $HE(n,t)$     | R&D Capital in energy efficiency     | "K_RD('en',t,n)" | Trillion $ | 
+ | $RD_{j}(n,t)$ | R&D Capital in backstop technologies | "K_RD(rd,t,n)"   | Trillion $ | 
+ | $SPILL(n,t)$  | Spillover knowledge                  | "SPILL(rd,t,n)"  | Trillion $ | 
+ | $wcum_{j}(t)$ | Cumulated Installed Capacity         | "wcum(jrd,t)"    | Trillion $ | 
 
 
  | Symbol        | Definition                            | GAMS                    | 
  | ------        | ----------                            | ----                    | 
- | $\delta_{RD}$ | Depreciation rate for R&D knowledge   | ''%%delta_RD('en')%%''  | 
- | $a$           | Internal spillover                    | ''%%crda('en',t,n)%%''  | 
- | $b$           | Elasticity w.r.t. R&D Investment      | ''%%crdb('en')%%''      | 
- | $c$           | Elasticity w.r.t. own past knowledge  | ''%%crdc('en',t,n)%%''  | 
- | $d$           | Elasticity w.r.t. spillover knowledge | ''%%crdd('en')%%''      | 
- | $lbrrate$     | Learning by Searching Coefficient     | ''%%lbr_rate('jrd')%%'' | 
- | $lbdrate$     | Learning by Doing Coefficient         | ''%%lbd_rate('jrd')%%'' | 
+ | $\delta_{RD}$ | Depreciation rate for R&D knowledge   | "delta_RD('en')"  | 
+ | $a$           | Internal spillover                    | "crda('en',t,n)"  | 
+ | $b$           | Elasticity w.r.t. R&D Investment      | "crdb('en')"      | 
+ | $c$           | Elasticity w.r.t. own past knowledge  | "crdc('en',t,n)"  | 
+ | $d$           | Elasticity w.r.t. spillover knowledge | "crdd('en')"      | 
+ | $lbrrate$     | Learning by Searching Coefficient     | "lbr_rate('jrd')" | 
+ | $lbdrate$     | Learning by Doing Coefficient         | "lbd_rate('jrd')" | 
 
 ## Knowledge stock for energy efficiency
 
@@ -112,11 +112,11 @@ where $lbr\_rate$ and $lbd\_rate$ are learning by doing and learning by searchin
 
  | Symbol    | Definition                                      | GAMS            | 
  | ------    | ----------                                      | ----            | 
- | $kpat0$   | knowledge stock in 2005                         | ''%%kpat0%%''   | 
- | $pat0$    | annual flow of patents in 2005                  | ''%%pat0%%''    | 
- | $enintg0$ | 5 years decline in energy intensity (2005-2010) | ''%%enintg0%%'' | 
- | $peng0$   | 5 years growth in energy price (2005-2010)      | ''%%peng0%%''   | 
- | $gdpg0$   | 5 years growth in gdp (2005-2010)               | ''%%gdpg0%%''   | 
+ | $kpat0$   | knowledge stock in 2005                         | "kpat0"   | 
+ | $pat0$    | annual flow of patents in 2005                  | "pat0"    | 
+ | $enintg0$ | 5 years decline in energy intensity (2005-2010) | "enintg0" | 
+ | $peng0$   | 5 years growth in energy price (2005-2010)      | "peng0"   | 
+ | $gdpg0$   | 5 years growth in gdp (2005-2010)               | "gdpg0"   | 
 
 
 $$

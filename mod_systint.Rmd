@@ -9,13 +9,13 @@ The relevant variables and parameters in this section are:
 
  | Notation              | Variable                     | GAMS                       | Unit     | 
  | --------              | --------                     | ----                       | ----     | 
- | $K_{EN}(jel,t,n)$     | Electric capacity            | ''%%K_EN(jel,t,n)%%''      | TW       | 
- | $Q_{EN}(jel,t,n)$     | Electric energy generation   | ''%%Q_EN(jel,t,n)%%''      | TWh      | 
- | $SHARE_{EL}(jel,t,n)$ | Share in the electricity mix | ''%%SHARE_EL(jel,t,n)%%''  | unitless | 
- | $c(n)$                | Peak load fraction           | ''%%firm_coeff(n)%%''      | unitless | 
- | $cf$                  | Capacity factor              | ''%%cap_factor%%''         | unitless | 
- | $cv(SHARE_{EL})$      | Capacity value               | ''%%cap_value(jel,t,n)%%'' | unitless | 
- | $f(jel)$              | Flexibility coefficient      | ''%%flex_coeff(jel)%%''    | unitless | 
+ | $K_{EN}(jel,t,n)$     | Electric capacity            | "K_EN(jel,t,n)"      | TW       | 
+ | $Q_{EN}(jel,t,n)$     | Electric energy generation   | "Q_EN(jel,t,n)"      | TWh      | 
+ | $SHARE_{EL}(jel,t,n)$ | Share in the electricity mix | "SHARE_EL(jel,t,n)"  | unitless | 
+ | $c(n)$                | Peak load fraction           | "firm_coeff(n)"      | unitless | 
+ | $cf$                  | Capacity factor              | "cap_factor"         | unitless | 
+ | $cv(SHARE_{EL})$      | Capacity value               | "cap_value(jel,t,n)" | unitless | 
+ | $f(jel)$              | Flexibility coefficient      | "flex_coeff(jel)"    | unitless | 
 
 The limitation to VRE penetration into the electrical grid is modelled through two constraints, described in [Sullivan et al. (2013)](http://www.sciencedirect.com/science/article/pii/S2211467X13000023):
 
@@ -80,11 +80,11 @@ The relevant variables and parameters in this section are:
 
  | Notation                     | Variable                             | WITCH                             | Unit     | 
  | --------                     | --------                             | -----                             | ----     | 
- | $K_{EN\_GRID}(t,n)$          | Capital of the electrical grid       | ''%%K_EN_GRID(t,n)%%''            | TW       | 
- | $I_{EN\_GRID}(t,n)$          | Investments in the electrical grid   | ''%%I_EN_GRID(t,n)%%''            | T$       | 
- | $delta\_grid(t,n)$           | Grid depreciation rate               | ''%%grid_delta(t,n)%%''           | unitless | 
- | $grid\_cost$                 | Grid specific investment cost        | ''%%grid_cost%%''                 | T$/TW    | 
- | $transm\_cost(jel,distance)$ | Distance-dependant transmission cost | ''%%transm_cost(jel,distance)%%'' | T$/TW    | 
+ | $K_{EN\_GRID}(t,n)$          | Capital of the electrical grid       | "K_EN_GRID(t,n)"            | TW       | 
+ | $I_{EN\_GRID}(t,n)$          | Investments in the electrical grid   | "I_EN_GRID(t,n)"            | T$       | 
+ | $delta\_grid(t,n)$           | Grid depreciation rate               | "grid_delta(t,n)"           | unitless | 
+ | $grid\_cost$                 | Grid specific investment cost        | "grid_cost"                 | T$/TW    | 
+ | $transm\_cost(jel,distance)$ | Distance-dependant transmission cost | "transm_cost(jel,distance)" | T$/TW    | 
 
 
 [Eq. **eqk_en_grid**]

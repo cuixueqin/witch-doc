@@ -14,13 +14,13 @@ long-lived greenhouse gases **llf**.
 
  | Notation              | Variable                    | GAMS                      | Unit                       | 
  | --------              | --------                    | ----                      | ----                       | 
- | $Q_E(\text{ghg},t,n)$ | Regional emissions          | ''%%Q_EMI(ghg,t,n)%%''    | GtC-eq                     | 
- | $WE(\text{ghg},t)$    | World emission              | ''%%W_EMI(ghg,t,n)%%''    | GtC for CO2, Gt for others | 
- | $M(\text{ghg},t)$     | Concentrations              | ''%%WCUM_EMI(ghg,t,n)%%'' | GtC for CO2, Gt for others | 
- | $TRF(t)$              | Total radiative forcing     | ''%%TRF(t,n)%%''          | W/m2                       | 
- | $RF(\text{ghg},t)$    | Gas radiative forcing       | ''%%RF(t,n)%%''           | W/m2                       | 
- | $T(t)$                | Global temperature increase | ''%%TEMP('atm',t,n)%%''   | degree Celsius             | 
- | $T^o(t)$              | Ocean temperature increase  | ''%%TEMP('low',t,n)%%''   | degree Celsius             | 
+ | $Q_E(\text{ghg},t,n)$ | Regional emissions          | "Q_EMI(ghg,t,n)"    | GtC-eq                     | 
+ | $WE(\text{ghg},t)$    | World emission              | "W_EMI(ghg,t,n)"    | GtC for CO2, Gt for others | 
+ | $M(\text{ghg},t)$     | Concentrations              | "WCUM_EMI(ghg,t,n)" | GtC for CO2, Gt for others | 
+ | $TRF(t)$              | Total radiative forcing     | "TRF(t,n)"          | W/m2                       | 
+ | $RF(\text{ghg},t)$    | Gas radiative forcing       | "RF(t,n)"           | W/m2                       | 
+ | $T(t)$                | Global temperature increase | "TEMP('atm',t,n)"   | degree Celsius             | 
+ | $T^o(t)$              | Ocean temperature increase  | "TEMP('low',t,n)"   | degree Celsius             | 
 
 ## World GHG emissions
 

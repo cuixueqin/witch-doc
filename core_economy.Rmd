@@ -2,7 +2,6 @@
 
 ## Consumption
 
-[Eq. **eqq_cc**]
 The single argument of the utility function is per-capita consumption of the representative agent in each region. Total consumption  $C$ is thereby given through the budget constraint from output net of climate impacts and emission costs (see below) $Y$ subtracting the investments in
 
 *  final good $I_{FG}$,
@@ -36,26 +35,18 @@ where
 
 *  Fossil fuels are denoted $f$
 
- | Symbol           | Definition                          | GAMS                   | Unit       | 
- | ------           | ----------                          | ----                   | ----       | 
- | $C(t,n)$         | Consumption                         | ''%%Q('CC',t,n)%%''    | Trillion $ | 
- | $I_{FG}(t,n)$    | Investment in final good            | ''%%I('FG',t,n)%%''    | Trillion $ | 
- | $I_j(t,n)$       | Investment in energy technologies   | ''%%I_EN(jinv,t,n)%%'' | Trillion $ | 
- | $I_{GRID}(t,n)$  | Investment in electric grid         | ''%%I_EN_GRID(t,n)%%'' | Trillion $ | 
- | $I_{OUT,f}(t,n)$ | Investment in extraction            | ''%%I_OUT(f,t,n)%%''   | Trillion $ | 
- | $I_{RD,j}(t,n)$  | Investment in R&D                   | ''%%I_RD(rd,t,n)%%''   | Trillion $ | 
- | $I_{PRADA}(t,n)$ | Investment in proactive adaptation  | ''%%I('PRADA',t,n)%%'' | Trillion $ | 
- | $I_{SCAP}(t,n)$  | Investment in specific ad. capacity | ''%%I('SCAP',t,n)%%''  | Trillion $ | 
- | $I_{RADA}(t,n)$  | Investment in active adaptation     | ''%%I('RADA',t,n)%%''  | Trillion $ | 
- | $Y(t,n)$         | Net Output                          | ''%%Q('Y',t,n)%%''     | Trillion $ | 
- | $oem_j(t,n)$     | O&M costs in energy technologies    | ''%%oem(j,t,n)%%''     | $/TW       | 
- | $oem\_ex_f$      | O&M coefficient in extraction       | ''%%oem_ex(f)%%''      | $/TWh      | 
- | $K_j(t,n)$       | Capital in energy tech.             | ''%%K_EN(j,t,n)%%''    | TW         | 
- | $Q_{OUT,f}(t,n)$ | Total extraction of fuel $f$        | ''%%Q_OUT(f,t,n)%%''   | TWh        | 
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 9:22,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Economic symbolic terms'
+)
+```
 
 ## Output
 
-[Eq. **eqq_y**]
 Output $Y$ is produced via a nested CES function that combines a capital-labor
 aggregate $KL$ and energy services $ES$.
 Capital $K$ and labor $L$ are combined using a standard Cobb-Douglas function.
@@ -84,17 +75,15 @@ where $\mathcal{s}$ is the elasticity of substitution. The parameter $\beta(n)$ 
 Total factor productivity $tfpy(t,n)$ is dynamically calibrated and evolves exogenously with time.
 Labor $l$ is assumed to be equal to to population, thus assuming no unemployment. Finally, the parameter $tfp0(n)$ is calibrated to match GDP in the base year.
 
- | Symbol         | Definition                          | GAMS                    | Unit           | 
- | ------         | ----------                          | ----                    | ----           | 
- | $tfp0(n)$      | Initial level of TFP                | ''%%tfp0(n)%%''         | unitless       | 
- | $C_e(t,n)$     | GHG emissions costs                 | ''%%COST_EMI(j,t,n)%%'' | Trillion $     | 
- | $C_f(t,n)$     | Net cost of Primary Energy Supplies | ''%%COST_PES(f,t,n)%%'' | Trillion $     | 
- | $C_j(t,n)$     | Energy technology penalty costs     | ''%%COST_EN(j,t,n)%%''  | Trillion $     | 
- | $ES(t,n)$      | Energy services                     | ''%%Q('FEN',t,n)%%''    | Trillion $     | 
- | $K_{FG}(t,n)$  | Capital in final good               | ''%%K('FG',t,n)%%''     | Trillion $     | 
- | $Q_E(ghg,t,n)$ | Emissions                           | ''%%Q_EMI(ghg,t,n)%%''  | Gt-eqC         | 
- | $tfp_y(t,n)$   | Total factor productivity           | ''%%tfpy(t,n)%%''       | unitless       | 
- | $l(t,n)$       | Population                          | ''%%l(t,n)%%''          | Million people | 
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 23:31,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Outpu symbolic terms'
+)
+```
 
 ## Capital
 
@@ -109,8 +98,8 @@ $$
 
  | Symbol              | Definition                          | GAMS                    | Unit     | 
  | ------              | ----------                          | ----                    | ----     | 
- | $\delta_{FG}$       | Yearly depreciation rate of capital | ''%%delta('fg',t,n)%%'' | unitless | 
- | $\Delta_{\text{t}}$ | Time step duration                  | ''%%tstep%%''           | years    | 
+ | $\delta_{FG}$       | Yearly depreciation rate of capital | "delta('fg',t,n)" | unitless | 
+ | $\Delta_{\text{t}}$ | Time step duration                  | "tstep"           | years    | 
 
 ## Energy Services
 
@@ -136,10 +125,10 @@ $$
 
 The CES parameters $\phi_{ES}(n)$, $\alpha_{ES}(n)$, and $\rho_{ES}$ are calibrated for each region, see [Static Calibration](static_calibration). The factor productivity of energy $tfpn(t,n)$ is calibrated in the [Dynamic calibration](mod_dynamic_calibration).
 
- | $EN(t,n)$   | Energy aggregate                 | ''%%Q('en',t,n)%%''    | Trillion $ | 
+ | $EN(t,n)$   | Energy aggregate                 | "Q('en',t,n)"    | Trillion $ | 
  | ---------   | ----------------                 | -------------------    | ---------- | 
- | $HE(t,n)$   | R&D Capital in energy efficiency | ''%%K_RD('en',t,n)%%'' | Trillion $ | 
- | $tfpn(t,n)$ | Factor productivity of energy    | ''%%tfpn(t,n)%%''      | unitless   | 
+ | $HE(t,n)$   | R&D Capital in energy efficiency | "K_RD('en',t,n)" | Trillion $ | 
+ | $tfpn(t,n)$ | Factor productivity of energy    | "tfpn(t,n)"      | unitless   | 
 
 ## Energy
 
@@ -158,7 +147,7 @@ Each factor is further decomposed into several sub-components. The components ar
 
  | Symbol     | Definition                                    | GAMS                 | Unit       | 
  | ------     | ----------                                    | ----                 | ----       | 
- | $EL(t,n)$  | Energy aggregate from the electric sector     | ''%%Q('el',t,n)%%''  | Trillion $ | 
- | $NEL(t,n)$ | Energy aggregate from the non-electric sector | ''%%Q('nel',t,n)%%'' | Trillion $ | 
+ | $EL(t,n)$  | Energy aggregate from the electric sector     | "Q('el',t,n)"  | Trillion $ | 
+ | $NEL(t,n)$ | Energy aggregate from the non-electric sector | "Q('nel',t,n)" | Trillion $ | 
 
 

@@ -52,11 +52,11 @@ During the process of the dynamic calibration, the model is run and iteratively 
 
  | Symbol                   | Definition                    | GAMS                    | Unit      | 
  | ------                   | ----------                    | ----                    | ----      | 
- | $tfpy(t,n)$              | Total factor productivity     | ''%%tfpy(t,n)%%''       | unitless  | 
- | $tfpn(t,n)$              | Factor Productivity of energy | ''%%tfpn(t,n)%%''       | unitless  | 
- | $Y_{kali}(n,t)$          | Calibration GDP               | ''%%ykali(t,n)%%''      | Trillon $ | 
- | $TPES_{kali}(n,t)$       | Calibration Energy demand     | ''%%tpes_kali(t,n)%%''  | EJ        | 
- | $\varepsilon_{Y,E}(n,t)$ | Investment in extraction      | ''%%income_ela(t,n)%%'' | unitless  | 
+ | $tfpy(t,n)$              | Total factor productivity     | "tfpy(t,n)"       | unitless  | 
+ | $tfpn(t,n)$              | Factor Productivity of energy | "tfpn(t,n)"       | unitless  | 
+ | $Y_{kali}(n,t)$          | Calibration GDP               | "ykali(t,n)"      | Trillon $ | 
+ | $TPES_{kali}(n,t)$       | Calibration Energy demand     | "tpes_kali(t,n)"  | EJ        | 
+ | $\varepsilon_{Y,E}(n,t)$ | Investment in extraction      | "income_ela(t,n)" | unitless  | 
 
 
 ## References

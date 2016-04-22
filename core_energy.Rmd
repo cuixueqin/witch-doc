@@ -46,10 +46,10 @@ The aforementioned methodology is shown in [Research and Development](mod_knowle
 
  | Symbol          | Definition                 | GAMS                     | Unit  | 
  | ------          | ----------                 | ----                     | ----  | 
- | $I_j(t,n)$      | Investment in energy tech. | ''%%I_EN(jinv,t,n)%%''   | T$    | 
- | $K_j(t,n)$      | Capital in energy tech.    | ''%%K_EN(j,t,n)%%''      | TW    | 
- | $SC_j(t,n)$     | Average investment cost    | ''%%MCOST_INV(j,t,n)%%'' | T$/TW | 
- | $\delta_j(t,n)$ | depreciation rate          | ''%%delta(j,t,n)%%''     |       | 
+ | $I_j(t,n)$      | Investment in energy tech. | "I_EN(jinv,t,n)"   | T$    | 
+ | $K_j(t,n)$      | Capital in energy tech.    | "K_EN(j,t,n)"      | TW    | 
+ | $SC_j(t,n)$     | Average investment cost    | "MCOST_INV(j,t,n)" | T$/TW | 
+ | $\delta_j(t,n)$ | depreciation rate          | "delta(j,t,n)"     |       | 
 
 ### Production in electric sector
 
@@ -80,15 +80,15 @@ $$
 
  | Symbol               | Definition                                | GAMS                               | Unit       | 
  | ------               | ----------                                | ----                               | ----       | 
- | $EL(t,n)$            | Electric sector aggregate                 | ''%%Q('el',t,n)%%''                | Trillion $ | 
- | $EL2(t,n)$           | Electric sector aggregate  (w/o hydro)    | ''%%Q('el2',t,n)%%''               | Trillion $ | 
- | $EL_{coalwbio}(t,n)$ | Coal & wood biomass power plant aggregate | ''%%Q('coalwbio',t,n)%%''          | Trillion $ | 
- | $EL_{gas}(t,n)$      | Gas power plant sector                    | ''%%Q('gas',t,n)%%''               | Trillion $ | 
- | $EL_{hydro}(t,n)$    | Hydroelectric sector                      | ''%%Q('ces_elhydro',t,n)%%''       | Trillion $ | 
- | $EL_{intren}(t,n)$   | Intermittent renewable aggregate          | ''%%Q('ces_elintren',t,n)%%''      | Trillion $ | 
- | $EL_{nucback}(t,n)$  | Nuclear and backstop aggregate            | ''%%Q('ces_elnuclearback',t,n)%%'' | Trillion $ | 
- | $EL_{oil}(t,n)$      | Oil power plant sector                    | ''%%Q('oil',t,n)%%''               | Trillion $ | 
- | $ELFF(t,n)$          | Fossil-fuel power plants aggregate        | ''%%Q('elff',t,n)%%''              | Trillion $ | 
+ | $EL(t,n)$            | Electric sector aggregate                 | "Q('el',t,n)"                | Trillion $ | 
+ | $EL2(t,n)$           | Electric sector aggregate  (w/o hydro)    | "Q('el2',t,n)"               | Trillion $ | 
+ | $EL_{coalwbio}(t,n)$ | Coal & wood biomass power plant aggregate | "Q('coalwbio',t,n)"          | Trillion $ | 
+ | $EL_{gas}(t,n)$      | Gas power plant sector                    | "Q('gas',t,n)"               | Trillion $ | 
+ | $EL_{hydro}(t,n)$    | Hydroelectric sector                      | "Q('ces_elhydro',t,n)"       | Trillion $ | 
+ | $EL_{intren}(t,n)$   | Intermittent renewable aggregate          | "Q('ces_elintren',t,n)"      | Trillion $ | 
+ | $EL_{nucback}(t,n)$  | Nuclear and backstop aggregate            | "Q('ces_elnuclearback',t,n)" | Trillion $ | 
+ | $EL_{oil}(t,n)$      | Oil power plant sector                    | "Q('oil',t,n)"               | Trillion $ | 
+ | $ELFF(t,n)$          | Fossil-fuel power plants aggregate        | "Q('elff',t,n)"              | Trillion $ | 
 
 
 ## Non-electric energy technology sectors
@@ -126,13 +126,13 @@ $$
 
  | Symbol                 | Definition                              | GAMS                             | Unit      | 
  | ------                 | ----------                              | ----                             | ----      | 
- | $NEL(t,n)$             | Non-electric sector aggregate           | ''%%Q('nel',t,n)%%''             | Trillon $ | 
- | $NEL_{coal}(t,n)$      | Energy in Coal sector                   | ''%%Q_EN('nelcoal',t,n)%%''      | TWh       | 
- | $NEL_{log}(t,n)$       | Other non-electric sector aggregate     | ''%%Q('nelog',t,n)%%''           | Trillon $ | 
- | $NEL_{trbiomass}(t,n)$ | Energy in traditional biomass sector    | ''%%Q_EN('neltrbiomass',t,n)%%'' | TWh       | 
- | $NEL_{oilback}(t,n)$   | Energy in oil and backstop non-electric | ''%%Q_EN('neloilback',t,n)%%''   | TWh       | 
- | $NEL_{gas}(t,n)$       | Energy in gas sector                    | ''%%Q_EN('nelgas',t,n)%%''       | TWh       | 
- | $NEL_{trbiofuel}(t,n)$ | Energy in Traditional biofuel           | ''%%Q_EN('neltrbiofuel',t,n)%%'' | TWh       | 
+ | $NEL(t,n)$             | Non-electric sector aggregate           | "Q('nel',t,n)"             | Trillon $ | 
+ | $NEL_{coal}(t,n)$      | Energy in Coal sector                   | "Q_EN('nelcoal',t,n)"      | TWh       | 
+ | $NEL_{log}(t,n)$       | Other non-electric sector aggregate     | "Q('nelog',t,n)"           | Trillon $ | 
+ | $NEL_{trbiomass}(t,n)$ | Energy in traditional biomass sector    | "Q_EN('neltrbiomass',t,n)" | TWh       | 
+ | $NEL_{oilback}(t,n)$   | Energy in oil and backstop non-electric | "Q_EN('neloilback',t,n)"   | TWh       | 
+ | $NEL_{gas}(t,n)$       | Energy in gas sector                    | "Q_EN('nelgas',t,n)"       | TWh       | 
+ | $NEL_{trbiofuel}(t,n)$ | Energy in Traditional biofuel           | "Q_EN('neltrbiofuel',t,n)" | TWh       | 
 
 ## Primary Energy Supply
 
@@ -145,8 +145,8 @@ $$
 
  | Symbol         | Definition                               | GAMS                     | Unit | 
  | ------         | ----------                               | ----                     | ---- | 
- | $Q_f(t,n)$     | Total amount of fuel consumed            | ''%%Q_PES(f,t,n)%%''     | TWh  | 
- | $Q_{j,f}(t,n)$ | Total amount of fuel consumed per sector | ''%%Q_IN(f,jfed,t,n)%%'' | TWh  | 
+ | $Q_f(t,n)$     | Total amount of fuel consumed            | "Q_PES(f,t,n)"     | TWh  | 
+ | $Q_{j,f}(t,n)$ | Total amount of fuel consumed per sector | "Q_IN(f,jfed,t,n)" | TWh  | 
 
 ## Trade balance of energy
 
@@ -161,8 +161,8 @@ $$
 
  | Symbol     | Definition                     | GAMS                 | Unit | 
  | ------     | ----------                     | ----                 | ---- | 
- | $Q_f(t,n)$ | Total amount of fuel consumed  | ''%%Q_PES(f,t,n)%%'' | TWh  | 
- | $X_f(t,n)$ | Total amount of fuel extracted | ''%%Q_OUT(f,t,n)%%'' | TWh  | 
+ | $Q_f(t,n)$ | Total amount of fuel consumed  | "Q_PES(f,t,n)" | TWh  | 
+ | $X_f(t,n)$ | Total amount of fuel extracted | "Q_OUT(f,t,n)" | TWh  | 
 
  1.  If the country is a net exporter, $X_f$ is negative.
  2.  In the current version, the fuel trades happen only for oil.
@@ -178,12 +178,12 @@ $$
 	              p_f(t) \times X_f(t,n)
 $$
 
- | $C_f(t,n)$  | Primary Energy Supplies cost            | ''%%COST_PES(f,t,n)%%''  | T$     | 
+ | $C_f(t,n)$  | Primary Energy Supplies cost            | "COST_PES(f,t,n)"  | T$     | 
  | ----------  | ----------------------------            | -----------------------  | --     | 
- | $MC_f(t,n)$ | Average cost of Primary Energy Supplies | ''%%MCOST_PES(f,t,n)%%'' | T$/TWh | 
- | $Q_f(t,n)$  | Total amount of fuel consumed           | ''%%Q_PES(f,t,n)%%''     | TWh    | 
- | $X_f(t,n)$  | Total amount of fuel extracted          | ''%%Q_OUT(f,t,n)%%''     | TWh    | 
- | $p_f(t,n)$  | World market fuel prices                | ''%%FPRICE(f,t)%%''      | T$/TWh | 
+ | $MC_f(t,n)$ | Average cost of Primary Energy Supplies | "MCOST_PES(f,t,n)" | T$/TWh | 
+ | $Q_f(t,n)$  | Total amount of fuel consumed           | "Q_PES(f,t,n)"     | TWh    | 
+ | $X_f(t,n)$  | Total amount of fuel extracted          | "Q_OUT(f,t,n)"     | TWh    | 
+ | $p_f(t,n)$  | World market fuel prices                | "FPRICE(f,t)"      | T$/TWh | 
 
 The price of fossil fuels and exhaustible resources (oil, gas, coal and
 uranium) is determined by the marginal cost of
@@ -203,9 +203,9 @@ $$
 
  | Symbol       | Definition                            | GAMS                  | Unit   | 
  | ------       | ----------                            | ----                  | ----   | 
- | $EL_j(t,n)$  | Electric production capacity          | ''%%Q_EN(jel,t,n)%%'' | TWh    | 
- | $KEL_j(t,n)$ | Capital in electric production        | ''%%K_EN(jel,t,n)%%'' | TW     | 
- | $\mu_j(t,n)$ | Capacity factor of maximum production | ''%%mu(jel,t,n)%%''   | TWh/TW | 
+ | $EL_j(t,n)$  | Electric production capacity          | "Q_EN(jel,t,n)" | TWh    | 
+ | $KEL_j(t,n)$ | Capital in electric production        | "K_EN(jel,t,n)" | TW     | 
+ | $\mu_j(t,n)$ | Capacity factor of maximum production | "mu(jel,t,n)"   | TWh/TW | 
 
 ### Constraint on new capacity of electric backstop
 
@@ -222,8 +222,8 @@ $$
 
  | Symbol             | Definition                 | GAMS                       | Unit | 
  | ------             | ----------                 | ----                       | ---- | 
- | $EL_{elback}(t,n)$ | Electric backstop capacity | ''%%Q_EN('elback',t,n)%%'' | TWh  | 
- | $KEL_j(t,n)$       | Total electric capacity    | ''%%Q_EN('el',t,n)%%''     | TWh  | 
+ | $EL_{elback}(t,n)$ | Electric backstop capacity | "Q_EN('elback',t,n)" | TWh  | 
+ | $KEL_j(t,n)$       | Total electric capacity    | "Q_EN('el',t,n)"     | TWh  | 
 
 
 ## Efficiency of the energy technology sectors
@@ -237,9 +237,9 @@ $$
 
  | Symbol           | Definition                         | GAMS                     | Unit    | 
  | ------           | ----------                         | ----                     | ----    | 
- | $Q_j(t,n)$       | Production capacity                | ''%%Q_EN(jfed,t,n)%%''   | TWh     | 
- | $Q_{j,f}(t,n)$   | Amount of fuel consumed per sector | ''%%Q_IN(f,jfed,t,n)%%'' | TWh     | 
- | $\xi_{j,f}(t,n)$ | Sector efficiency ratio            | ''%%csi(f,jfed,t,n)%%''  | TWh/TWh | 
+ | $Q_j(t,n)$       | Production capacity                | "Q_EN(jfed,t,n)"   | TWh     | 
+ | $Q_{j,f}(t,n)$   | Amount of fuel consumed per sector | "Q_IN(f,jfed,t,n)" | TWh     | 
+ | $\xi_{j,f}(t,n)$ | Sector efficiency ratio            | "csi(f,jfed,t,n)"  | TWh/TWh | 
 
 ## Energy tree
 
@@ -253,5 +253,5 @@ where $succ(j)$ are the successors of $j$ in the energy tree.
 
  | Symbol     | Definition          | GAMS                | Unit | 
  | ------     | ----------          | ----                | ---- | 
- | $Q_j(t,n)$ | Production capacity | ''%%Q_EN(j,t,n)%%'' | TWh  | 
+ | $Q_j(t,n)$ | Production capacity | "Q_EN(j,t,n)" | TWh  | 
 

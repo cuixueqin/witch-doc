@@ -9,15 +9,15 @@ The WITCH model database provides for eight grades of oil resources in each regi
  
  | Symbol                 | Definition                                     | GAMS                        | Unit       | 
  | ------                 | ----------                                     | ----                        | ----       | 
- | $OIL_{cap}(t,n,g)$     | Oil extraction capacity (by category)          | ''%%OILCAP(t,n,oilg)%%''    | TWh        | 
- | $\Delta CAP(t,n,g)$    | Additional oil capacity (by category)          | ''%%ADDOILCAP(t,n,oilg)%%'' | TWh        | 
- | $I_{OILCAP}(t,n,g)$    | Oil investment (by category)                   | ''%%I_OIL(t,n,oilg)%%''     | Trillion $ | 
- | $OIL_{capcost}(t,n,g)$ | Oil Investment cost (by category)              | ''%%COST_OIL(t,n,oilg)%%''  | T$ per TWh | 
- | $OIL_{prod}(t,n,g)$    | Oil production (by category)                   | ''%%OILPROD(t,n,oilg)%%''   | TWh        | 
- |                        | Cumulative production (by category)            | ''%%CUM_OIL(t,n,oilg)%%''   | TWh        | 
- |                        | Total Oil investment (all categories)          | ''%%I_OUT(t,n)%%''          | Trillion $ | 
- |                        | Total oil production (all categories)          | ''%%Q_OUT(oil,t,n)%%''      | TWh        | 
- |                        | Emissions from oil extraction (all categories) | ''%%Q_EMI_OUT(t,n)%%''      | Gt-eqC     | 
+ | $OIL_{cap}(t,n,g)$     | Oil extraction capacity (by category)          | "OILCAP(t,n,oilg)"    | TWh        | 
+ | $\Delta CAP(t,n,g)$    | Additional oil capacity (by category)          | "ADDOILCAP(t,n,oilg)" | TWh        | 
+ | $I_{OILCAP}(t,n,g)$    | Oil investment (by category)                   | "I_OIL(t,n,oilg)"     | Trillion $ | 
+ | $OIL_{capcost}(t,n,g)$ | Oil Investment cost (by category)              | "COST_OIL(t,n,oilg)"  | T$ per TWh | 
+ | $OIL_{prod}(t,n,g)$    | Oil production (by category)                   | "OILPROD(t,n,oilg)"   | TWh        | 
+ |                        | Cumulative production (by category)            | "CUM_OIL(t,n,oilg)"   | TWh        | 
+ |                        | Total Oil investment (all categories)          | "I_OUT(t,n)"          | Trillion $ | 
+ |                        | Total oil production (all categories)          | "Q_OUT(oil,t,n)"      | TWh        | 
+ |                        | Emissions from oil extraction (all categories) | "Q_EMI_OUT(t,n)"      | Gt-eqC     | 
 
 ## Oil production
 
@@ -40,7 +40,7 @@ where $\Delta_{\text{t}}=5$ is the duration of one time step in years.
 
 For the current version of WITCH, the following parameter is used by default:
 
- | $\delta_{oilg}$ | depreciation rate | ''%%delta_oilg%%'' | 0.1 | 
+ | $\delta_{oilg}$ | depreciation rate | "delta_oilg" | 0.1 | 
  | --------------- | ----------------- | ------------------ | --- | 
 
 [Eq. **eqoilprod_t0**] At the base year (2005) both oil capacity and oil production are assumed to be equal to the observed extraction data 
@@ -69,10 +69,10 @@ $$
 
  | Symbol             | Definition                                     | GAMS                          | Unit       | 
  | ------             | ----------                                     | ----                          | ----       | 
- | $\lambda(g)$       | Fixed floor cost component (by categories)     | ''%%data_oilcost(n,oilg)%%''  | T$ per TWh | 
- | $\zeta(n,g)$       | Annual Expansion threshold                     | ''%%esp_cap(n,oilg)%%''       | TWh        | 
- | $\mu(g)$           | Fixed floor cost difference (among categories) | ''%%cum_param_oil(n,oilg)%%'' | T$ per TWh | 
- | $OIL_{res}(t,n,g)$ | Oil resources                                  | ''%%resmax_oil(n,oilg)%%''    | TWh        | 
+ | $\lambda(g)$       | Fixed floor cost component (by categories)     | "data_oilcost(n,oilg)"  | T$ per TWh | 
+ | $\zeta(n,g)$       | Annual Expansion threshold                     | "esp_cap(n,oilg)"       | TWh        | 
+ | $\mu(g)$           | Fixed floor cost difference (among categories) | "cum_param_oil(n,oilg)" | T$ per TWh | 
+ | $OIL_{res}(t,n,g)$ | Oil resources                                  | "resmax_oil(n,oilg)"    | TWh        | 
 
 
 For the current version of WITCH, the following parameter are used by default:
@@ -86,7 +86,7 @@ For the current version of WITCH, the following parameter are used by default:
 Emissions from the oil extraction sector (**emi_st_oil**) are given in terms of the stoichiometric coefficient for emissions from oil combustion. We assume that the ratio of extraction to combustion emissions increases by category and that there are no extraction emissions for the first category. The idea behind this assumption is that non conventional oil requires higher consumption of energy for extraction, and thus higher emissions. 
  | Symbol | Definition                                    | GAMS                       | Unit        | 
  | ------ | ----------                                    | ----                       | ----        | 
- |        | Stoichiometric coefficient for oil extraction | ''%%emi_st_oil(n,oilg)%%'' | GtC per TWh | 
+ |        | Stoichiometric coefficient for oil extraction | "emi_st_oil(n,oilg)" | GtC per TWh | 
 
 [Eq. **eqq_emi_out_oil**] Total emissions are then computed by summing the quantities emitted over all categories
 

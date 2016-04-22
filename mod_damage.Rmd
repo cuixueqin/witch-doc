@@ -23,11 +23,11 @@ $$
 
  | Symbol           | Definition                                                  | GAMS                      | Unit     | 
  | ------           | ----------                                                  | ----                      | ----     | 
- | $\Omega(t,n)$    | Damage coefficient                                          | ''%%OMEGA(t,n)%%''        | unitless | 
- | $\omega_{i,n}^-$ | coefficients with negative impact                           | ''%%comega_neg(n,i)  %%'' | unitless | 
- | $\omega_{i,n}^+$ | coefficients with positive impact                           | ''%%comega_pos(n,i)  %%'' | unitless | 
- | $T(t,n)$         | atmospheric temperature increase from pre-industrial levels | ''%%TEMP('atm',t,n) %%''  | degrees  | 
- | $Q(ADA,t,n)$     | Adaptation factor                                           | ''%%Q('ADA',t,n) %%''     |          | 
+ | $\Omega(t,n)$    | Damage coefficient                                          | "OMEGA(t,n)"        | unitless | 
+ | $\omega_{i,n}^-$ | coefficients with negative impact                           | "comega_neg(n,i)  " | unitless | 
+ | $\omega_{i,n}^+$ | coefficients with positive impact                           | "comega_pos(n,i)  " | unitless | 
+ | $T(t,n)$         | atmospheric temperature increase from pre-industrial levels | "TEMP('atm',t,n) "  | degrees  | 
+ | $Q(ADA,t,n)$     | Adaptation factor                                           | "Q('ADA',t,n) "     |          | 
 
 To compute the economic damages measured as percentage of GDP, they can be computed from $\Omega(t,n)$ readily as 
 
