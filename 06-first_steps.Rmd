@@ -1,6 +1,5 @@
 # First Steps
 
-
 ## Quick Start
 
 
@@ -11,6 +10,7 @@ Then call gams from this file using your favorite GAMS IDE, or run:
 	$ gams call.gms
 
 from the command line.
+
 ## Computational issues
 
 The WITCH model is solved numerically using the GAMS environment.

@@ -1,32 +1,82 @@
 id,Symbol,Definition,GAMS,Unit
 1,$W(clt)$,Aggregated welfare,UTILITY,unitless
 2,"$w_{t,n}$",Negishi weights,"w_negishi(t,n)",unitless 
-3,"$C(t,n)$",Consumption,"Q('CC',t,n)",Trillion $ 
+3,"$C(t,n)$",Consumption,"Q('CC',t,n)",T$ 
 4,"$l(t,n)$",Population,"l(t,n)",Million people 
 5,"$\beta$",Utility discount factor,stpf(t),unitless
 6,"$\eta$",Inverse of IES,eta,unitless
 7,"$\rho$",Pure rate of time preference,srtp(t),unitless
 8,"$\gamma$",Degree or inequality aversion,gamma,unitless
-9,"$C(t,n)$",Consumption,"Q('CC',t,n)",Trillion $ 
-10,"$I_{FG}(t,n)$",Investment in final good,"I('FG',t,n)",Trillion $
-11,"$I_j(t,n)$",Investment in energy technologies,"I_EN(jinv,t,n)",Trillion $
-12,"$I_{GRID}(t,n)$",Investment in electric grid,"I_EN_GRID(t,n)",Trillion $
-13,"$I_{OUT,f}(t,n)$",Investment in extraction,"I_OUT(f,t,n)",Trillion $
-14,"$I_{RD,j}(t,n)$",Investment in R&D,"I_RD(rd,t,n)",Trillion $
-15,"$I_{PRADA}(t,n)$",Investment in proactive adaptation,"I('PRADA',t,n)",Trillion $
-16,"$I_{SCAP}(t,n)$",Investment in specific ad. capacity,"I('SCAP',t,n)",Trillion $
-17,"$I_{RADA}(t,n)$",Investment in active adaptation,"I('RADA',t,n)",Trillion $
-18,"$Y(t,n)$",Net Output,"Q('Y',t,n)",Trillion $
+9,"$C(t,n)$",Consumption,"Q('CC',t,n)",T$ 
+10,"$I_{FG}(t,n)$",Investment in final good,"I('FG',t,n)",T$
+11,"$I_j(t,n)$",Investment in energy technologies,"I_EN(jinv,t,n)",T$
+12,"$I_{GRID}(t,n)$",Investment in electric grid,"I_EN_GRID(t,n)",T$
+13,"$I_{OUT,f}(t,n)$",Investment in extraction,"I_OUT(f,t,n)",T$
+14,"$I_{RD,j}(t,n)$",Investment in R&D,"I_RD(rd,t,n)",T$
+15,"$I_{PRADA}(t,n)$",Investment in proactive adaptation,"I('PRADA',t,n)",T$
+16,"$I_{SCAP}(t,n)$",Investment in specific ad. capacity,"I('SCAP',t,n)",T$
+17,"$I_{RADA}(t,n)$",Investment in active adaptation,"I('RADA',t,n)",T$
+18,"$Y(t,n)$",Net Output,"Q('Y',t,n)",T$
 19,"$oem_j(t,n)$",O&M costs in energy technologies,"oem(j,t,n)",$/TW      
 20,"$oem\_ex_f$",O&M coefficient in extraction,"oem_ex(f)",$/TWh     
 21,"$K_j(t,n)$",Capital in energy tech.,"K_EN(j,t,n)",TW        
 22,"$Q_{OUT,f}(t,n)$",Total extraction of fuel $f$,"Q_OUT(f,t,n)",TWh 
 23,"$tfp0(n)$",Initial level of TFP,"tfp0(n)",unitless      
-24,"$C_e(t,n)$",GHG emissions costs,"COST_EMI(j,t,n)",Trillion $    
-25,"$C_f(t,n)$",Net cost of Primary Energy Supplies,"COST_PES(f,t,n)",Trillion $    
-26,"$C_j(t,n)$",Energy technology penalty costs,"COST_EN(j,t,n)",Trillion $    
-27,"$ES(t,n)$",Energy services,"Q('FEN',t,n)",Trillion $    
-28,"$K_{FG}(t,n)$",Capital in final good,"K('FG',t,n)",Trillion $    
+24,"$C_e(t,n)$",GHG emissions costs,"COST_EMI(j,t,n)",T$    
+25,"$C_f(t,n)$",Net cost of Primary Energy Supplies,"COST_PES(f,t,n)",T$    
+26,"$C_j(t,n)$",Energy technology penalty costs,"COST_EN(j,t,n)",T$    
+27,"$ES(t,n)$",Energy services,"Q('FEN',t,n)",T$    
+28,"$K_{FG}(t,n)$",Capital in final good,"K('FG',t,n)",T$    
 29,"$Q_E(ghg,t,n)$",Emissions,"Q_EMI(ghg,t,n)",Gt-eqC        
 30,"$tfp_y(t,n)$",Total factor productivity,"tfpy(t,n)",unitless      
 31,"$l(t,n)$",Population,"l(t,n)",Million people
+32,$\delta_{FG}$,Yearly depreciation rate of capital,"delta('fg',t,n)",unitless 
+33,$\Delta_{\text{t}}$,Time step duration,tstep,years
+34,"$EN(t,n)$",Energy aggregate,"Q('en',t,n)",T$
+35,"$HE(t,n)$",R&D Capital in energy efficiency,"K_RD('en',t,n)",T$
+36,"$tfpn(t,n)$",Factor productivity of energy,"tfpn(t,n)",unitless
+37,"$EL(t,n)$",Energy aggregate from the electric sector,"Q('el',t,n)",T$
+38,"$NEL(t,n)$",Energy aggregate from the non-electric sector,"Q('nel',t,n)",T$
+39,"$I_j(t,n)$",Investment in energy tech.,"I_EN(jinv,t,n)",T$
+40,"$K_j(t,n)$",Capital in energy tech.,"K_EN(j,t,n)",TW
+41,"$SC_j(t,n)$",Average investment cost,"MCOST_INV(j,t,n)",T$/TW
+42,"$\delta_j(t,n)$",depreciation rate,"delta(j,t,n)",
+43,"$EL(t,n)$",Electric sector aggregate,"Q('el',t,n)",T$
+44,"$EL2(t,n)$",Electric sector aggregate  (w/o hydro),"Q('el2',t,n)",T$
+45,"$EL_{coalwbio}(t,n)$",Coal & wood biomass power plant aggregate,"Q('coalwbio',t,n)",T$
+46,"$EL_{gas}(t,n)$",Gas power plant sector,"Q('gas',t,n)",T$
+47,"$EL_{hydro}(t,n)$",Hydroelectric sector,"Q('ces_elhydro',t,n)",T$
+48,"$EL_{intren}(t,n)$",Intermittent renewable aggregate,"Q('ces_elintren',t,n)",T$
+49,"$EL_{nucback}(t,n)$",Nuclear and backstop aggregate,"Q('ces_elnuclearback',t,n)",T$
+50,"$EL_{oil}(t,n)$",Oil power plant sector,"Q('oil',t,n)",T$
+51,"$ELFF(t,n)$",Fossil-fuel power plants aggregate,"Q('elff',t,n)",T$
+52,"$NEL(t,n)$            ",Non-electric sector aggregate          ,"Q('nel',t,n)",T$
+53,"$NEL_{coal}(t,n)$     ",Energy in Coal sector                  ,"Q_EN('nelcoal',t,n)",TWh
+54,"$NEL_{log}(t,n)$      ",Other non-electric sector aggregate    ,"Q('nelog',t,n)",T$
+55,"$NEL_{trbiomass}(t,n)$",Energy in traditional biomass sector   ,"Q_EN('neltrbiomass',t,n)",TWh
+56,"$NEL_{oilback}(t,n)$  ",Energy in oil and backstop non-electric,"Q_EN('neloilback',t,n)",TWh
+57,"$NEL_{gas}(t,n)$      ",Energy in gas sector                   ,"Q_EN('nelgas',t,n)",TWh
+58,"$NEL_{trbiofuel}(t,n)$",Energy in Traditional biofuel          ,"Q_EN('neltrbiofuel',t,n)",TWh
+59,"$Q_f(t,n)$    ",Total amount of fuel consumed,"Q_PES(f,t,n)",TWh
+60,"$Q_{j,f}(t,n)$",Total amount of fuel consumed per sector,"Q_IN(f,jfed,t,n)",TWh
+61,"$Q_f(t,n)$",Total amount of fuel consumed,"Q_PES(f,t,n)",TWh
+62,"$X_f(t,n)$",Total amount of fuel extracted,"Q_OUT(f,t,n)",TWh
+63,"$C_f(t,n)$ ",Primary Energy Supplies cost,"COST_PES(f,t,n)",T$
+64,"$MC_f(t,n)$",Average cost of Primary Energy Supplies,"MCOST_PES(f,t,n)",T$/TWh
+65,"$Q_f(t,n)$ ",Total amount of fuel consumed,"Q_PES(f,t,n)",TWh
+66,"$X_f(t,n)$ ",Total amount of fuel extracted,"Q_OUT(f,t,n)",TWh
+67,"$p_f(t,n)$ ",World market fuel prices,"FPRICE(f,t)",T$/TWh
+68,"$EL_j(t,n)$ ",Electric production capacity,"Q_EN(jel,t,n)",TWh
+69,"$KEL_j(t,n)$",Capital in electric production,"K_EN(jel,t,n)",TW
+70,"$\mu_j(t,n)$",Capacity factor of maximum production,"mu(jel,t,n)",TWh/TW
+71,"$EL_{elback}(t,n)$",Electric backstop capacity,"Q_EN('elback',t,n)",TWh
+72,"$KEL_j(t,n)$      ",Total electric capacity,"Q_EN('el',t,n)",TWh
+73,"$Q_j(t,n)$      ",Production capacity,"Q_EN(jfed,t,n)",TWh
+74,"$Q_{j,f}(t,n)$  ",Amount of fuel consumed per sector,"Q_IN(f,jfed,t,n)",TWh
+75,"$\xi_{j,f}(t,n)$",Sector efficiency ratio,"csi(f,jfed,t,n)",TWh/TWh
+76,"$Q_j(t,n)$",Production capacity,"Q_EN(j,t,n)",TWh
+77,"$I_{PRADA}(t,n)$",Investment in proactive adaptation,"I('PRADA',t,n)",T$
+78,"$I_{SCAP}(t,n)$ ",Investment in specific ad. capacity,"I('SCAP',t,n)",T$
+79,"$I_{RADA}(t,n)$ ",Investment in active adaptation,"I('RADA',t,n)",T$
+80,"$I_{RADA}(t,n)$ ",Investment in active adaptation,"I('RADA',t,n)",T$
+81,"$NEL_{nelback}(t,n)$",Non-electric backstop capacity,"Q_PES('backnel',t,n)",TWh

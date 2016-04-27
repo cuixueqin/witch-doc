@@ -50,7 +50,9 @@ caption = 'Economic symbolic terms'
 Output $Y$ is produced via a nested CES function that combines a capital-labor
 aggregate $KL$ and energy services $ES$.
 Capital $K$ and labor $L$ are combined using a standard Cobb-Douglas function.
-The [climate impacts](mod_damage) $\Omega(t,n)$ affect gross output, so that a certain share of output is lost due to climate change impacts. Moreover, the costs of fossil fuels and costs of emissions including Carbon Capture and Storage (CCS) and the costs of deforestation and degradation (REDD+) are subtracted from gross output. Finally, the carbon tax revenues are paid and redistributed through the budget constraint.
+The [climate impacts](mod_damage) $\Omega(t,n)$ affect gross output, so that a certain share of output is lost due to climate change impacts.
+Moreover, the costs of fossil fuels and costs of emissions including Carbon Capture and Storage (CCS) and the costs of deforestation and degradation (REDD+) are subtracted from gross output.
+Finally, the carbon tax revenues are paid and redistributed through the budget constraint.
 Net output is thus obtained as 
 
 \begin{align*}
@@ -70,10 +72,12 @@ Net output is thus obtained as
 where the CES parameters are $\alpha(n)$ and
 $\rho$. The parameter $\rho$ is computed
 such that $\rho=\frac{\mathcal{s}-1}{\mathcal{s}}$,
-where $\mathcal{s}$ is the elasticity of substitution. The parameter $\beta(n)$ represents the Cobb-Douglas coefficient of the capital-labor aggregate.
+where $\mathcal{s}$ is the elasticity of substitution.
+The parameter $\beta(n)$ represents the Cobb-Douglas coefficient of the capital-labor aggregate.
 
 Total factor productivity $tfpy(t,n)$ is dynamically calibrated and evolves exogenously with time.
-Labor $l$ is assumed to be equal to to population, thus assuming no unemployment. Finally, the parameter $tfp0(n)$ is calibrated to match GDP in the base year.
+Labor $l$ is assumed to be equal to to population, thus assuming no unemployment.
+Finally, the parameter $tfp0(n)$ is calibrated to match GDP in the base year.
 
 ```{r, echo=F}
 library(data.table)
@@ -81,14 +85,12 @@ sym_witch = fread("symbols.csv",sep=",",header=T)
 tab = sym_witch[id %in% 23:31,.(Symbol,Definition,GAMS,Unit)]
 knitr::kable(
 tab, booktabs = TRUE,
-caption = 'Outpu symbolic terms'
+caption = 'Output symbolic terms'
 )
 ```
 
 ## Capital
 
- 
-[Eq. **eqk**]
 The capital stock in the final good sector accumulates following the standard perpetual rule.
 
 $$
@@ -96,14 +98,20 @@ $$
                  \Delta_{\text{t}}\times I_{FG}(t,n)
 $$
 
- | Symbol              | Definition                          | GAMS                    | Unit     | 
- | ------              | ----------                          | ----                    | ----     | 
- | $\delta_{FG}$       | Yearly depreciation rate of capital | "delta('fg',t,n)" | unitless | 
- | $\Delta_{\text{t}}$ | Time step duration                  | "tstep"           | years    | 
+
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 32:33,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Capital symbolic terms'
+)
+```
 
 ## Energy Services
 
-[Eq. **eqq_fen**] Energy services $ES$ are provided by a combination of physical energy input
+Energy services $ES$ are provided by a combination of physical energy input
 and a stock of energy efficiency knowledge.
 This allows for endogenous improvements in energy efficiency.
 Energy efficiency can be increased through investments in energy R&D,
@@ -125,10 +133,16 @@ $$
 
 The CES parameters $\phi_{ES}(n)$, $\alpha_{ES}(n)$, and $\rho_{ES}$ are calibrated for each region, see [Static Calibration](static_calibration). The factor productivity of energy $tfpn(t,n)$ is calibrated in the [Dynamic calibration](mod_dynamic_calibration).
 
- | $EN(t,n)$   | Energy aggregate                 | "Q('en',t,n)"    | Trillion $ | 
- | ---------   | ----------------                 | -------------------    | ---------- | 
- | $HE(t,n)$   | R&D Capital in energy efficiency | "K_RD('en',t,n)" | Trillion $ | 
- | $tfpn(t,n)$ | Factor productivity of energy    | "tfpn(t,n)"      | unitless   | 
+
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 34:36,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Energy Services symbolic terms'
+)
+```
 
 ## Energy
 
@@ -145,9 +159,13 @@ $$
 
 Each factor is further decomposed into several sub-components. The components are aggregated using CES, linear and Leontief production functions, which is described in detail in the [Energy module](mod_energy).
 
- | Symbol     | Definition                                    | GAMS                 | Unit       | 
- | ------     | ----------                                    | ----                 | ----       | 
- | $EL(t,n)$  | Energy aggregate from the electric sector     | "Q('el',t,n)"  | Trillion $ | 
- | $NEL(t,n)$ | Energy aggregate from the non-electric sector | "Q('nel',t,n)" | Trillion $ | 
-
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 37:38,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Energy Services symbolic terms'
+)
+```
 

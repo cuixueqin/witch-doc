@@ -3,7 +3,8 @@
 This module introduces adaptation
 to climate change damages in the WITCH model. 
 
-At the core of the adaptation module introduced in the WITCH model there are three control variables that broadly represent different forms of adaptation strategies. For the sake of simplicity, the numerous adaptive responses that are actually available in the real world have been aggregated into three categories: building specific adaptive capacity, anticipatory adaptation, and reactive adaptation: 
+At the core of the adaptation module introduced in the WITCH model there are three control variables that broadly represent different forms of adaptation strategies.
+For the sake of simplicity, the numerous adaptive responses that are actually available in the real world have been aggregated into three categories: building specific adaptive capacity, anticipatory adaptation, and reactive adaptation: 
 
 {{ :ada_tree.png?nolink | Adaptation strategies}}
 
@@ -23,8 +24,6 @@ Regional reduced-form damage functions ($\Omega$) link the global temperature in
               &- \sum_{ghg} C_{ghg}(t,n),
 \end{align*}
 
-
-`<todo @decian80>` Link all'economy module ed eventuale aggiunta delle voci di costo (come per l'economic impacts) `</todo>`
 
 Adaptation reduces the extent to which temperature increase affects output:
 
@@ -59,7 +58,6 @@ The initial level is given by the 2005 average stock of knowledge (R&D) and huma
 $$
     Q(GCAP,t,n)= \frac{K(R\&D,t,n)+K(EDU,t,n)}{2}tfp_y(t,n)
 $$
-`<todo @decian80>` Is R&D linked to the [Research and Development](mod_knowledge)?`</todo>`
 
 The human capital and R&D stock are exogenous and have been computed using the expenditure in total R&D (or education) from the World Development Indicators (2008). The R&D stock is not linked to the energy R&D investments, which instead are endogenous. 
 
@@ -72,8 +70,6 @@ $$
 $$
     K(PRADA,t,n+1) = K(PRADA,t,n+1)(1-\delta_{PRADA})^{\Delta_{\text{t}}} + \Delta_{\text{t}} I(PRADA,t,n)
 $$
-
-`<todo @decian80>` Definire I e delta `</todo>`
 							
 All forms of adaptation expenditure reduce the resources available for other uses and are subtracted from the budget constraint (see [Economy module](mod_economy)):
 
@@ -87,21 +83,24 @@ All forms of adaptation expenditure reduce the resources available for other use
 \end{align*}
 
 
-The table below defines the main variables of the adaptation module.
+81,"$\delta_{PRADA}$", The depreciation rate for proactive adaptation ($\delta_{PRADA}$) is 10% and the 
+depreciation rate for specific adaptive capacity is 3%.
 
+Table \@ref(tab:adaptation) below defines the main variables of the adaptation module.
 
- | Symbol           | Definition                                 | GAMS                   | Unit       | 
- | ------           | ----------                                 | ----                   | ----       | 
- | $I_{PRADA}(t,n)$ | Investment in proactive adaptation         | "I('PRADA',t,n)" | Trillion $ | 
- | $I_{SCAP}(t,n)$  | Investment in specific ad. capacity        | "I('SCAP',t,n)"  | Trillion $ | 
- | $I_{RADA}(t,n)$  | Investment in active adaptation            | "I('RADA',t,n)"  | Trillion $ | 
- | $I_{RADA}(t,n)$  | Investment in active adaptation            | "I('RADA',t,n)"  | Trillion $ | 
- | $\delta_{PRADA}$ | Depreciation rate - proactive adaptation   | $\delta_{PRADA}$       | $0.1$      | 
- | $\delta_{SCAP}$  | Depreciation rate  - specific ad. capacity | $\delta_{SCAP}$        | $0.03$     | 
+```{r adaptation, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 77:80,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Adaptation symbolic terms'
+)
+```
 
-# Calibration of adaptation costs 
+## Calibration of adaptation costs 
 
-The calibration process of adaptation costs is described in detail in Agrawala et al. (2010, 2011) and has been updated in Bosello and De Cian (2014). Costs of adaptation actions and their effectiveness in the sectors considered in the reduced-form damage function have been collected and grouped into the three categories of proactive,  reactive,  and specific capacity. In the following sectors proactive adaptation is considered: 
+The calibration process of adaptation costs is described in detail in @AgrawalaBoselloCarraroEtAl2011 and has been updated in @BoselloDeCian2014. Costs of adaptation actions and their effectiveness in the sectors considered in the reduced-form damage function have been collected and grouped into the three categories of proactive,  reactive,  and specific capacity. In the following sectors proactive adaptation is considered: 
 
 *  Agriculture
 
@@ -129,17 +128,9 @@ The tables below summarize the adaptation costs and the protection levels at the
 
 {{ adap_costs.png:?nolink         | Adaptation costs at the calibration point}}
 
-Adaptation effectiveness for the three strategies has also been calibrated using various sources from the literature described in Bosello and De Cian (2014). The table below summarizes the resulting figures used for calibration:
+Adaptation effectiveness for the three strategies has also been calibrated using various sources from the literature described in @BoselloDeCian2014. The table below summarizes the resulting figures used for calibration:
 
 {{ protection_level.png:?nolink         | Adaptation costs at the calibration point}}
 
-## References 
-
-
-*  Agrawala S, Bosello F, Carraro C, De Cian E, Lanzi E, de Bruin K, Dellink R (2010). PLAN or REACT? Analysis of adaptation costs and benefits Using Integrated Assessment Models. OECD Environment Working Papers, No. 23, OECD Publishing. doi: 10.1787/5km975m3d5hb-en
-
-*  Agrawala S, Bosello F, Carraro C, De Cian E, Lanzi E, de Bruin K, Dellink R Dellink (2011). PLAN or REACT? Analysis of adaptation costs and benefits Using Integrated Assessment Models. Climate Change Economics, Vol.2 (3), 1-36.
-
-*  Bosello F, De Cian E. 2014. Documentation on the development of damage functions and adaptation module in the WITCH model, http://www.witchmodel.org/pag/publications.html
 
 
