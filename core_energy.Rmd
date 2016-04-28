@@ -51,6 +51,8 @@ The aforementioned methodology is shown in [Research and Development](mod_knowle
  | $SC_j(t,n)$     | Average investment cost    | "MCOST_INV(j,t,n)" | T$/TW | 
  | $\delta_j(t,n)$ | depreciation rate          | "delta(j,t,n)"     |       | 
 
+Given that we use a standard exponential depreciation rule, we calibrate the depreciation rate $\delta_j(t,n)$ based on a finite lifetime of the power plant with a linear depreciation rate of 1% per year until the end of the life time and full depreciation thereafter. Based on realistic plant specific life times, the exponential depreciation rate is computed euqalizing the integral of both depreciation schedules, in order to obtain the equivalent potential output from the capacity.
+
 ### Production in electric sector
 
 [Eq. **eqq_el**] 
