@@ -22,49 +22,14 @@ $$
 $$
 where $j$ are the WITCH sectors and $p$ is the pollutant.
 
- | j            | (TIMER) Limits                 | 
- | -            | --------------                 | 
- | elpc         | Power_Gen_Coal                 | 
- | elpb         | Power_Gen_Bio_Trad             | 
- | elbigcc      | Power_Gen_LLF                  | 
- | elcigcc      | Power_Gen_Coal                 | 
- | eloil        | Power_Gen_HLF                  | 
- | eloil        | Power_Gen_LLF                  | 
- | elgas        | Power_Gen_NatGas               | 
- | neloil       | End_Use_Transport_Air_Domestic | 
- | neloil       | End_Use_Transport_Air_LTO      | 
- | neloil       | End_Use_Transport_HLF          | 
- | neloil       | End_Use_Transport_LLF          | 
- | neloil       | End_Use_Residential_HLF        | 
- | neloil       | End_Use_Residential_LLF        | 
- | neloil       | End_Use_Industry_HLF           | 
- | neloil       | End_Use_Industry_LLF           | 
- | neloil       | End_Use_Others_HLF             | 
- | neloil       | End_Use_Others_LLF             | 
- | neloil       | End_Use_Services_HLF           | 
- | neloil       | End_Use_Services_LLF           | 
- | nelgas       | End_Use_Others_NatGas          | 
- | nelgas       | End_Use_Residential_NatGas     | 
- | nelgas       | End_Use_Industry_NatGas        | 
- | nelgas       | End_Use_Transport_NatGas       | 
- | nelgas       | End_Use_Services_NatGas        | 
- | nelcoal      | End_Use_Others_Coal            | 
- | nelcoal      | End_Use_Residential_Coal       | 
- | nelcoal      | End_Use_Industry_Coal          | 
- | nelcoal      | End_Use_Transport_Coal         | 
- | nelcoal      | End_Use_Services_Coal          | 
- | neltrbiomass | End_Use_Others_Bio_Trad        | 
- | neltrbiomass | End_Use_Residential_Bio_Trad   | 
- | neltrbiomass | End_Use_Services_Bio_Trad      | 
- | neltrbiomass | End_Use_Industry_Bio_Trad      | 
- | neltrbiofuel | End_Use_Industry_LLF           | 
- | neltrbiofuel | End_Use_Others_LLF             | 
- | neltrbiofuel | End_Use_Residential_LLF        | 
- | neltrbiofuel | End_Use_Services_LLF           | 
- | trad_cars    | End_Use_Transport_HLF          | 
- | trad_cars    | End_Use_Transport_LLF          | 
- | hybrid       | End_Use_Transport_LLF          | 
-
+```{r, echo=F}
+library(data.table)
+tab = fread("mod_airquality_timer.csv",sep=",",header=T)
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Matching technologies WITCH/TIMER for air quality pollutants factors'
+)
+```
 
 The emission factors are then aggregated, with a weighted mean, according to their CO$_2$ emissions.
 
@@ -79,26 +44,16 @@ The $ef_{j,p}(t)$ are defined per air pollution scenario, which correspond to di
 
 The emissions of the exo-sectors (sectors that are related to energy but are not accounted in the model directly, see the following table), are taken from TIMER directly and set exogenously. 
 
- | j         | (TIMER) Limits               | 
- | -         | --------------               | 
- | nensolven | CHEM                         | 
- | nenindcpr | AACID                        | 
- | nenindcpr | CEMENT                       | 
- | nenindcpr | CHEM                         | 
- | nenindcpr | CHEMBULK                     | 
- | nenindcpr | CUSM                         | 
- | nenindcpr | NACID                        | 
- | nenindcpr | PAPER                        | 
- | nenindcpr | STEEL                        | 
- | nennrgced | Losses_Vent_Flare            | 
- | nennrgced | Transformations_HLF          | 
- | nennrgced | Transformations_HLF_Refinery | 
- | nennrgced | Transformations_LLF          | 
- | nenrsdcom | End_Use_Others_Bio_Mod       | 
- | nenrsdcom | End_Use_Services_Bio_Mod     | 
- | nenrsdcom | End_Use_Residential_Bio_Mod  | 
+```{r, echo=F}
+library(data.table)
+tab = fread("mod_airquality_timer_exo.csv",sep=",",header=T)
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Matching technologies WITCH/TIMER for exogenous air pollutants emission'
+)
+```
 
-The pollutant NH$_3$ and some sectors such as Solvents, Waste (landfills, waste water, non-energy incineration), Agriculture waste burning on fields, Agriculture, Grassland burning and Forest burning are completely exogenous to the model. Their emissions follow the RCP8.5 emissions.
+The pollutant NH~3~ and some sectors such as Solvents, Waste (landfills, waste water, non-energy incineration), Agriculture waste burning on fields, Agriculture, Grassland burning and Forest burning are completely exogenous to the model. Their emissions follow the RCP8.5 emissions.
 
 For the SSP implementation the emissions for these emission sectors vary over time following the average (across the WITCH sectors) variation of that given pollutant over time.
 

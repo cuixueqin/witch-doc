@@ -1,0 +1,17 @@
+WITCH,TIMER/Limits
+nensolven,CHEM
+nenindcpr,AACID
+nenindcpr,CEMENT
+nenindcpr,CHEM
+nenindcpr,CHEMBULK
+nenindcpr,CUSM
+nenindcpr,NACID
+nenindcpr,PAPER
+nenindcpr,STEEL
+nennrgced,Losses_Vent_Flare
+nennrgced,Transformations_HLF
+nennrgced,Transformations_HLF_Refinery
+nennrgced,Transformations_LLF
+nenrsdcom,End_Use_Others_Bio_Mod
+nenrsdcom,End_Use_Services_Bio_Mod
+nenrsdcom,End_Use_Residential_Bio_Mod
