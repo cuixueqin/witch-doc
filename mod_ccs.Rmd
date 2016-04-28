@@ -1,6 +1,6 @@
 # Carbon capture and storage
 
-This module introduces the Carbon capture and storage (**CCS**) in the model.
+This module introduces the Carbon Capture and Storage (**CCS**) in the model.
 
 For CCS, supply costs of injection and sequestration reflect sites’
 availability at the regional level,
@@ -15,33 +15,40 @@ limited site availability.
 
 ## Emission storage
 
-[Eq. **eqq_emi_ccs**]
-
 $$
     Q_{CCS} = \sum_{f,j} Q_{f,j}(t,n) \times ccs\_capture\_rate_f
 $$
-
-[Eq. **eqcum_emi_ccs_t0**][Eq. **eqcum_emi_ccs**]
 
 $$
     M_{CCS}(t,n) = \sum_{t'<t} \Delta_{t'} \times Q_{CCS}(t',n)
 $$
 
- | Notation       | Variable                | GAMS                       | Unit   | 
- | --------       | --------                | ----                       | ----   | 
- | $Q_{CCS}(t,n)$ | CCS emissions           | "Q_EMI('ccs',t,n)"   | GtC-eq | 
- | $M_{CCS}(t)$   | CCS cumulated emissions | "CUM_EMI('ccs',t,n)" | GtC-eq | 
+
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 82:83,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Emission Storage symbolic terms'
+)
+```
 
 ## Emission cost
 
-[Eq. **eqmcost_emi_ccs**]
 CCS transport and storage is function of the cumulative sequestrated emissions. 
 
 $$
     C_{CCS}(n,t) = a_{CCS}(n) e^{\alpha_{CCS}(n) \times M_{CCS}(t,n)^{\beta_{CCS}(n)}}
 $$
 
- | Notation       | Variable  | GAMS                         | Unit       | 
- | --------       | --------  | ----                         | ----       | 
- | $C_{CCS}(n,t)$ | CCS costs | "MCOST_EMI('ccs',t,n)" | Trillion $ | 
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 84,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'CCS cost symbolic terms'
+)
+```
 
