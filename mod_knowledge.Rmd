@@ -13,27 +13,21 @@ We distinguish dedicated R&D investments for enhancing energy efficiency
 from investments aimed at facilitating the competitiveness of
 innovative low carbon technologies (backstops) in both the electric
 and non-electric sectors.
-The returns to R&D investment depend on the stock of previously accumulated knowledge. Higher knowledge stock facilitates generation of new, energy saving innovations. In addition, international spillovers of knowledge are
+The returns to R&D investment depend on the stock of previously accumulated knowledge.
+Higher knowledge stock facilitates generation of new, energy saving innovations.
+In addition, international spillovers of knowledge are
 accounted for to mimic the flow of ideas and knowledge across
 countries. 
 
- | Symbol        | Definition                           | GAMS                   | Unit       | 
- | ------        | ----------                           | ----                   | ----       | 
- | $HE(n,t)$     | R&D Capital in energy efficiency     | "K_RD('en',t,n)" | Trillion $ | 
- | $RD_{j}(n,t)$ | R&D Capital in backstop technologies | "K_RD(rd,t,n)"   | Trillion $ | 
- | $SPILL(n,t)$  | Spillover knowledge                  | "SPILL(rd,t,n)"  | Trillion $ | 
- | $wcum_{j}(t)$ | Cumulated Installed Capacity         | "wcum(jrd,t)"    | Trillion $ | 
-
-
- | Symbol        | Definition                            | GAMS                    | 
- | ------        | ----------                            | ----                    | 
- | $\delta_{RD}$ | Depreciation rate for R&D knowledge   | "delta_RD('en')"  | 
- | $a$           | Internal spillover                    | "crda('en',t,n)"  | 
- | $b$           | Elasticity w.r.t. R&D Investment      | "crdb('en')"      | 
- | $c$           | Elasticity w.r.t. own past knowledge  | "crdc('en',t,n)"  | 
- | $d$           | Elasticity w.r.t. spillover knowledge | "crdd('en')"      | 
- | $lbrrate$     | Learning by Searching Coefficient     | "lbr_rate('jrd')" | 
- | $lbdrate$     | Learning by Doing Coefficient         | "lbd_rate('jrd')" | 
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 117:127,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Knowledge symbolic terms'
+)
+```
 
 ## Knowledge stock for energy efficiency
 
@@ -70,7 +64,6 @@ The knowledge stock dedicated for energy efficiency is combined with energy supp
 
 ## Knowledge stock in backstop technologies
 
-[Eq. **eqk_rd_type1**]
 RD stock accumulates with the perpetual rule and with the contribution of
 international knowledge spillovers, $SPILL$
 
@@ -91,9 +84,6 @@ $$
 
 The knowledge stock in backstop technologies is used to lower installation costs, $SC$. The installation costs are determined by a two factor learning curve: 1 percent drop in installation costs can be achieved upon $\frac{1}{lbr\_rate}$% increase in backstop technology knowledge stock (//learning by searching//) or $\frac{1}{lbr\_rate}$% increase in stock of experience in utilising the technology (following the *learning by doing* principle). The stock of experience is proxied with total installed capacity in the world (equation [Eq. **eqmcost_inv_back_lbd**]).
 
-
-
-`<todo @jan>`To put Learning curve`</todo>`
 ## Two Factor Learning Curve
 
 We predict the future costs of the backstop technologies, $SC$ using the Two Factor Learning Curve (e.g. Klaassen et al., 2005 and Söderholm and Sundqvist, 2007). The costs can decrease as a result of accumulation of experience (learning by doing) or investment in research and development (learning by searching). In our model, the stock of experience is proxied with world cumulated installed capacity, $wcum$. The accumulation of R&D knowledge stock is described in the section above. The two factor learning curve takes the form
@@ -104,20 +94,18 @@ $$
 
 where $lbr\_rate$ and $lbd\_rate$ are learning by doing and learning by searching parameters respecitvely.
 
-[Eq. **eqmcost_inv_back**]
-[Eq. **eqmcost_inv_back_lbd**]
-
 
 ## Innovations
 
- | Symbol    | Definition                                      | GAMS            | 
- | ------    | ----------                                      | ----            | 
- | $kpat0$   | knowledge stock in 2005                         | "kpat0"   | 
- | $pat0$    | annual flow of patents in 2005                  | "pat0"    | 
- | $enintg0$ | 5 years decline in energy intensity (2005-2010) | "enintg0" | 
- | $peng0$   | 5 years growth in energy price (2005-2010)      | "peng0"   | 
- | $gdpg0$   | 5 years growth in gdp (2005-2010)               | "gdpg0"   | 
-
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 128:132,.(Symbol,Definition,GAMS)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Innovation symbolic terms'
+)
+```
 
 $$
 \frac{PAT(t,n)}{pat0(n)} = \left(\frac{K_{PAT}(t,n)}{kpat0(n)}\right)^{\beta_{spill domestic}}

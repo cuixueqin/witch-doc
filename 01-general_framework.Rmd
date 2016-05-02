@@ -1,15 +1,22 @@
+---
+output: 
+  html_document: 
+    fig_caption: yes
+---
 # General Framework
 
-WITCH – World Induced Technical Change Hybrid – is an integrated assessment model designed to assess climate change mitigation and adaptation policies. It is developed and maintained at the [Fondazione Eni Enrico Mattei](http://www.feem.it) and the [Centro Euro-Mediterraneo sui Cambiamenti Climatici](http://www.cmcc.it). 
+WITCH (World Induced Technical Change Hybrid) is an integrated assessment model designed to assess climate change mitigation and adaptation policies.
+It is developed and maintained at the [Fondazione Eni Enrico Mattei](http://www.feem.it) and the [Centro Euro-Mediterraneo sui Cambiamenti Climatici](http://www.cmcc.it). 
 
 WITCH consists of a dynamic global model that integrates in a unified framework the most important elements of climate change.
 The economy is modeled through an inter-temporal optimal growth model which captures the long term economic growth dynamics.
 A compact representation of the energy sector is fully integrated (hard linked) with the rest of the economy so that energy
 investments and resources are chosen optimally, together with the other macroeconomic variables. Land use mitigation options
-are available through a soft link with a land use and forestry model ([GLOBIOM](http://www.iiasa.ac.at/web/home/research/modelsData/GLOBIOM/GLOBIOM.en.html)). A climate model ([MAGICC](http://www.magicc.org)) is used to compute
-the future climate. Climate change impacts the economic output through a damage function, depending also
+are available through a soft link with a land use and forestry model ([GLOBIOM](http://www.iiasa.ac.at/web/home/research/modelsData/GLOBIOM/GLOBIOM.en.html)).
+A climate model ([MAGICC](http://www.magicc.org)) is used to compute the future climate.
+Climate change impacts the economic output through a damage function, depending also
 on the rate of investments in adaptation.
-This allows accounting for **the complete dynamic of climate change mitigation and adaptation**.   
+This allows accounting for **the complete dynamic of climate change mitigation and adaptation**.
 
 ## Methodology and features
 
@@ -53,12 +60,12 @@ via a recursive procedure in which regional policies (e.g. cap and trade or carb
 till the global cap is met.
 
 The model is calibrated for some predefined policies. They are used as benchmark or as 
-a starting point for further policy assessments. Below is an illustrated set of these predefined policies:   
+a starting point for further policy assessments. Below is an illustrated set of these predefined policies:
 
 *  Business as usual (BAU);
 
 *  Concentration target of 450 ppm;
 
-*  Radiative forcing target at 2.8 W/m$^2$ in 2100;
+*  Radiative forcing target at 2.8 W/m^2^ in 2100;
 
 *  Global temperature increase limits at 2 degree Celsius.

@@ -7,7 +7,4 @@ bookdown::gitbook:
       position: static
 bookdown::pdf_book:
   keep_tex: yes
-bookdown::tufte_html_book:
-  toc: yes
-  output_dir: html_tufte
 
