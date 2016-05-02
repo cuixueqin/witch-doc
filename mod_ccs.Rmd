@@ -1,4 +1,4 @@
-# Carbon capture and storage
+# Carbon capture and storage (CCS)
 
 This module introduces the Carbon Capture and Storage (**CCS**) in the model.
 

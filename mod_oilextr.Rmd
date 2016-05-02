@@ -1,3 +1,5 @@
+# (PART) Fossil Fuel Resources {-} 
+
 # Oil extraction
 
 This module is dedicated to modelling conventional and unconventional crude oil investment and extraction in the WITCH model [@MassettiSferra2010]. Producing one unit of crude oil requires at least one unit of extractive capital. Extraction capital is accumulated through (irreversible) investments that depreciate exponentially. The rate of capital ultilisation may be equal to or less than 100%. Emissions associated with oil extraction are also calculated. 

@@ -1,4 +1,4 @@
-# Economy module
+# The general economy 
 
 ## Consumption
 

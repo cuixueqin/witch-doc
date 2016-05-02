@@ -1,4 +1,4 @@
-# Air quality emissions
+# Air pollutant emissions
 
 The air quality module relates the pollution economic activities to
 emission levels. It originates from the LIMITS project and

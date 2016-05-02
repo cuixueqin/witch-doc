@@ -1,4 +1,6 @@
-# Economic impacts from climate change (damage)
+# (PART) Impacts and Adaptation {-} 
+
+# Economic impacts from climate change
 
 In the WITCH model, a set of regional reduced-form damage functions ($\Omega$) links the global temperature increase above pre-industrial levels to changes in regional gross domestic product (Y):
 

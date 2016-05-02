@@ -1,4 +1,6 @@
-# Energy module
+# (PART) The Energy sector {-} 
+
+# Energy supply
 
 WITCH includes a comprehensive range of technology options to
 describe the final use of energy and the generation of electricity.

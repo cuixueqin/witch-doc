@@ -1,4 +1,4 @@
-# Dynamic calibration
+# Dynamic calibration of Productivity and Energy Demand
 
 Once the nested production function of the economy is calibrated using the price and quantity data of the base year, the dynamic calibration module is used to calibrate crucial input parameters that change over the time horizon. The idea is to replicate certain stylized facts about the dynamics of crucial variables to calibrate parameters that have not (yet) been endogenized in the model. 
 For the moment, this includes three main series of parameters: population, total factor productivity $tfpy(n,t)$, and the productivity of energy (the inverse of energy intensity) $tfpn(n,t)$.

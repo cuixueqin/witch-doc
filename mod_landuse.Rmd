@@ -1,4 +1,6 @@
-# Land-use module
+# (PART) Land-use {-} 
+
+# Land-use (soft link with GLOBIOM)
 
 Land-use is represented by the mean of response functions provided by the GLOBIOM land-use model [@HavlikValinHerreroEtAl2014]. The major interaction is coming from a woody biomass supply curve: a level of production of woody biomass is associated a production cost. The supply curves are provided for each time period et for each SSP. Moreover, the supply curves are also dependent of the price of CO2 land-use emissions.
 

@@ -95,3 +95,49 @@ $$
 where $lbr\_rate$ and $lbd\_rate$ are learning by doing and learning by searching parameters respecitvely.
 
 
+## Innovations
+
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 128:132,.(Symbol,Definition,GAMS)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Innovation symbolic terms'
+)
+```
+
+$$
+\frac{PAT(t,n)}{pat0(n)} = \left(\frac{K_{PAT}(t,n)}{kpat0(n)}\right)^{\beta_{spill domestic}}
+\left(\frac{\sum_{n\in \text{OECD}} K_{PAT}(t,n)}{\sum_{n\in \text{OECD}} kpat0(n)}\right)^{\beta_{spill int}}
+\left(\frac{ESC_{PAT}(t,n)}{ESC_{PAT}(0,n)}\right)^{\beta_{enexp}}
+$$
+
+growth for the frontier countries:
+$$
+\frac{A_{ENTECH}(t+1,n)}{A_{ENTECH}(t,n)} =  \left(\frac{Y(t+1,n)}{Y(t,n)}\right) ^{\beta_{y}} *\left(1+const_{eneff}+tstep*\beta_{enrd}*\sum_{n\in \text{OECD}} PAT(t,n) \right)
+$$
+
+$$
+1+\frac{1-\rho}{\rho}enintg0 - \frac{1}{\rho}*peng0 = 1+ \beta_{y}*gdpg0+  const_{eneff}+tstep*\beta_{enrd}*\sum_{n\in \text{OECD}} pat0(n)
+$$
+
+$$
+1+\frac{1-\rho}{\rho}enintg0 - \frac{1}{\rho}*peng0 = 1+ \beta_{y}*gdpg0+  const_{eneff}+tstep*\beta_{enrd}*\sum_{n\in \text{OECD}} pat0(n)
+$$
+
+growth for the developing countries:
+
+$$
+RBENIM(t,n)=\left(\frac{ENINT(t,n)}{ENINT(t,'usa')}\right)^{\frac{1-\rho}{-\rho}}*\left(\frac{GDPPC(t,n)}{GDPPC(t,'usa')}\right)^{\beta_{y}}
+$$
+
+$$
+\frac{A_{ENTECH}(t+1,n)}{A_{ENTECH}(t,n)} =  const*IMINNSWITCH(t,n)*\left(\frac{GDPPC(t,n)}{GDPPC(t,'usa')}\right)^{\beta_{yim}}
+$$
+$$
+IM(t,n)=\left(\frac{RBENIM(t,n)}{RBENIM('1',n)}\right) ^{\beta_{conv}}
+$$
+$$
+IN(t,n)=1+tstep*\beta_{enrd}*\sum_{n} PAT(t,n)
+$$

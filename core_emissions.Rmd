@@ -1,4 +1,6 @@
-# Carbon emissions
+# (PART) Emissions and the climate  {-} 
+
+# Greenhouse gas emissions
 
 ## CO~2~ emissions
 
