@@ -3,7 +3,7 @@
 This module is dedicated to modelling the specific issues related to the wind power technology. The module distinguishes between onshore and offshore wind.
 
 
-# Supply curves
+## Supply curves
 
 The supply curves are provided by the National Renewable Energy Laboratory (NREL). The reference for the offshore curves is @ArentSullivanHeimillerEtAl2012 while the reference for the onshore curves is a forthcoming paper.
 

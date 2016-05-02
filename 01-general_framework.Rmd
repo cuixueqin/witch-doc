@@ -3,6 +3,9 @@ output:
   html_document: 
     fig_caption: yes
 ---
+
+# (PART) The WITCH model {-} 
+
 # General Framework
 
 WITCH (World Induced Technical Change Hybrid) is an integrated assessment model designed to assess climate change mitigation and adaptation policies.
