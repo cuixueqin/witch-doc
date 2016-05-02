@@ -115,5 +115,19 @@ id,Symbol,Definition,GAMS,Unit
 114,"$\omega_{i,n}^+$",coefficients with positive impact,"comega_pos(n,i)  ",unitless
 115,"$T(t,n)$        ",atmospheric temperature increase from pre-industrial levels,"TEMP('atm',t,n) ",C
 116,"$Q(ADA,t,n)$    ",Adaptation factor,"Q('ADA',t,n) ",
-
-
+117,"$HE(n,t)$    ",R&D Capital in energy efficiency,"K_RD('en',t,n)",Trillion $
+118,"$RD_{j}(n,t)$",R&D Capital in backstop technologies,"K_RD(rd,t,n)",Trillion $
+119,"$SPILL(n,t)$ ",Spillover knowledge,"SPILL(rd,t,n)",Trillion $
+120,"$wcum_{j}(t)$",Cumulated Installed Capacity,"wcum(jrd,t)",Trillion $
+121,"$\delta_{RD}$",Depreciation rate for R&D knowledge,"delta_RD('en')",
+122,"$a$",Internal spillover,"crda('en',t,n)",
+123,"$b$",Elasticity w.r.t. R&D Investment,"crdb('en')",
+124,"$c$",Elasticity w.r.t. own past knowledge,"crdc('en',t,n)",
+125,"$d$",Elasticity w.r.t. spillover knowledge,"crdd('en')",
+126,"$lbrrate$",Learning by Searching Coefficient,"lbr_rate('jrd')",
+127,"$lbdrate$",Learning by Doing Coefficient,"lbd_rate('jrd')",
+128,$kpat0$,knowledge stock in 2005,kpat0,
+129,$pat0$,annual flow of patents in 2005,pat0,
+130,$enintg0$,5 years decline in energy intensity (2005-2010),enintg0,
+131,$peng0$,5 years growth in energy price (2005-2010),peng0,
+132,$gdpg0$,5 years growth in gdp (2005-2010),gdpg0,

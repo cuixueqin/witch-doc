@@ -4,7 +4,7 @@ This module is dedicated to modelling conventional and unconventional crude oil 
 
 Unit costs of extractive capacity are increasing in both cumulative extraction and changes in capacity. Increasing long-run costs reflect the effects of resource depletion: lower cost resources are exploited first. This component of the cost curve is modeled as a series of cost steps between different 'grades' of oil. Transitions between steps are smoothed by inclusion of a cubic term. Inclusion of additional terms that make adjustments of capacity costly ensure that the model simulates the simultaneous extraction of resources in different regions and with different costs. 
 
-The WITCH model database provides for eight grades of oil resources in each region. (A more aggregated set of four grades has also been defined and can be used instead if desired.) Higher grades have higher base unit costs of extractive capacity and higher CO2 emissions coefficients. The higher costs are intended to reflect both increasingly difficult geologies and increasing difficulty and uncertainty of discovery. 
+The WITCH model database provides for eight grades of oil resources in each region. (A more aggregated set of four grades has also been defined and can be used instead if desired.) Higher grades have higher base unit costs of extractive capacity and higher CO~2~ emissions coefficients. The higher costs are intended to reflect both increasingly difficult geologies and increasing difficulty and uncertainty of discovery. 
 
  
  | Symbol                 | Definition                                     | GAMS                        | Unit       | 
@@ -22,41 +22,36 @@ The WITCH model database provides for eight grades of oil resources in each regi
 ## Oil production
 
     
-[Eq. **eqoilprod**] Production of crude oil cannot exceed the extraction capacity available for any given category in any given region. However, capacity may be underused if the rate of production is falling rapidly.
+Production of crude oil cannot exceed the extraction capacity available for any given category in any given region. However, capacity may be underused if the rate of production is falling rapidly.
 $$
 OIL_{prod}(t,n,g)\leq OIL_{cap}(t,n,g)
 $$ 
 
-[Eq. **eqcum_oil_max**] Cumulative oil production (**CUM_OIL**) in each category in each region is bounded by the total oil resources in place (**resmax_oil**).
+Cumulative oil production (**CUM_OIL**) in each category in each region is bounded by the total oil resources in place (**resmax_oil**).
 
 ## Extraction capacity
 
-[Eq. **eqoilcap**] The oil extraction capacity is built cumulatively over time. It is subjected to depreciation rate, and it can be increased by means of dedicated investment in the oil extraction sector. 
+The oil extraction capacity is built cumulatively over time. It is subjected to depreciation rate, and it can be increased by means of dedicated investment in the oil extraction sector. 
 
 $$
    OIL_{cap}(t+1,n,g) =OIL_{cap}(t,n,g) \times (1-\delta_{oilg})^{\Delta_t} +{\Delta_t}\times \Delta CAP(t,n,g)
 $$
 where $\Delta_{\text{t}}=5$ is the duration of one time step in years.
 
-For the current version of WITCH, the following parameter is used by default:
+For the current version of WITCH, the depreciation rate parameter  $\delta_{oilg}$ is defined by default to the value 0.1.
 
- | $\delta_{oilg}$ | depreciation rate | "delta_oilg" | 0.1 | 
- | --------------- | ----------------- | ------------------ | --- | 
-
-[Eq. **eqoilprod_t0**] At the base year (2005) both oil capacity and oil production are assumed to be equal to the observed extraction data 
+In the base year (2005) both oil capacity and oil production are assumed to be equal to the observed extraction data 
 (source: Enerdata).
-
 
 ## Oil investment cost
 
- 
-[Eq. **eqi_oil**] Investments for oil extraction are equal to the expenditure for financing the expansion of oil capacity ($\Delta CAP$):
+Investments for oil extraction are equal to the expenditure for financing the expansion of oil capacity ($\Delta CAP$):
 $$
    I_{OILCAP}(t,n,g)= \Delta CAP(t,n,g) \times  OIL_{capcost}(t,n,g)
 $$
 The amount of investment needed to increase the oil capacity is then governed by the investment cost function.
 
-[Eq. **eqcost_oil**]  The cost of oil extraction capacity function has short-term increasing marginal extraction cost. The cost of additional oil capacity is governed by three elements:
+The cost of oil extraction capacity function has short-term increasing marginal extraction cost. The cost of additional oil capacity is governed by three elements:
 
  1.  a specific investment cost that represents a cost floor (specific to each category) (**$\lambda(g)$**). 
  2.  a short term cost component that becomes large if investments exceed a certain threshold to mimic adjustment costs and reduce incentive to over-invest in oil extraction capacity
