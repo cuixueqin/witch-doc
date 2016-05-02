@@ -141,7 +141,8 @@ The unit of \(P_{0,i}\) and \(Q_{0,i}\) depends on \(i\).
 
 *  Non-electric energy leaf nodes have a price equal to the \(FC_{0,f}\) of the their corresponding fuel \(f\), which in turn are equal to a world price plus a regional markup.
 
-*  Price of labour is assumed to be a constant fraction of the GDP per capita: $ P_{0,L} = 0.7 \frac{Q_{0,\text{YCES}}}{Q_{0,l}} $.
+*  Price of labour is assumed to be a constant fraction of the GDP per capita: 
+$ P_{0,L} = 0.7 \frac{Q_\text{0,YCES}}{Q_{0,l}} $.
 
 *  Prices for elwind, elpv and elcsp refer to 2015 values instead of 2005 values.
 
