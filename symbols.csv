@@ -115,10 +115,10 @@ id,Symbol,Definition,GAMS,Unit
 114,"$\omega_{i,n}^+$",coefficients with positive impact,"comega_pos(n,i)  ",unitless
 115,"$T(t,n)$        ",atmospheric temperature increase from pre-industrial levels,"TEMP('atm',t,n) ",C
 116,"$Q(ADA,t,n)$    ",Adaptation factor,"Q('ADA',t,n) ",
-117,"$HE(n,t)$    ",R&D Capital in energy efficiency,"K_RD('en',t,n)",Trillion $
-118,"$RD_{j}(n,t)$",R&D Capital in backstop technologies,"K_RD(rd,t,n)",Trillion $
-119,"$SPILL(n,t)$ ",Spillover knowledge,"SPILL(rd,t,n)",Trillion $
-120,"$wcum_{j}(t)$",Cumulated Installed Capacity,"wcum(jrd,t)",Trillion $
+117,"$HE(n,t)$    ",R&D Capital in energy efficiency,"K_RD('en',t,n)",T$
+118,"$RD_{j}(n,t)$",R&D Capital in backstop technologies,"K_RD(rd,t,n)",T$
+119,"$SPILL(n,t)$ ",Spillover knowledge,"SPILL(rd,t,n)",T$
+120,"$wcum_{j}(t)$",Cumulated Installed Capacity,"wcum(jrd,t)",T$
 121,"$\delta_{RD}$",Depreciation rate for R&D knowledge,"delta_RD('en')",
 122,"$a$",Internal spillover,"crda('en',t,n)",
 123,"$b$",Elasticity w.r.t. R&D Investment,"crdb('en')",
@@ -131,3 +131,48 @@ id,Symbol,Definition,GAMS,Unit
 130,$enintg0$,5 years decline in energy intensity (2005-2010),enintg0,
 131,$peng0$,5 years growth in energy price (2005-2010),peng0,
 132,$gdpg0$,5 years growth in gdp (2005-2010),gdpg0,
+133,"$OIL_{cap}(t,n,g)$    ",Oil extraction capacity (by category),"OILCAP(t,n,oilg)",TWh
+134,"$\Delta CAP(t,n,g)$   ",Additional oil capacity (by category),"ADDOILCAP(t,n,oilg)",TWh
+135,"$I_{OILCAP}(t,n,g)$   ",Oil investment (by category),"I_OIL(t,n,oilg)",T$
+136,"$OIL_{capcost}(t,n,g)$",Oil Investment cost (by category),"COST_OIL(t,n,oilg)",T$/TWh
+137,"$OIL_{prod}(t,n,g)$   ",Oil production (by category),"OILPROD(t,n,oilg)",TWh
+138,,Cumulative production (by category),"CUM_OIL(t,n,oilg)",TWh
+139,,Total Oil investment (all categories),"I_OUT(t,n)",T$
+140,,Total oil production (all categories),"Q_OUT(oil,t,n)",TWh
+141,,Emissions from oil extraction (all categories),"Q_EMI_OUT(t,n)",GtC-eq
+142,"$\lambda(g)$",Fixed floor cost component (by categories),"data_oilcost(n,oilg)",T$/TWh 
+143,"$\zeta(n,g)$",Annual Expansion threshold,"esp_cap(n,oilg)",TWh        
+144,"$\mu(g)$",Fixed floor cost difference (among categories),"cum_param_oil(n,oilg)",T$/TWh 
+145,"$OIL_{res}(t,n,g)$",Oil resources,"resmax_oil(n,oilg)",TWh        
+146,,Stoichiometric coefficient for oil extraction,"emi_st_oil(n,oilg)",GtC/TWh
+147,"$K_{EN}(jveh,t,n)$        ",Number of ldvs per type,"K_EN(jveh,t,n)",million vehicles
+148,"$ldv\_total(t,n)$         ",Total number of ldvs,"ldv_total(t,n)",million vehicles
+149,"$ldv\_pthc (t,n)$         ",Number of ldvs per thousand capita,"ldv_pthc(t,n)",vehicles per thousand capita
+150,"$Q_{EN}(jveh,t,n)$        ",Energy used by ldvs,"Q_EN(jveh,t,n)",TWh
+151,"$fuel\_cons(jveh,t,n)$    ",Fuel consumption per ldv,"fuel_cons(jveh,t,n)",TWh/million vehicles
+152,"$travel\_intensity(t,n)$  ",Travel Intensity,"travel_intensity(t,n)",km/$
+153,"$km\_demand\_ldv(t,n)$    ",Kilometre Demand,"km_demand_ldv(t,n)",million km per year
+154,"$km\_demand\_pv\_ldv(t,n)$",Kilometre Demand per vehicle,"km_demand_pv_ldv(t,n)",km/vehicle per year
+155,"$km\_dev(t,n)$            ",Kilometre Deviation,"km_demand_pv_deviation_ldv(t,n)",unitless
+156,"$veh\_cost(jveh,t,n)$     ",Vehicle cost,"MCOST_INV(jveh,t,n)",T$/million vehicles
+157,"$fueleff\_rate(t,n)$      ",Fuel efficiency improvement rate,"fueleff_rate(t,n)",unitless  
+158,"$K_{EN}(jel_{solar},t,n)$ ",Electric capacity,"K_EN(jel_solar,t,n)",TW
+159,"$dens(jel_{solar},n)$     ",Installation density,"inst_density(n,jel_solar)",MW/km^2^
+160,"$area(solar_{distance},n)$",Competition area,"inst_area(n,solar_distance)",km^2^
+161,"$K_{EN}(jel,t,n)$    ",Electric capacity,"K_EN(jel,t,n)",TW
+162,"$Q_{EN}(jel,t,n)$    ",Electric energy generation,"Q_EN(jel,t,n)",TWh
+163,"$SHARE_{EL}(jel,t,n)$",Share in the electricity mix,"SHARE_EL(jel,t,n)",unitless
+164,"$c(n)$               ",Peak load fraction,"firm_coeff(n)",unitless
+165,"$cf$                 ",Capacity factor,"cap_factor",unitless
+166,"$cv(SHARE_{EL})$     ",Capacity value,"cap_value(jel,t,n)",unitless
+167,"$f(jel)$             ",Flexibility coefficient,"flex_coeff(jel)",unitless
+168,"$K_{EN\_GRID}(t,n)$         ",Capital of the electrical grid,"K_EN_GRID(t,n)",TW
+169,"$I_{EN\_GRID}(t,n)$         ",Investments in the electrical grid,"I_EN_GRID(t,n)",T$
+170,"$delta\_grid(t,n)$          ",Grid depreciation rate,"grid_delta(t,n)",unitless
+171,"$grid\_cost$                ",Grid specific investment cost,"grid_cost",T$/TW
+172,"$transm\_cost(jel,distance)$",Distance-dependant transmission cost,"transm_cost(jel,distance)",T$/TW
+173,"$tfpy(t,n)$",Total factor productivity,"tfpy(t,n)",unitless
+174,"$tfpn(t,n)$",Factor Productivity of energy,"tfpn(t,n)",unitless
+175,"$Y_{kali}(n,t)$",Calibration GDP,"ykali(t,n)",T$
+176,"$TPES_{kali}(n,t)$",Calibration Energy demand,"tpes_kali(t,n)",EJ 
+177,"$\varepsilon_{Y,E}(n,t)$",Investment in extraction,"income_ela(t,n)",unitless

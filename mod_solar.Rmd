@@ -2,10 +2,9 @@
 
 This module is dedicated to modeling the specific issues related to the solar power technology. The module describes both solar PV (PhotoVoltaics) and CSP (Concentrated Solar Power).
 
+## Supply curves
 
-# Supply curves
-
-The supply curves are provided by the German Aerospace Centre (DLR, Deutsches Zentrum für Luft- Raumfahrt) and the Potsdam Institute for Climate Impact Research (PIK, Potsdam Institut für Klimafolgenforschung), see [Pietzcker et al. (2014)](http://www.sciencedirect.com/science/article/pii/S0306261914008149).
+The supply curves are provided by the German Aerospace Centre (DLR) and the Potsdam Institute for Climate Impact Research (PIK), see [@PietzckerStetterMangerEtAl2014].
 
 The curves provide the maximum amount of capacity which can be installed in each region as a function of:
 
@@ -13,7 +12,7 @@ The curves provide the maximum amount of capacity which can be installed in each
  2.  distance from load centres (solar_distance in the model) - Two classes: near (1-50 km), far (50-100 km)
 
 
-# Other technical data
+## Other technical data
 
 
  | Parameter                 | PV            | CSP           | 
@@ -34,21 +33,9 @@ Investment costs are the same in all regions and decline over time through a lea
 
 ## Modeling
 
-The relevant variables in this section (apart from the constraint on the competition area, see next section) are:
-
- | Variable                       | WITCH                                            | Unit | 
- | --------                       | -----                                            | ---- | 
- | PV electric capacity           | "K_EN_PV(solar_distance,solar_class,t,n)"  | TW   | 
- | PV electric energy generation  | "Q_EN_PV(solar_distance,solar_class,t,n)"  | TWh  | 
- | PV investments                 | "I_EN_PV(solar_distance,solar_class,t,n)"  | T$   | 
- | CSP electric capacity          | "K_EN_CSP(solar_distance,solar_class,t,n)" | TW   | 
- | CSP electric energy generation | "Q_EN_CSP(solar_distance,solar_class,t,n)" | TWh  | 
- | CSP investments                | "I_EN_CSP(solar_distance,solar_class,t,n)" | T$   | 
-
-The equations which combine these variables perfectly replicate the scheme described in the "[Energy sector](mod_energy)" module, although in this case the variables are specifically defined per capacity factor classes and distance from load centres. A set of additional equations sum the specific variables in the corresponding aggregate for the whole PV and CSP technologies, respectively.
+The relevant variables in this section (apart from the constraint on the competition area, see next section) are investments, energy generation and capacity in PV and CSP. The equations which combine these variables perfectly replicate the scheme described in the "[Energy sector](mod_energy)" module, although in this case the variables are specifically defined per capacity factor classes and distance from load centres. A set of additional equations sum the specific variables in the corresponding aggregate for the whole PV and CSP technologies, respectively.
 
 The penetration of PV technologies is subject not only to cost considerations, but also to the constraints related to the system integration of intermittent technologies (See "[System integration](mod_systint)").
-
 
 ## Competition area
 
@@ -56,11 +43,15 @@ Differently from the two wind technologies, which are by definition installed in
 
 The relevant variables and parameters in this section are:
 
- | Notation                   | Variable             | GAMS                                | Unit      | 
- | --------                   | --------             | ----                                | ----      | 
- | $K_{EN}(jel_{solar},t,n)$  | Electric capacity    | "K_EN(jel_solar,t,n)"         | TW        | 
- | $dens(jel_{solar},n)$      | Installation density | "inst_density(n,jel_solar)"   | MW/km$^2$ | 
- | $area(solar_{distance},n)$ | Competition area     | "inst_area(n,solar_distance)" | km²      | 
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 158:160,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Solar power symbolic terms'
+)
+```
 
 In formula [Eq. **eqk_en_solar_comp**]: 
 
@@ -69,11 +60,5 @@ $$
 $$
 
 However, given the huge amount of the available resource, which is much higher than the capacity installed in any scenario, the constraint is practically non-binding everywhere.
-
-## References
-
-
-*  Pietzcker, R.C., Stetter, D., Manger, S., and Luderer, G. (2014). Using the sun to decarbonize the power sector: The economic potential of photovoltaics and concentrating solar power, Applied Energy, 135, 704-720
-    
 
 

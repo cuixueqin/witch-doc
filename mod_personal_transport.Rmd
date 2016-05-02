@@ -1,12 +1,10 @@
 # Personal transport
 
  
-The personal transport module contains the sub-model representation of a light duty vehicle (ldv) transport sector within WITCH. 
-It is the extension of the code used to produce [Bosetti and Longden (2013)](http://dx.doi.org/10.1016/j.enpol.2013.03.008).
+The personal transport module contains the sub-model representation of a light duty vehicle (LDV) transport sector within WITCH. 
+It is the extension of the code used to produce [@BosettiLongden2013].
 
-
-The vehicle types within the module **jveh** are:
-
+The vehicle types **jveh** are:
 
 *  traditional combustion vehicles **trad_cars**; 
 
@@ -16,30 +14,27 @@ The vehicle types within the module **jveh** are:
 
 *  electric drive vehicles **edv**.
 
- | Notation                   | Variable                           | GAMS                                    | Unit                         | 
- | --------                   | --------                           | ----                                    | ----                         | 
- | $K_{EN}(jveh,t,n)$         | Number of ldvs per type            | "K_EN(jveh,t,n)"                  | million vehicles             | 
- | $ldv\_total(t,n)$          | Total number of ldvs               | "ldv_total(t,n)"                  | million vehicles             | 
- | $ldv\_pthc (t,n)$          | Number of ldvs per thousand capita | "ldv_pthc(t,n)"                   | vehicles per thousand capita | 
- | $Q_{EN}(jveh,t,n)$         | Energy used by ldvs                | "Q_EN(jveh,t,n)"                  | TWh                          | 
- | $fuel\_cons(jveh,t,n)$     | Fuel consumption per ldv           | "fuel_cons(jveh,t,n)"             | TWh/million vehicles         | 
- | $travel\_intensity(t,n)$   | Travel Intensity                   | "travel_intensity(t,n)"           | km/$                         | 
- | $km\_demand\_ldv(t,n)$     | Kilometre Demand                   | "km_demand_ldv(t,n)"              | million km per year          | 
- | $km\_demand\_pv\_ldv(t,n)$ | Kilometre Demand per vehicle       | "km_demand_pv_ldv(t,n)"           | km/vehicle per year          | 
- | $km\_dev(t,n)$             | Kilometre Deviation                | "km_demand_pv_deviation_ldv(t,n)" | unitless                     | 
- | $veh\_cost(jveh,t,n)$      | Vehicle cost                       | "MCOST_INV(jveh,t,n)"             | T$/million vehicles          | 
- | $fueleff\_rate(t,n)$       | Fuel efficiency improvement rate   | "fueleff_rate(t,n)"               | unitless                     | 
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 147:157,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'Oil extraction symbolic terms'
+)
+```
 
 The figure below shows how the structure of the LDV transport sector fits within WITCH.
 The composition of vehicle types (denoted in the figure as Veh-K) is determined by a Leontief function of a range of different costs. 
 These comprise the vehicle cost, including battery cost ($/kWh), O&M costs, fuel costs and any associated carbon costs based on the fuel mix within the sector.
 Fuels are sourced from the Energy sector and decreases in the cost of vehicles are driven by R&D investments in battery technologies. 
 
-{{ :ldvstructure.png?direct&650 |LDV Sector Structure}}
+![LDV Sector Structure](images/ldvstructure.png)
+
 
 ## Number of Vehicles
 
-The number of vehicles per thousand capita $ldv\_pthc(t,n)$ is set equal to an exogenous projection and is computed before the model iterates through the nash loop. The calculation of vehicles has been sourced from the IEA/SMP model which is in turn based on the work of [Dargay and Gately (1999)](http://dx.doi.org/10.1016/S0965-8564(98)00026-3).
+The number of vehicles per thousand capita $ldv\_pthc(t,n)$ is set equal to an exogenous projection and is computed before the model iterates through the nash loop. The calculation of vehicles has been sourced from the IEA/SMP model which is in turn based on the work of @DargayGately1999.
 The following equation has been implemented with parameters set to those in the table below. In particular, the Autonomous Increase (AI) and the Ownership Growth Elasticity (OGE) values depend on the gdp per capita and on the relevant ownership level.
 
 $$
@@ -126,26 +121,15 @@ $$
 $$
 
 The value of 1.124 has been set using a logistic function fitted to projections of the number of hybrid vehicles for the period between 2010 and 2035 sourced from World Energy Outlook 2010.
-Hybrids and plg_hybrids have been identified as being interim technology options - refer to [Bosetti and Longden (2013)](http://dx.doi.org/10.1016/j.enpol.2013.03.008) for further details.
+Hybrids and plugin hybrids have been identified as being interim technology options - refer to @BosettiLongden2013 for further details.
 
 In addition to an S-shaped diffusion path due to the above function, additional constraints related to the diffusion of technology include:
 
 
-*  an exogenous upper limit for traditional biofuels which has been set based on [Alfstad (2008)](http://www.bnl.gov/isd/documents/43476.pdf) - [Eq. **eq_limtrbiofuel**];
+*  an exogenous upper limit for traditional biofuels which has been set based on @Alfstad2008,
 
-*  a 2020 biofuel target for Europe and the US - [Eq. **eq_limbiofuel_policy**];
+*  a 2020 biofuel target for Europe and the US,
 
-*  a limit on the amount of biofuel that can be used in each vehicle which are not designed for a high biofuel content (as is the case in this version of the model) - [Eq. **eq_limbiofuel**]; 
+*  a limit on the amount of biofuel that can be used in each vehicle which are not designed for a high biofuel content (as is the case in this version of the model), 
 
-*  a restriction which constrains investments in a specific vehicle type to at least 30% of what they were in the previous period - [Eq. **eqmcost_inv_smooth2**]. Note that this restriction is intended to prevent investments disappearing in a interim technology at too fast a pace.
-
-
-## References
-
-
-*  Alfstad, T. (2008). World Biofuels Study: Scenario Analysis of Global Biofuel Markets, prepared for US Dept of Energy by the Energy Sciences and Technology Department, Brookhaven National Laboratory
-
-*  Bosetti, V., and Longden, T. (2013). Light duty vehicle transportation and global climate policy: The importance of electric drive vehicles, Energy Policy, 58, 209-219 (available also in draft form as FEEM Note di lavoro 2012.011)
-
-*  Dargay, J. and Gately, D. (1999). Income's effect on car and vehicle ownership, worldwide: 1960-2015, Transportation Research Part A, 33, 101-138
-
+*  a restriction which constrains investments in a specific vehicle type to at least 30% of what they were in the previous period. Note that this restriction is intended to prevent investments disappearing in a interim technology at too fast a pace.

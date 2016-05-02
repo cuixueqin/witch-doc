@@ -79,7 +79,7 @@ Total factor productivity $tfpy(t,n)$ is dynamically calibrated and evolves exog
 Labor $l$ is assumed to be equal to to population, thus assuming no unemployment.
 Finally, the parameter $tfp0(n)$ is calibrated to match GDP in the base year.
 
-```{r, echo=F}
+```{r output, echo=F}
 library(data.table)
 sym_witch = fread("symbols.csv",sep=",",header=T)
 tab = sym_witch[id %in% 23:31,.(Symbol,Definition,GAMS,Unit)]

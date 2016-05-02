@@ -2,8 +2,6 @@
 
 ## Quick Start
 
-
-
 Rename the file "call_default.gms" into "call.gms", or "call_policy.gms".
 Then call gams from this file using your favorite GAMS IDE, or run:
 

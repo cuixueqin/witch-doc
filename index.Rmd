@@ -11,7 +11,7 @@ link-citations: yes
 description: "The WITCH model documentation"
 ---
 
-# Introduction
+# Introduction {-}
 
 This documentation is the essential guide for the users of
 the WITCH integrated assessment model.
@@ -26,3 +26,4 @@ including the core components, the technology options and
 the policy-specific modules.
 The last section, dedicated to the GAMS implementation,
 explains how the model works and how the users can use the program code.
+

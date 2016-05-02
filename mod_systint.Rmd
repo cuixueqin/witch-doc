@@ -7,19 +7,21 @@ The system integration module is dedicated to modelling the issues related to th
 
 The relevant variables and parameters in this section are:
 
- | Notation              | Variable                     | GAMS                       | Unit     | 
- | --------              | --------                     | ----                       | ----     | 
- | $K_{EN}(jel,t,n)$     | Electric capacity            | "K_EN(jel,t,n)"      | TW       | 
- | $Q_{EN}(jel,t,n)$     | Electric energy generation   | "Q_EN(jel,t,n)"      | TWh      | 
- | $SHARE_{EL}(jel,t,n)$ | Share in the electricity mix | "SHARE_EL(jel,t,n)"  | unitless | 
- | $c(n)$                | Peak load fraction           | "firm_coeff(n)"      | unitless | 
- | $cf$                  | Capacity factor              | "cap_factor"         | unitless | 
- | $cv(SHARE_{EL})$      | Capacity value               | "cap_value(jel,t,n)" | unitless | 
- | $f(jel)$              | Flexibility coefficient      | "flex_coeff(jel)"    | unitless | 
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 161:167,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'System integration symbolic terms'
+)
+```
 
-The limitation to VRE penetration into the electrical grid is modelled through two constraints, described in [Sullivan et al. (2013)](http://www.sciencedirect.com/science/article/pii/S2211467X13000023):
+
+The limitation to VRE penetration into the electrical grid is modelled through two constraints, described in @SullivanKreyRiahi2013.
 
  1.  A constraint on the installed capacity of the power generation fleet
+
  2.  A constraint on the flexibility of the power generation fleet
 
 ### Capacity constraint
@@ -77,17 +79,16 @@ $$
 
 The relevant variables and parameters in this section are:
 
+```{r, echo=F}
+library(data.table)
+sym_witch = fread("symbols.csv",sep=",",header=T)
+tab = sym_witch[id %in% 168:172,.(Symbol,Definition,GAMS,Unit)]
+knitr::kable(
+tab, booktabs = TRUE,
+caption = 'System integration symbolic terms'
+)
+```
 
- | Notation                     | Variable                             | WITCH                             | Unit     | 
- | --------                     | --------                             | -----                             | ----     | 
- | $K_{EN\_GRID}(t,n)$          | Capital of the electrical grid       | "K_EN_GRID(t,n)"            | TW       | 
- | $I_{EN\_GRID}(t,n)$          | Investments in the electrical grid   | "I_EN_GRID(t,n)"            | T$       | 
- | $delta\_grid(t,n)$           | Grid depreciation rate               | "grid_delta(t,n)"           | unitless | 
- | $grid\_cost$                 | Grid specific investment cost        | "grid_cost"                 | T$/TW    | 
- | $transm\_cost(jel,distance)$ | Distance-dependant transmission cost | "transm_cost(jel,distance)" | T$/TW    | 
-
-
-[Eq. **eqk_en_grid**]
 Analogously to the power generation technologies, grid capital accumulates as follows:
 
 $$
@@ -95,7 +96,6 @@ $$
                 \Delta_t \cdot \frac{I_{EN\_GRID}(t,n)}{grid\_cost}
 $$
 
-[Eq. **eqk_en_grid_to_k_en**]
 The grid capital stock is adjusted to power capacity, taking into account a linear relationship between grid capacity and the capacity of
 traditional power generation technologies, and an additional grid stock requirement for i) connecting wind and solar plants located far from load
 centres or shore, and ii) building a wider interconnection for the integration of VREs (curtailment reduction,
@@ -106,11 +106,4 @@ dispatchability increase, etc.), the latter exponentially increasing with VRE pe
                      &+ \sum_{jel} \sum_{distance} K_{EN}(jel,t,n) \cdot \frac{transm\_cost(jel,distance)}{grid\_cost}\\
 		     &+ \sum_{jel(VRE)} K_{EN}(jel_{VRE},t,n) \cdot (1 + a \cdot SHARE_{EL}(jel_{VRE},t,n)^{b})
 \end{align*}
-where a and b are two numerical coefficients.
-
-	
-## References
-
-
-*  Sullivan, P., Krey, V., Riahi, K., 2013. Impacts of considering electric sector variability and reliability in the MESSAGE model. Energy Strategy Reviews, 1, 157-163
- 
+where $a$ and $b$ are two numerical coefficients.
