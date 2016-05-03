@@ -6,7 +6,7 @@ to climate change damages in the WITCH model.
 At the core of the adaptation module introduced in the WITCH model there are three control variables that broadly represent different forms of adaptation strategies.
 For the sake of simplicity, the numerous adaptive responses that are actually available in the real world have been aggregated into three categories: building specific adaptive capacity, anticipatory adaptation, and reactive adaptation: 
 
-{{ :ada_tree.png?nolink | Adaptation strategies}}
+![Adaptation strategies](images/ada_tree.png)
 
 Regional reduced-form damage functions ($\Omega$) link the global temperature increase above pre-industrial levels to changes in regional gross domestic product (Y):
 
@@ -126,11 +126,9 @@ Specific capacity includes
 
 The tables below summarize the adaptation costs and the protection levels at the calibration point, which is when temperature increases by 2.5 degree Celsius above pre-industrial levels. 
 
-{{ adap_costs.png:?nolink         | Adaptation costs at the calibration point}}
+![Adaptation costs at the calibration point](images/adap_costs.png)
 
 Adaptation effectiveness for the three strategies has also been calibrated using various sources from the literature described in @BoselloDeCian2014. The table below summarizes the resulting figures used for calibration:
 
-{{ protection_level.png:?nolink         | Adaptation costs at the calibration point}}
-
-
+![Adaptation costs at the calibration point](images/protection_level.png)
 
