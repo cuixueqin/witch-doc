@@ -5,7 +5,7 @@ emission levels. It originates from the LIMITS project and
 its emission factors originate from TIMER technological model using GAINS emission factors. 
 
 The current version uses [SSP2](ssp_implementation) as the BAU scenario, according to Fig. 1.
-`<imgcaption image1|>`{{:immagine_bau.png?|}}`</imgcaption>`
+![](images/immagine_bau.png)
 
 The air pollutants **aqe** are : carbon monoxide **CO**, methane **CH4**, 
 black carbon **BC**, organic carbon **OC**, Sulfur dioxide **SO2**,

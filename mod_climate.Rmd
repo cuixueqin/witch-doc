@@ -120,7 +120,7 @@ $$
 
 The exogenous radiative forcing from aerosols are based on the average response obtained from many runs and MAGICC outputs.
 
-{{ ::rf_aerosols.jpg?nolink |}}
+![](images/rf_aerosols.jpg)
 
 The CO2 radiative forcing is calculated according to the  [IPCC Third Assessement Report expressions](http://www.ipcc.ch/ipccreports/tar/wg1/222.htm#635),
 proportional to the natural logarithm of the ratio of the current concentration
