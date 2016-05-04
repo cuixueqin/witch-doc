@@ -1,4 +1,4 @@
-# Adaptation
+## Adaptation
 
 This module introduces adaptation
 to climate change damages in the WITCH model. 
@@ -98,7 +98,7 @@ caption = 'Adaptation symbolic terms'
 )
 ```
 
-## Calibration of adaptation costs 
+### Calibration of adaptation costs 
 
 The calibration process of adaptation costs is described in detail in @AgrawalaBoselloCarraroEtAl2011 and has been updated in @BoselloDeCian2014. Costs of adaptation actions and their effectiveness in the sectors considered in the reduced-form damage function have been collected and grouped into the three categories of proactive,  reactive,  and specific capacity. In the following sectors proactive adaptation is considered: 
 

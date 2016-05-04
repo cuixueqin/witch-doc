@@ -1,4 +1,4 @@
-# Personal transport
+## Personal transport
 
  
 The personal transport module contains the sub-model representation of a light duty vehicle (LDV) transport sector within WITCH. 
@@ -32,7 +32,7 @@ Fuels are sourced from the Energy sector and decreases in the cost of vehicles a
 ![LDV Sector Structure](images/ldvstructure.png)
 
 
-## Number of Vehicles
+### Number of Vehicles
 
 The number of vehicles per thousand capita $ldv\_pthc(t,n)$ is set equal to an exogenous projection and is computed before the model iterates through the nash loop. The calculation of vehicles has been sourced from the IEA/SMP model which is in turn based on the work of @DargayGately1999.
 The following equation has been implemented with parameters set to those in the table below. In particular, the Autonomous Increase (AI) and the Ownership Growth Elasticity (OGE) values depend on the gdp per capita and on the relevant ownership level.
@@ -61,7 +61,7 @@ $$
 	ldv\_total(t,n) = \sum_{jveh} K_{EN}(jveh,t,n)
 $$
 
-## Kilometre Demand, Fuel Consumption and Energy
+### Kilometre Demand, Fuel Consumption and Energy
 
 Energy consumption associated to the different vehcile types is described by [Eq. **eqq_en_veh**]:
 
@@ -87,7 +87,7 @@ $$
         fuel\_cons(jveh,t,n) = fuel\_cons\_2005(jveh,n) \times km\_dev(t,n) \times t^{fueleff\_rate(t,n)}
 $$
           
-## Cost of Vehicles
+### Cost of Vehicles
 
 While the cost of traditional combustion vehicles is held constant at 2005 levels, the cost of battery integrated vehicles decreases with investments in R&D for batteries.
 
@@ -110,7 +110,7 @@ The initial battery size of vehicles in 2005 are reported in the table below alo
  | plg_hybrid   | 13.3               | 49                               | 
  | edv          | 85                 | 98                               | 
 
-## Technology Restrictions and Constraints
+### Technology Restrictions and Constraints
 
 Being based on cost considerations not moderated by lower-than-infinite elasticities, one of the main problems with linear competition among technologies is that irregular behaviours might take place, and in particolar a sudden switch from one technology to another. Linear models thus normally introduce a set of restrictions or constraints which weaken this effect.
 

@@ -1,13 +1,13 @@
-# How to use model
+## How to use model
 
-## Flowchart
+### Flowchart
 
 The flowchart shows the different steps in the model generation and algorithm.
 
 ![WITCH flowchart](images/flowchart_nov2014.png)
 
 
-## File structure
+### File structure
 
 ![File structure](images/filetree.png)
 

@@ -1,8 +1,8 @@
-# Solar power
+## Solar power
 
 This module is dedicated to modeling the specific issues related to the solar power technology. The module describes both solar PV (PhotoVoltaics) and CSP (Concentrated Solar Power).
 
-## Supply curves
+### Supply curves
 
 The supply curves are provided by the German Aerospace Centre (DLR) and the Potsdam Institute for Climate Impact Research (PIK), see [@PietzckerStetterMangerEtAl2014].
 
@@ -12,7 +12,7 @@ The curves provide the maximum amount of capacity which can be installed in each
  2.  distance from load centres (solar_distance in the model) - Two classes: near (1-50 km), far (50-100 km)
 
 
-## Other technical data
+### Other technical data
 
 
  | Parameter                 | PV            | CSP           | 
@@ -31,13 +31,13 @@ The capacity is fixed up to the year 2015 in order to allow the model capturing 
 Investment costs are the same in all regions and decline over time through a learning-by-doing process (learning-by-researching is not modeled). The decline rate depends on the cumulative capacity installed worldwide and on the learning rate.
 
 
-## Modeling
+### Modeling
 
 The relevant variables in this section (apart from the constraint on the competition area, see next section) are investments, energy generation and capacity in PV and CSP. The equations which combine these variables perfectly replicate the scheme described in the "[Energy sector](mod_energy)" module, although in this case the variables are specifically defined per capacity factor classes and distance from load centres. A set of additional equations sum the specific variables in the corresponding aggregate for the whole PV and CSP technologies, respectively.
 
 The penetration of PV technologies is subject not only to cost considerations, but also to the constraints related to the system integration of intermittent technologies (See "[System integration](mod_systint)").
 
-## Competition area
+### Competition area
 
 Differently from the two wind technologies, which are by definition installed in two different areas, PV and CSP partially compete for the same land. Indeed, CSP requires types of ground characterized by a lower slope, so the curves provide information on the "PV-only" area and the "Competition" area, where both PV and CSP can be installed. The module thus reports the total installable PV capacity (PV-only + Competition) and the total installable CSP capacity(Competition), but adds a constraint on land occupation in the Competition area.
 

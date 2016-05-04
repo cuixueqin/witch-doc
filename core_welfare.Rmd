@@ -1,13 +1,13 @@
-# (PART) The Economy {-} 
+# The Economy
 
-# Welfare function
+## Welfare function
 
 In WITCH, a social planner maximises the total discounted welfare $W$ of each coalition $clt$.
 The regional utility function at any point in time and each region is based on a power or 
 constant relative risk aversion (CRRA) function of the consumption per capita. 
 Given the type of cooperation, the objective function can take different forms.
 
-## Utility function
+### Utility function
 
 For each region $n$, intertemporal utility is computed as discounted sum of utility: 
 
@@ -20,7 +20,7 @@ $$ \beta = ({1+\rho})^{\Delta_{t}} $$
 where $\Delta_{t}=5$ is the duration of one time step in years.
 
 
-## Welfare of coalitions
+### Welfare of coalitions
 
 The WITCH model can be run in a non-cooperative mode, where each region $n$ acts as one player maximising its welfare. In this case, the set of players or coalitions $clt$ consists each of a single region.
 

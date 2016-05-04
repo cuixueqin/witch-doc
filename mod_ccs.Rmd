@@ -1,4 +1,4 @@
-# Carbon capture and storage (CCS)
+## Carbon capture and storage (CCS)
 
 This module introduces the Carbon Capture and Storage (**CCS**) in the model.
 
@@ -13,7 +13,7 @@ but no exogenous constraint is assumed.
 Hydroelectric power is assumed to evolve exogenously to reflect
 limited site availability. 
 
-## Emission storage
+### Emission storage
 
 $$
     Q_{CCS} = \sum_{f,j} Q_{f,j}(t,n) \times ccs\_capture\_rate_f
@@ -34,7 +34,7 @@ caption = 'Emission Storage symbolic terms'
 )
 ```
 
-## Emission cost
+### Emission cost
 
 CCS transport and storage is function of the cumulative sequestrated emissions. 
 

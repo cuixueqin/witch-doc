@@ -1,6 +1,6 @@
-# (PART) Implementation of the SSPs {-} 
+# Implementation of the SSPs
 
-#  Implementation of the Shared Socioeconomic Pathways (SSPs)
+##  Implementation of the Shared Socioeconomic Pathways (SSPs)
 
 This page presents the assumptions taken for the implementation of the Shared Socioeconomic Pathways (SSP) in the WITCH model.
 The SSPs represent 5 different scenarios that have been qualitatively described through story lines and henceforth quantified. These scenarios are implemented matching the story lines and quantification throughout the WITCH model to generate the different scenarios.
@@ -12,7 +12,7 @@ The five SSPs are illustrated via the mapping in the challenges to mitigation/ad
 
 ![SSP challenges](images/ssp_matrix.png)
 
-## Gross Domestic Product (GDP) and Population
+### Gross Domestic Product (GDP) and Population
 
 **Population** forecasts for the different SSPs are based on the common scenarios that have been developed at IIASA (International Institute for Applied Systems Analysis) and the OECD based on individual country forecasts. We use the OECD projection aggregated across WITCH regions.
 
@@ -26,21 +26,21 @@ Similarly, **GDP** baseline projections have been developed at the OECD. These G
 All data series are given until the year 2100. Extrapolations until the time horizon of the models are based on linearly decreasing growth rates starting from 2100 towards zero at the end of the time horizon.
 All of the baseline data can be accessed at the [SSP database](https///secure.iiasa.ac.at/web-apps/ene/SspDb). After adding some missing values for 2005 and 2010 and the PPP exchange rate, the total number of countries available from the database is 184.
 
-## Energy Intensity
+### Energy Intensity
 
 The dynamic calibration of factor productivity of energy services (''tfpn'') is run based on the SSP2. The following income elasticity rule is used for the different regions: industrialized countries (OECD members) are characterized by an elasticity of 0.40 in 2005 whereas non-OECD members have an elasticity of 0.55 based on the higher share of energy expenditures. To take into account economic progress and convergence, the elasticity is assumed to fall exponentially to finally reach a value of 0.2 in the year 2150.
 
 Based on the obtained time series of regional energy productivity changes for SSP2, the same series is used for SSP4, and SSP5. Only for the "sustainable world" SSP1, the series is adjusted increasing the improvement in the factor productivity of energy by 1 percentage point per year to reflect the higher efficiency improvement in this scenario. Similarly, for the SSP3, the improvement is reduced by 1 percentage point per year to take into account slower energy efficiency improvement in this scenario. These values result in reasonable primary energy demand projections for the respective story lines and baseline GDP and population projections.
 
 
-## Land-use
+### Land-use
 
 Land-use representation is carried out through a soft linkage with the land-use model GLOBIOM, so 
 the representation of the SSP follows the GLOBIOM implementation.
 GLOBIOM represents 3 pathways: SSP1, SSP2 and SSP3. Given identical mitigation challenge, 
 SSP1 is also SSP4, and SSP3 is also SSP5.  
 
-## Technology
+### Technology
 
 The following matrix is applied to power technologies in the different SSP scenarios. "Low" indicates low penetration or high costs; "Medium" indicates the baseline assumptions; "High" indicates high penetration or low costs.
 
@@ -54,7 +54,7 @@ In the "High" cases, investment costs of CCS and nuclear plants decrese over tim
 
 In the "Low" case, the opposite applies (except for learning rates which are decreased by 33%).
 
-## Personal transport
+### Personal transport
 
 The following matrix is applied to the different SSP scenarios in the transport sector.
 
@@ -74,7 +74,7 @@ The following matrix is applied to the different SSP scenarios in the transport 
 
 *  Battery learning rate: it is 0.144 by default; it is multiplied by 5/4 in the High cases, by 2/3 in the Low cases.
 
-## Air pollutant emissions
+### Air pollutant emissions
 
 SSP are implemented under the form of a set of air quality emission factors following the SSP narratives for air pollution.
 
@@ -84,7 +84,7 @@ The emissions of the exo-sectors (sectors that are related to energy but are not
 
 The pollutant NH$_3$ and some sectors such as Solvents, Waste (landfills, waste water, non-energy incineration), Agriculture waste burning on fields, Agriculture, Grassland burning and Forest burning are exogenous to the model. For the SSP implementation the emissions for these emission sectors vary over time following the average (across the WITCH sectors) variation of that given pollutant over time.
 
-## Fossil Fuel Resources
+### Fossil Fuel Resources
 
 The fossil fuel supply curves are taken from the [ROSE project](http://www.rose-project.org/), which developped High/Medium/Low supply curves for oil, coal, and gas reserves.
 

@@ -1,4 +1,4 @@
-# Research and Development
+## Research and Development
 
 One of the main features of the WITCH model is the characterisation
 of endogenous technical change.
@@ -29,7 +29,7 @@ caption = 'Knowledge symbolic terms'
 )
 ```
 
-## Knowledge stock for energy efficiency
+### Knowledge stock for energy efficiency
 
 [Eq. **eqk_rd_en**]
 The stock of knowledge evolves according to the perpetual rule.
@@ -62,7 +62,7 @@ $$
 
 The knowledge stock dedicated for energy efficiency is combined with energy supply and autonomous energy efficiency improvement to form energy services. Energy services are then used as an input in production of final good (see equations [Eq. **eqq_y**] and [Eq. **eqq_fen_**])
 
-## Knowledge stock in backstop technologies
+### Knowledge stock in backstop technologies
 
 RD stock accumulates with the perpetual rule and with the contribution of
 international knowledge spillovers, $SPILL$
@@ -84,7 +84,7 @@ $$
 
 The knowledge stock in backstop technologies is used to lower installation costs, $SC$. The installation costs are determined by a two factor learning curve: 1 percent drop in installation costs can be achieved upon $\frac{1}{lbr\_rate}$% increase in backstop technology knowledge stock (//learning by searching//) or $\frac{1}{lbr\_rate}$% increase in stock of experience in utilising the technology (following the *learning by doing* principle). The stock of experience is proxied with total installed capacity in the world (equation [Eq. **eqmcost_inv_back_lbd**]).
 
-## Two Factor Learning Curve
+### Two Factor Learning Curve
 
 We predict the future costs of the backstop technologies, $SC$ using the Two Factor Learning Curve (e.g. Klaassen et al., 2005 and Söderholm and Sundqvist, 2007). The costs can decrease as a result of accumulation of experience (learning by doing) or investment in research and development (learning by searching). In our model, the stock of experience is proxied with world cumulated installed capacity, $wcum$. The accumulation of R&D knowledge stock is described in the section above. The two factor learning curve takes the form
 

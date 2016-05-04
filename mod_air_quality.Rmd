@@ -1,4 +1,4 @@
-# Air pollutant emissions
+## Air pollutant emissions
 
 The air quality module relates the pollution economic activities to
 emission levels. It originates from the LIMITS project and
@@ -59,7 +59,7 @@ For the SSP implementation the emissions for these emission sectors vary over ti
 
 All the air pollution emissions are scaled in such way that the 2005 value corresponds to the RCP2.6 2005 value.
 
-## Other Air pollution Options/branches
+### Other Air pollution Options/branches
 
 ### AQ_kuznets
 
@@ -93,7 +93,7 @@ ef_{j,p}(t) = (-ef_{j,p,\text{BAU}}(t) + ef_{j,p,\text{MFR}}(t))*reduca + ef_{j,
 $$
 where $reduca$ is the fraction of reduction due to EOP measures.
 
-# References
+## References
 
 Smith, S., Pitcher, H., & Wigley, T. (2005). Future Sulfur Dioxide Emissions. Climatic Change, 73, 267-318.\\
 

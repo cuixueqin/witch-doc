@@ -1,4 +1,4 @@
-# Advanced bio-fuels
+## Advanced bio-fuels
 
 Advanced biofuel represents a new generation of fuel coming from the conversion of
 woody biomass into biofuel.
@@ -6,7 +6,7 @@ This conversion is subject to a learning by researching curve and represent a ba
 Advanced biofuels is a substitute to oil in the non-electrical sector.   
 
 
-## Constraint on non-electric backstop
+### Constraint on non-electric backstop
 
 [Eq. **eqq_en_lim_nelback**] 
 New production capacity of "non-electric backstop" technologies are bounded by the potential in advanced bio-fuels, following a logistic curve over time.

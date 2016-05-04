@@ -1,10 +1,18 @@
 bookdown::gitbook:
   lib_dir: assets
-  split_by: chapter
+  split_by: section
   output_dir: html
   config:
     toolbar:
       position: static
+    toc:
+##      collapse: section
 bookdown::pdf_book:
   keep_tex: yes
+  toc: true
+  number_sections: true
+  includes:
+##     in_header: latex_header.tex
+##     before_body: title_page.tex
+  latex_engine: pdflatex
 

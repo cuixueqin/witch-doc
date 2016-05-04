@@ -1,8 +1,8 @@
-# (PART) Emissions and the climate  {-} 
+# Emissions and the climate
+ 
+## Greenhouse gas emissions
 
-# Greenhouse gas emissions
-
-## CO~2~ emissions
+### CO~2~ emissions
 
 Total CO~2~ emissions are the sum of CO~2~ emissions from fossil-fuel and industry and from land-use change
 minus emissions from avoided deforestation
@@ -31,7 +31,7 @@ caption = 'Emission symbolic terms'
 ```
 
 
-## Other greenhouse gas emissions
+### Other greenhouse gas emissions
 
 The other Kyoto greenhouse gases are CH4, N2O, short-lived and long-lived F-gases.
 
@@ -51,7 +51,7 @@ caption = 'Other GHG symbolic terms'
 )
 ```
 
-## Carbon market clearing
+### Carbon market clearing
 
 Globally, the sum of regional net import carbon permits 
 has to be equal to zero.
@@ -70,7 +70,7 @@ caption = 'Other GHG symbolic terms'
 )
 ```
 
-## Emission costs
+### Emission costs
 
 The CO~2~ emission costs are equal 
 to the carbon permit price times the amount of net import of carbon permits.
@@ -134,7 +134,7 @@ caption = 'CCS cost symbolic terms'
 )
 ```
 
-## Bank and borrowing
+### Bank and borrowing
 
 Permit emission savings are the sum of existing savings plus net emission savings
 

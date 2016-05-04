@@ -4,9 +4,9 @@ output:
     fig_caption: yes
 ---
 
-# (PART) The WITCH model {-} 
+# The WITCH model
 
-# General Framework
+## General Framework
 
 WITCH (World Induced Technical Change Hybrid) is an integrated assessment model designed to assess climate change mitigation and adaptation policies.
 It is developed and maintained at the [Fondazione Eni Enrico Mattei](http://www.feem.it) and the [Centro Euro-Mediterraneo sui Cambiamenti Climatici](http://www.cmcc.it). 
@@ -21,7 +21,7 @@ Climate change impacts the economic output through a damage function, depending 
 on the rate of investments in adaptation.
 This allows accounting for **the complete dynamic of climate change mitigation and adaptation**.
 
-## Methodology and features
+### Methodology and features
 
 WITCH represents the world in a set of representative native regions (or coalitions of regions);
 for each it generates optimal mitigation and adaptation strategies for the long term (from 2005 to 2100),
@@ -46,7 +46,7 @@ and the distance of each region from the technology frontier. This formulation o
 both decarbonization as well as energy savings.
 
 
-## Policy Applications
+### Policy Applications
 
 
 A distinctive feature of WITCH is the ability to assess the optimal response to climate policies

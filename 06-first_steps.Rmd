@@ -1,6 +1,6 @@
-# First Steps
+## First Steps
 
-## Quick Start
+### Quick Start
 
 Rename the file "call_default.gms" into "call.gms", or "call_policy.gms".
 Then call gams from this file using your favorite GAMS IDE, or run:
@@ -9,7 +9,7 @@ Then call gams from this file using your favorite GAMS IDE, or run:
 
 from the command line.
 
-## Computational issues
+### Computational issues
 
 The WITCH model is solved numerically using the GAMS environment.
 GAMS is a high-level modelling system for mathematical programming problems,

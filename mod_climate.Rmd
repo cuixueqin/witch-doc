@@ -1,4 +1,4 @@
-# Climate module
+## Climate module
 
 The climate module translates the regional emissions into global 
 temperature through atmospheric concentrations.
@@ -23,7 +23,7 @@ caption = 'Climate module symbolic terms'
 ```
 
 
-## World GHG emissions
+### World GHG emissions
 
 The regional emissions $Q_E(\text{ghg},t,n)$ are summed up into global emission $WE(\text{ghg},t)$ and converted into Gton equivalent carbon.
 
@@ -47,7 +47,7 @@ $$
  | slf   | 1430    | 
  | llf   | 22800   | 
 
-## Carbon-cycle
+### Carbon-cycle
 
 The carbon-cycle model is a 3-layer model calibrated to MAGICC [@MeinshausenRaperWigley2011], described in Equation **eqwcum_emi_co2**.
 The carbon dioxide emissions go into the atmosphere box **a** and alter
@@ -89,7 +89,7 @@ Initial CO2 stocks in 2005 are reported below.
  | $M_u(2005)$    | 1000    | 
 
 
-## Accumulation of non-CO2 ghg in the atmosphere
+### Accumulation of non-CO2 ghg in the atmosphere
 
 
 the non-CO2 greenhouse gases are accumulated in the atmosphere as follows:
@@ -110,7 +110,7 @@ where $d_1(\text{oghg})$ is the yearly retention factor, and $d_2(\text{oghg},t)
  | slf    | 0.931  | 4.3560 |             | 0.000347   | 
  | llf    | 0.9997 | 4.9969 |             | 0.000848   | 
 
-## Radiative Forcing
+### Radiative Forcing
 
 The radiative forcing of all greenhouse gases $F(t)$ are summed up in Equation **eqrf_tot**:
 
@@ -122,7 +122,7 @@ The exogenous radiative forcing from aerosols are based on the average response 
 
 ![](images/rf_aerosols.jpg)
 
-The CO2 radiative forcing is calculated according to the  [IPCC Third Assessement Report expressions](http://www.ipcc.ch/ipccreports/tar/wg1/222.htm#635),
+The CO2 radiative forcing is calculated according to the  [IPCC Third Assessement Report expressions](http://www.ipcc.ch/ipccreports/tar/wg1/222.htm##635),
 proportional to the natural logarithm of the ratio of the current concentration
 to preindustrial levels (Eq. **eqrf_co2**). $M_{\text{pre}}$ are the preindustrial CO$_2$ concentration level in GtC.
 
@@ -169,7 +169,7 @@ $$
  | fac       | 2.571 | 13.026 | 
 
 
-## Global temperature increase from pre-industrial levels
+### Global temperature increase from pre-industrial levels
 
 The temperature est determined by Equations **eqtemp_atm** and **eqtemp_low**
 

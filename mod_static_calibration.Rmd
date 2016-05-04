@@ -1,4 +1,4 @@
-# Static calibration
+## Static calibration
 
 This section explains the code contained in
 data/static_calibration.gms. By executing this file a static
@@ -8,7 +8,7 @@ observed values in the calibration year (i.e. 2005).  Since static
 calibration is repeated for each region independently, the index on
 region will be dropped on any symbol introduced in this section.
 
-## Nodes
+### Nodes
 
 The nest of WITCH production functions can be thought as a tree of
 nodes. The set of nodes considered in the static calibration is
@@ -55,7 +55,7 @@ code. The exceptions are:
 
 *  krd_en, mapped to variable K_RD('en').
 
-## Technologies and fuels
+### Technologies and fuels
 
 Energy leaf nodes corresponds to either single technologies with the
 same name (e.g. node elpv just represents technology elpv) or
@@ -75,7 +75,7 @@ Technologies may be fueled by one of these resources \(f\): oil, coal
 gas, uranium, traditional biofuel (trbiofuel) or traditional biomass
 (trbiomass).
 
-## Variables and parameters
+### Variables and parameters
 
 The symbols used for static calibration are introduced below. Data for
 input symbols are collected from various sources.
@@ -118,7 +118,7 @@ The unit of \(P_{0,i}\) and \(Q_{0,i}\) depends on \(i\).
  | l                        | T$/Million people   | Million people      | 
  | k and krd_en             | unitless            | T$                  | 
  
-## Initializations and assumptions
+### Initializations and assumptions
 
 ### Quantities
 
@@ -147,7 +147,7 @@ The unit of \(P_{0,i}\) and \(Q_{0,i}\) depends on \(i\).
 
 *  Prices for elwind, elpv and elcsp refer to 2015 values instead of 2005 values.
 
-## Equations
+### Equations
 
 ### Main equations
 
@@ -199,7 +199,7 @@ of multiple power plants, and thus potentially with different
 assumptions on depreciation and O&M, investment and fuel costs, a
 weighted avarage on the capital is considered.
 
-## Flags
+### Flags
 
 ### Interest rate as a variable
 
@@ -224,7 +224,7 @@ in 2015 obtained from one static calibration is used to adjust the
 input for the next iteration, until a certain convergence on the
 variables is obtained.
 
-## Output
+### Output
 
 After the solution of the system, and potential iterations if
 feedbacks are active, all the symbols in the table of section

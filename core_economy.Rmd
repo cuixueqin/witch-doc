@@ -1,6 +1,6 @@
-# The general economy 
+## The general economy 
 
-## Consumption
+### Consumption
 
 The single argument of the utility function is per-capita consumption of the representative agent in each region. Total consumption  $C$ is thereby given through the budget constraint from output net of climate impacts and emission costs (see below) $Y$ subtracting the investments in
 
@@ -45,7 +45,7 @@ caption = 'Economic symbolic terms'
 )
 ```
 
-## Output
+### Output
 
 Output $Y$ is produced via a nested CES function that combines a capital-labor
 aggregate $KL$ and energy services $ES$.
@@ -89,7 +89,7 @@ caption = 'Output symbolic terms'
 )
 ```
 
-## Capital
+### Capital
 
 The capital stock in the final good sector accumulates following the standard perpetual rule.
 
@@ -109,7 +109,7 @@ caption = 'Capital symbolic terms'
 )
 ```
 
-## Energy Services
+### Energy Services
 
 Energy services $ES$ are provided by a combination of physical energy input
 and a stock of energy efficiency knowledge.
@@ -144,7 +144,7 @@ caption = 'Energy Services symbolic terms'
 )
 ```
 
-## Energy
+### Energy
 
 [Eq. **eqq_en**]
 Energy used in the economy is a combination of electricity and non-electric energy.

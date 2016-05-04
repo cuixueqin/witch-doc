@@ -1,14 +1,14 @@
-# Dynamic calibration of Productivity and Energy Demand
+## Dynamic calibration of Productivity and Energy Demand
 
 Once the nested production function of the economy is calibrated using the price and quantity data of the base year, the dynamic calibration module is used to calibrate crucial input parameters that change over the time horizon. The idea is to replicate certain stylized facts about the dynamics of crucial variables to calibrate parameters that have not (yet) been endogenized in the model. 
 For the moment, this includes three main series of parameters: population, total factor productivity $tfpy(n,t)$, and the productivity of energy (the inverse of energy intensity) $tfpn(n,t)$.
 
 
-## Population
+### Population
 
 **Population** forecasts are taken from the common scenarios that have been developed at IIASA (International Institute for Applied Systems Analysis) and the OECD based on individual country forecasts. We use the OECD projection developed for the SSP2 "middle of the road" scenario aggregated over WITCH regions.
 
-## Total Factor Productivity
+### Total Factor Productivity
 
 Similarly, **GDP** baseline projections have been developed at the OECD and are common across different models. These GDP baseline forecasts are done using Purchasing Power Parities (PPP) and for individual countries. We convert the data into USD using market exchange rates using the conversion factor of 2005. Given that current calibration of all prices and quantities is in MERs and projecting PPP/MER convergence rates is notoriously difficult, for now we keep the exchange rates kept constant and aggregate the MER converted series over WITCH regions, denoted by $Y_{kali}(n,t)$.
 
@@ -16,7 +16,7 @@ The GDP projected by the model is then used to calibrate the time series of tota
 All baseline data can be accessed at the [SSP database](https///secure.iiasa.ac.at/web-apps/ene/SspDb). The total number of countries available from the database is 184 and thus covering over 95 of the world population.
 
 
-## Energy Intensity
+### Energy Intensity
 
 In order to calibrate energy demand across regions and over time, an estimated energy demand elasticity is used to compute total primary energy supply (PES) across regions and over the time horizon.
 The calibration of factor productivity of energy services (tfpn) is run based on the SSP2 default scenario. The following income elasticity rule is used for the different regions:

@@ -1,6 +1,6 @@
-# Model scope
+## Model scope
 
-## Energy Sector
+### Energy Sector
 
 The [energy sector](mod_energy) is fully integrated with the rest of the economy.
 It is distinguished in an electric sector, a transportation sector, and an aggregated non-electric (industry, services and residential) sectors.
@@ -31,7 +31,7 @@ Folowing power plant techonologies are included:
 
 Technologies that are subject to endogenous technological change are: advanced biomass, wind, solar, advanced nuclear. Overall energy efficiency is also subject to endogenous technical change.
 
-## Land Use Sector
+### Land Use Sector
 
 The [land use](mod_landuse) sector is represented in the WITCH model through a soft-linkage with the [GLOBIOM](http://www.globiom.org/) land use and forestry model.
 [GLOBIOM](http://www.globiom.org/) is emulated via a response function
@@ -39,7 +39,7 @@ obtained from a large number of scenarios varying the price of biomass (both res
 [GLOBIOM](http://www.globiom.org/) also provides to WITCH the quantity of biomass, the CO~2~ emissions from deforestation and afforestation, CH~4~ and N~2~O emissions from agriculture.
 
 
-## Greenhouse gases and air pollutants
+### Greenhouse gases and air pollutants
 
 The model computes many emissions species,
 either directly, or assuming exogenous assumptions.
@@ -60,7 +60,7 @@ direct abatement via MAC or end of pipe measures via emission factors.
  | CO        | Partially endogenous | Emissions factors    | 
  | NH~3~     | Exogenous            | RCP database         | 
 
-## Regions
+### Regions
 
 The original version of the model has 13 regions consistent on the basis of
 geography, income and the structure of energy demand.
@@ -84,7 +84,7 @@ geography, income and the structure of energy demand.
  | te      | Non-EU Eastern European countries, including Russia | 
  | usa     | United States of America                            | 
 
-## Coalitions
+### Coalitions
 
 
 WITCH features any regional cooperations in the so-called coalitions.
@@ -106,7 +106,7 @@ cooperative solution can also be implemented. More precisely, the Nash
 equilibrium is the outcome of a non-cooperative, simultaneous, open membership game with full
 information. Through the optimization process regions choose the optimal dynamic path of a set of control variables, namely investments, primary energy supply, oil market price and permit market price.
 
-## Temporal process
+### Temporal process
 
 The base year is 2005. The time horizon is 150 years, with 30 periods of 5-year time step. Longer time horizon can also be run until 2300 to avoid any end-of-horizon effect, but 2150 is generally sufficient.
 Results are usually reported for the period 2005-2100 and the periods 2005, 2010 and 2015 are calibrated to the energy and economical statistics when available.

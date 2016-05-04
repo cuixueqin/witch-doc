@@ -1,4 +1,4 @@
-# Production function
+## Production function
 
 The production side of the economy is very aggregated.
 Each region produces one single commodity that can be used for consumption or investments.

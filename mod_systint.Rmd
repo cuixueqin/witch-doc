@@ -1,9 +1,9 @@
-# System integration
+## System integration
 
 The system integration module is dedicated to modelling the issues related to the integration of variable renewable energies (VRE) - specifically wind and solar photovoltaics (PV) - into the electrical grid.  
 
 
-## System integration
+### System integration
 
 The relevant variables and parameters in this section are:
 
@@ -75,7 +75,7 @@ $$
 	\sum_{jel} Q_{EN}(jel,t,n) \times f(jel) + Q_{EN}(el,t,n) \times f(LOAD) \geq 0 
 $$
 
-## Electrical grid
+### Electrical grid
 
 The relevant variables and parameters in this section are:
 

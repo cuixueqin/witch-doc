@@ -1,6 +1,6 @@
-# (PART) Fossil Fuel Resources {-} 
+# Fossil Fuel Resources
 
-# Oil extraction
+## Oil extraction
 
 This module is dedicated to modelling conventional and unconventional crude oil investment and extraction in the WITCH model [@MassettiSferra2010]. Producing one unit of crude oil requires at least one unit of extractive capital. Extraction capital is accumulated through (irreversible) investments that depreciate exponentially. The rate of capital ultilisation may be equal to or less than 100%. Emissions associated with oil extraction are also calculated. 
 
@@ -18,7 +18,7 @@ caption = 'Oil extraction symbolic terms'
 )
 ```
 
-## Oil production
+### Oil production
 
     
 Production of crude oil cannot exceed the extraction capacity available for any given category in any given region. However, capacity may be underused if the rate of production is falling rapidly.
@@ -28,7 +28,7 @@ $$
 
 Cumulative oil production (**CUM_OIL**) in each category in each region is bounded by the total oil resources in place (**resmax_oil**).
 
-## Extraction capacity
+### Extraction capacity
 
 The oil extraction capacity is built cumulatively over time. It is subjected to depreciation rate, and it can be increased by means of dedicated investment in the oil extraction sector. 
 
@@ -42,7 +42,7 @@ For the current version of WITCH, the depreciation rate parameter  $\delta_{oilg
 In the base year (2005) both oil capacity and oil production are assumed to be equal to the observed extraction data 
 (source: Enerdata).
 
-## Oil investment cost
+### Oil investment cost
 
 Investments for oil extraction are equal to the expenditure for financing the expansion of oil capacity ($\Delta CAP$):
 $$
@@ -79,7 +79,7 @@ For the current version of WITCH, the following parameters are used by default:
  | $\theta$        | 1             | 
  | $\chi$          | 3             | 
 
-## Emission from Oil extraction
+### Emission from Oil extraction
 
 Emissions from the oil extraction sector are obtained using a stoichiometric coefficient for oil combustion. We assume that the ratio of extraction to combustion emissions increases by category and that there are no extraction emissions for the first category. The idea behind this assumption is that non conventional oil requires higher consumption of energy for extraction, and thus higher emissions. 
 

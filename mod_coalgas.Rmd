@@ -1,9 +1,9 @@
-# Coal and Gas extraction and trade
+## Coal and Gas extraction and trade
 
 The trade module introduces fossil fuel extraction for coal and gas in the WITCH model. 
 Trade (net import of fossils) emerges as the difference between consumption and fossil fuel extraction.
 
-## Fossil fuel availability curves
+### Fossil fuel availability curves
 
 Extraction of coal and gas is modelled by means of fossil fuel availability curves, which define the relationship between cumulative extraction and the cost of producing fossil fuels.
 In fact, under the hypothesis of perfect competition in the markets, marginal costs equal fuel price, and therefore it is possible to determine the optimal amount of cumulative extraction at the regional level (**cum_prodpp**), associated to the international price (**FPRICE**). 
