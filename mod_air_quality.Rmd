@@ -5,6 +5,7 @@ emission levels. It originates from the LIMITS project and
 its emission factors originate from TIMER technological model using GAINS emission factors. 
 
 The current version uses [SSP2](ssp_implementation) as the BAU scenario, according to Fig. 1.
+
 ![](images/immagine_bau.png)
 
 The air pollutants **aqe** are : carbon monoxide **CO**, methane **CH4**, 
@@ -63,7 +64,7 @@ All the air pollution emissions are scaled in such way that the 2005 value corre
 
 ### AQ_kuznets
 
-In this branch the emission factors are controlled endogenously, its implementation follow the methodology applied by smith et al, 2005.
+In this branch the emission factors are controlled endogenously, its implementation follow the methodology applied by @SmithPitcherWigley2005.
 $$
  ef_{j,p}(t)=ef_{j,p}^{'}(t)\left ( 1 - fc_{j,p}(t) \right )
 $$
@@ -92,9 +93,3 @@ $$
 ef_{j,p}(t) = (-ef_{j,p,\text{BAU}}(t) + ef_{j,p,\text{MFR}}(t))*reduca + ef_{j,p,\text{BAU}}(t),
 $$
 where $reduca$ is the fraction of reduction due to EOP measures.
-
-## References
-
-Smith, S., Pitcher, H., & Wigley, T. (2005). Future Sulfur Dioxide Emissions. Climatic Change, 73, 267-318.\\
-
-

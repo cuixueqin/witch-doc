@@ -99,4 +99,3 @@ The fossil fuel supply curves are taken from the [ROSE project](http://www.rose-
 ![ROSE supply curves](images/rose_curves.png)
 
 The supply curves have been approximated regionally using nth-order polynomials.
-

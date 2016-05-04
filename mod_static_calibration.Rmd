@@ -141,13 +141,13 @@ The unit of \(P_{0,i}\) and \(Q_{0,i}\) depends on \(i\).
 
 *  Non-electric energy leaf nodes have a price equal to the \(FC_{0,f}\) of the their corresponding fuel \(f\), which in turn are equal to a world price plus a regional markup.
 
-*  Price of labour is assumed to be a constant fraction of the GDP per capita:
-
-<!--$ P_{0,L} = 0.7 \frac{Q_{0,YCES}}{Q_{0,l}} $.--> 
-
 *  Prices for elwind, elpv and elcsp refer to 2015 values instead of 2005 values.
 
-### Equations
+*  Price of labour is assumed to be a constant fraction of the GDP per capita.
+
+$$P_{0,L}=0.7 \frac{Q_{0,YCES}}{Q_{0,l}}$$
+
+## Equations
 
 ### Main equations
 
@@ -177,7 +177,8 @@ $$ P_{0,\text{K}} = R + (1-(1-\delta_{\text{FG}})^{\Delta_t})/\Delta_t $$
 
 The **price of capital of energy efficiency R&D** is the same as above
 times the crowding out factor of R&D \(\phi\) (eq_price_of_capital_rnd).
-<!-- $$ P_{0,\text{KRD_EN}} =  \phi (R + (1-(1-\delta_{\text{RD}})^{\Delta_t})/\Delta_t) $$--> 
+
+$$ P_{0,KRD_EN} =  \phi (R + (1-(1-\delta_{RD})^{\Delta_t})/\Delta_t) $$
 
 The **price of electricity** for generation technologies without fuel
 costs is given by the sum of the price of capital (dependant on the
