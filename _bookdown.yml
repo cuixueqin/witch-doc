@@ -31,8 +31,7 @@ rmd_files:
 
   - "ssp_implementation.Rmd"
   - "ssp_results.Rmd"  
-
-  - "references.Rmd"
   
   - "05-model_design.Rmd"
 
+  - "references.Rmd"

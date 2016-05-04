@@ -2,18 +2,18 @@
 
 ## Welfare function
 
-In WITCH, a social planner maximises the total discounted welfare $W$ of each coalition $clt$.
+In WITCH, a social planner maximises the sum of regional discounted utility $W$ of each coalition $clt$.
 The regional utility function at any point in time and each region is based on a power or 
-constant relative risk aversion (CRRA) function of the consumption per capita. 
-Given the type of cooperation, the objective function can take different forms.
+constant relative risk aversion (CRRA) utility function derived from consumption per capita. 
+For different coalitions, the non-cooperative solution, and the globally optimal mode, the objective function can take different forms based on the implied set of coalitions $clt$.
 
 ### Utility function
 
-For each region $n$, intertemporal utility is computed as discounted sum of utility: 
+For each region $n$, intertemporal utility is computed as discounted sum of utility based on a utility function with a degree of relative risk aversion of $\eta$: 
 
 $$ W(n) = \sum_{t} l(t,n) \frac{\left(\frac{C(t,n)}{l(t,n)}\right)^{1-\eta}-1}{1-\eta} \beta^t. $$
 
-The pure time preference discount factor $\beta$ in any case is given by the geometric discounting rule:
+The pure time preference discount factor $\beta$ is given by the standard geometric discounting rule:
 
 $$ \beta = ({1+\rho})^{\Delta_{t}} $$
 
@@ -25,9 +25,9 @@ where $\Delta_{t}=5$ is the duration of one time step in years.
 The WITCH model can be run in a non-cooperative mode, where each region $n$ acts as one player maximising its welfare. In this case, the set of players or coalitions $clt$ consists each of a single region.
 
 In the cooperative mode, different coalitions can be formed including the Grand Coalition containing all regions.
-With cooperation, there are hence one or several coalitions $clt$, who maximise welfare in their member region(s). The coalition $clt$ maximises a sum of the welfare of the member regions. There are several welfare concepts admissible to aggregate welfare across coalition members. 
+With cooperation, there are hence one or several coalitions $clt$, who maximise total welfare in their member region(s). The coalition $clt$ maximises a sum of the welfare of the member regions. There are several welfare concepts admissible to aggregate welfare across coalition members. 
 
-The default option is a (disentangled) Utilitarian solution, taking into account inequality across regions through a degree of inequality aversion. This welfare concept is related to Epstein-Zin preferences and welfare of a coalition $clt$ is given by the equation
+The default option is a (disentangled) Utilitarian solution, taking into account inequality across regions through a degree of inequality aversion. This welfare concept is related to Epstein-Zin preferences [@Epstein_Zin_1989] and welfare of a coalition $clt$ is given by the equation
 
 $$ W(clt)= \sum_{t=1}^{T} \left[\frac{1}{1-\eta}\left(\left(\sum_{n \in clt}l(t,n) (\frac{C(t,n)}{l(t,n)} \right )^{1-\gamma}\right)^{\frac{1-\eta}{1-\gamma}}-1\right] \beta^t $$
 
@@ -49,7 +49,7 @@ caption = 'Welfare symbolic terms'
 )
 ```
 	
-For the current version of WITCH, the parameters are reproduced in Table \@ref(tab:welfparam).
+For the current version of WITCH, the parameters are based on an overview of recent contributions in the literature on discounting, with an intermediate parametrizations of a one per cent utility discount rate and a degree of constant risk aversion of 1.5. The full parametrization is reproduced in Table \@ref(tab:welfparam).
 
 ```{r welfparam, echo=F, tidy=FALSE}
 library(data.table)
