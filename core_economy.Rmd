@@ -35,15 +35,6 @@ where
 
 *  Fossil fuels are denoted $f$
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 9:22,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Economic symbolic terms'
-)
-```
 
 ### Output
 
