@@ -1,7 +1,3 @@
----
-output: pdf_document
----
-
 # Traditional Biomass
 
 Traditional Biomass: definition and key facts
