@@ -35,16 +35,6 @@ where
 
 *  Fossil fuels are denoted $f$
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 9:22,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Economic symbolic terms'
-)
-```
-
 ### Output
 
 Output $Y$ is produced via a nested CES function that combines a capital-labor
@@ -79,15 +69,6 @@ Total factor productivity $tfpy(t,n)$ is dynamically calibrated and evolves exog
 Labor $l$ is assumed to be equal to to population, thus assuming no unemployment.
 Finally, the parameter $tfp0(n)$ is calibrated to match GDP in the base year.
 
-```{r output, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 23:31,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Output symbolic terms'
-)
-```
 
 ### Capital
 
@@ -98,16 +79,6 @@ $$
                  \Delta_{\text{t}}\times I_{FG}(t,n)
 $$
 
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 32:33,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Capital symbolic terms'
-)
-```
 
 ### Energy Services
 
@@ -134,16 +105,6 @@ $$
 The CES parameters $\phi_{ES}(n)$, $\alpha_{ES}(n)$, and $\rho_{ES}$ are calibrated for each region, see [Static Calibration](static_calibration). The factor productivity of energy $tfpn(t,n)$ is calibrated in the [Dynamic calibration](mod_dynamic_calibration).
 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 34:36,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Energy Services symbolic terms'
-)
-```
-
 ### Energy
 
 [Eq. **eqq_en**]
@@ -159,13 +120,4 @@ $$
 
 Each factor is further decomposed into several sub-components. The components are aggregated using CES, linear and Leontief production functions, which is described in detail in the [Energy module](mod_energy).
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 37:38,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Energy Services symbolic terms'
-)
-```
 

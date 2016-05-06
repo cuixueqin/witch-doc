@@ -21,16 +21,6 @@ $$
     + \Big(\omega_{1,n}^+T(t,n) + \omega_{2,n}^+T(t,n)^{\omega_{3,n}^+}+\omega_{4,n}^+\Big)
 $$	
   
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 112:116,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Damage symbolic terms'
-)
-```    
-    
 To compute the economic damages measured as percentage of GDP, they can be computed from $\Omega(t,n)$ readily as 
 
 $$

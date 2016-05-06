@@ -17,13 +17,3 @@ $$
     NEL_{nelback}(t+1,n)
 $$
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 81,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Non-electric backstop symbolic terms'
-)
-```
-

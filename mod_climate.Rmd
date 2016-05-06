@@ -12,17 +12,6 @@ The greenhouse gases **ghg** are : carbon dioxide **CO2**, methane **CH4**,
 oxide nitrous **N2O**, short-lived greenhouse gases **slf**, 
 long-lived greenhouse gases **llf**.
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 85:91,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Climate module symbolic terms'
-)
-```
-
-
 ### World GHG emissions
 
 The regional emissions $Q_E(\text{ghg},t,n)$ are summed up into global emission $WE(\text{ghg},t)$ and converted into Gton equivalent carbon.

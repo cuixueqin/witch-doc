@@ -50,14 +50,5 @@ TPES_{kali}(n,t)=TPES_{kali}(n,t-1)\times(1+\varepsilon_{Y,E}(n,t))\left(\frac{Y
 During the process of the dynamic calibration, the model is run and iteratively both factor productivity parameters are updated until the projected GDP and total primary energy demand  converge sufficiently close to the calibration values.
 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 173:177,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Capital accumulation symbolic terms'
-)
-```
 
 

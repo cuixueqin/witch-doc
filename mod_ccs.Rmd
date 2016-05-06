@@ -24,16 +24,6 @@ $$
 $$
 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 82:83,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Emission Storage symbolic terms'
-)
-```
-
 ### Emission cost
 
 CCS transport and storage is function of the cumulative sequestrated emissions. 
@@ -41,14 +31,4 @@ CCS transport and storage is function of the cumulative sequestrated emissions.
 $$
     C_{CCS}(n,t) = a_{CCS}(n) e^{\alpha_{CCS}(n) \times M_{CCS}(t,n)^{\beta_{CCS}(n)}}
 $$
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 84,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'CCS cost symbolic terms'
-)
-```
 

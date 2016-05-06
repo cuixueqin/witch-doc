@@ -19,16 +19,6 @@ In addition, international spillovers of knowledge are
 accounted for to mimic the flow of ideas and knowledge across
 countries. 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 117:127,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Knowledge symbolic terms'
-)
-```
-
 ### Knowledge stock for energy efficiency
 
 [Eq. **eqk_rd_en**]

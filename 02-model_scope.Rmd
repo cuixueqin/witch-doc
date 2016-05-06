@@ -67,6 +67,8 @@ geography, income and the structure of energy demand.
 
 ![WITCH original regions](images/map_witch.png)
 
+The following table describes the regional compositions.
+
 
  | Region  | Countries                                           | 
  | ------  | ---------                                           | 

@@ -41,17 +41,6 @@ The penetration of PV technologies is subject not only to cost considerations, b
 
 Differently from the two wind technologies, which are by definition installed in two different areas, PV and CSP partially compete for the same land. Indeed, CSP requires types of ground characterized by a lower slope, so the curves provide information on the "PV-only" area and the "Competition" area, where both PV and CSP can be installed. The module thus reports the total installable PV capacity (PV-only + Competition) and the total installable CSP capacity(Competition), but adds a constraint on land occupation in the Competition area.
 
-The relevant variables and parameters in this section are:
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 158:160,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Solar power symbolic terms'
-)
-```
 
 In formula [Eq. **eqk_en_solar_comp**]: 
 

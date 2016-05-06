@@ -1,0 +1,60 @@
+
+%\renewcommand*{\@fnsymbol}[1]{\ifcase#1\or*\else\@arabic{\numexpr#1-1\relax}\fi}
+
+\title{The WITCH 2016 Model - Documentation and Implementation of the Shared
+Socioeconomic Pathways}
+
+
+\author{Johannes Emmerling\thanks{Fondazione Eni Enrico Mattei (FEEM) and Centro Euromediterraneo sui
+Cambiamenti Climatici (CMCC), Corso Magenta 63, 20123 Milano, Italy.}~\thanks{E-Mail: johannes.emmerling@feem.it. For any inquiries about the WITCH
+model, please contact witch@feem.it.}, Laurent Drouet$^{*}$, Lara Aleluia Reis$^{*}$, Michela Bevione$^{*}$,
+\and Loic Berger$^{*}$\thanks{Bureau F�d�ral du Plan, Avenue des Arts, 47-49, 1000 Bruxelles, Belgium.}
+, Valentina Bosetti$^{*}$\thanks{Bocconi University, Via Roberto Sarfatti, 25, 20136 Milano, Italy.}
+, Samuel Carrara$^{*}$, Enrica De Cian$^{*}$, \and Gauthier De
+Maere D'Aertrycke$^{*}$\thanks{Engie, Boulevard Simon Bolivarlaan 34, 1000 Bruxelles, Belgium.}
+, Tom Longden$^{*}$\thanks{University of Technology Sydney, 15 Broadway, Ultimo NSW 2007, Australia.}
+, Maurizio Malpede$^{*}$, \and Giacomo Marangoni$^{*}$, Fabio Sferra$^{*}$\thanks{Climate Analytics, Friedrichstra�e 231, 10969 Berlin, Germany.}
+~, Massimo Tavoni$^{*}$\thanks{Politecnico di Milano, Via Raffaele Lambruschini, 4/B, 20156 Milano,
+Italy.} ~, \and Jan Witajewski-Baltvilks$^{*}$\thanks{Institute for Structural Research, Rejtana 15 lok. 28, 02-516 Warsaw,
+Poland. }, Petr Havlik\thanks{International Institute for Applied Systems Analysis (IIASA), Schlossplatz
+1, 2361 Laxenburg, Austria.}}
+\maketitle
+\begin{abstract}
+This paper describes the WITCH - World Induced Technical Change Hybrid
+- model in its structure, calibration, and the implementation of the
+SSP/RCP scenario implementation. The WITCH model is a regionally disaggregated
+hard-linked model based on a a Ramsey type optimal growth model and
+a detailed bottom-up energy sector model. A particular focus of the
+model is the modeling or technical change and RnD investments and
+the analysis of cooperative and non-cooperative climate policies.
+Moreover, the WITCH 2016 version now includes land-use change modeling
+based on the GLOBIOM model, and air pollutants, as well as detailed
+modeling of the transport sector and the possibility for stochastic
+modeling. This version has been also used to implement the Shared
+Socioeconomic Pathways (SSPs) set of scenarios and RCP based climate
+policies to provide a new set of climate scenarios. In this paper,
+we describe in detail the mathematical formulation of the WITCH model,
+the solution method and calibration, as well as the implementation
+of the five SSP scenarios. This report therefore provides detailed
+information for interested users of the model, and for understanding
+the implementation of the different ``worlds'' of the SSP.
+
+\textbf{Keywords:} Integrated Assessment Model, SSPs, Climate Change,
+Scenarios
+
+\textbf{JEL Classification: }Q54, C63
+
+quote as
+
+Emmerling J, Drouet L, Aleluia Reis L, Bevione M, Berger L, Bosetti
+V, Carrara S, De Cian E, De Maere D'Aertrycke G, Longden T, Malpede
+M, Marangoni G, Sferra F, Tavoni M, Witajewski-Baltvilks J, Havlik
+P (2016) The WITCH 2016 Model - Documentation and Implementation of
+the Shared Socioeconomic Pathways, FEEM Nota di Lavoro 42.2016.
+
+or
+
+Emmerling J, Drouet L, et al. (2016) The WITCH 2016 Model - Documentation
+and Implementation of the Shared Socioeconomic Pathways, FEEM Nota
+di Lavoro 42.2016.\end{abstract}
+

@@ -39,16 +39,6 @@ where $w_{t,n}$ are the time- and region-specific Negishi weights which are comp
 
 $$ w_{t,n}=\frac{\frac{1}{c(t,n)^{\eta}}}{\sum_{n' \in clt}\frac{1}{c(t,n')^{-\eta}}}. $$
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 1:5,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Welfare symbolic terms'
-)
-```
-	
 For the current version of WITCH, the parameters are based on an overview of recent contributions in the literature on discounting, with an intermediate parametrizations of a one per cent utility discount rate and a degree of constant risk aversion of 1.5. The full parametrization is reproduced in Table \@ref(tab:welfparam).
 
 ```{r welfparam, echo=F, tidy=FALSE}

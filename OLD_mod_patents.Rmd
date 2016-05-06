@@ -19,16 +19,6 @@ In addition, international spillovers of knowledge are
 accounted for to mimic the flow of ideas and knowledge across
 countries. 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 117:127,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Knowledge symbolic terms'
-)
-```
-
 ### Knowledge stock for energy efficiency
 
 [Eq. **eqk_rd_en**]
@@ -96,16 +86,6 @@ where $lbr\_rate$ and $lbd\_rate$ are learning by doing and learning by searchin
 
 
 ### Innovations
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 128:132,.(Symbol,Definition,GAMS)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Innovation symbolic terms'
-)
-```
 
 $$
 \frac{PAT(t,n)}{pat0(n)} = \left(\frac{K_{PAT}(t,n)}{kpat0(n)}\right)^{\beta_{spill domestic}}

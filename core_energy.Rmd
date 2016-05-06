@@ -42,16 +42,6 @@ On the other hand the investment costs $SC$  for backstop technologies are compu
 
 The aforementioned methodology is shown in [Research and Development](mod_knowledge)
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 39:42,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Capital accumulation symbolic terms'
-)
-```
-
 Given that we use a standard exponential depreciation rule, we calibrate the depreciation rate $\delta_j(t,n)$ based on a finite lifetime of the power plant with a linear depreciation rate of 1% per year until the end of the life time and full depreciation thereafter. Based on realistic plant specific life times, the exponential depreciation rate is computed euqalizing the integral of both depreciation schedules, in order to obtain the equivalent potential output from the capacity.
 
 ### Production in electric sector
@@ -79,15 +69,6 @@ $$
                            \right)^{\frac{1}{\rho_{elff}}(n)}
 $$
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 43:51,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Electric production symbolic terms'
-)
-```
 
 ### Non-electric energy technology sectors
 
@@ -120,15 +101,6 @@ $$
                            \right)^{\frac{1}{\rho_{nelog}}(n)}
 $$
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 52:58,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Electric production symbolic terms'
-)
-```
 
 ### Primary Energy Supply
 
@@ -138,16 +110,6 @@ $$
     Q_f(t,n) = \sum_j Q_{j,f}(t,n)
 $$
 
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 59:60,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'PES symbolic terms'
-)
-```
 
 ### Trade balance of energy
 
@@ -160,15 +122,6 @@ $$
 $$
 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 61:62,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Energy balance symbolic terms'
-)
-```
 
  1.  If the country is a net exporter, $X_f$ is negative.
  2.  In the current version, the fuel trades happen only for oil.
@@ -183,16 +136,6 @@ $$
 	              p_f(t) \times X_f(t,n)
 $$
 
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 63:67,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Fuel cost symbolic terms'
-)
-```
 
 The price of fossil fuels and exhaustible resources (oil, gas, coal and
 uranium) is determined by the marginal cost of
@@ -210,16 +153,6 @@ $$
 $$
 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 68:70,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Electric poduction capacity symbolic terms'
-)
-```
-
 ### Constraint on new capacity of electric backstop
 
 Breakthrough in power generation technologies is modelled by introducing
@@ -234,16 +167,6 @@ $$
 $$
 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 71:72,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Electric backstop symbolic terms'
-)
-```
-
 ### Efficiency of the energy technology sectors
 
 The production capacity is equal to the energy consumed times the overall efficiency ratio of the sector $\xi$ (**csi**).
@@ -252,16 +175,6 @@ $$
     Q_j(t,n) = \sum_f \xi_{j,f}(t,n) \times Q_{j,f}(t,n)
 $$
 
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 73:75,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Efficiency related symbolic terms'
-)
-```
 
 
 ### Energy tree
@@ -274,12 +187,3 @@ $$
 where $succ(j)$ are the successors of $j$ in the energy tree.
 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 73:75,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Energy tree related symbolic terms'
-)
-```

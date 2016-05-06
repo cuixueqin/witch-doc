@@ -14,16 +14,6 @@ The vehicle types **jveh** are:
 
 *  electric drive vehicles **edv**.
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 147:157,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Oil extraction symbolic terms'
-)
-```
-
 The figure below shows how the structure of the LDV transport sector fits within WITCH.
 The composition of vehicle types (denoted in the figure as Veh-K) is determined by a Leontief function of a range of different costs. 
 These comprise the vehicle cost, including battery cost ($/kWh), O&M costs, fuel costs and any associated carbon costs based on the fuel mix within the sector.

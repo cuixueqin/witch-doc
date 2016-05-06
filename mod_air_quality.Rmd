@@ -23,15 +23,6 @@ $$
 $$
 where $j$ are the WITCH sectors and $p$ is the pollutant.
 
-```{r, echo=F}
-library(data.table)
-tab = fread("mod_airquality_timer.csv",sep=",",header=T)
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Matching technologies WITCH/TIMER for air quality pollutants factors'
-)
-```
-
 The emission factors are then aggregated, with a weighted mean, according to their CO$_2$ emissions.
 
 In the WITCH model we use the activities related with the fuel use and the type of electricity generation technologies
@@ -44,15 +35,6 @@ where $ef_{j,p}(t)$ is the controlled emission factor for activity category j an
 The $ef_{j,p}(t)$ are defined per air pollution scenario, which correspond to different levels of End-of-Pipe (EOP) measures. The air pollution scenarios are CLE (current legislation), SLE (stringent legislation) and MFR (maximum feasible reduction). The CLE scenario corresponds to the implementation until 2030 of all the legislation already (in 2013) foreseen for that period; The SLE scenario foresees the implementation of 75% of the MFR scenario which corresponds to the maximal technological frontier of EOP. 
 
 The emissions of the exo-sectors (sectors that are related to energy but are not accounted in the model directly, see the following table), are taken from TIMER directly and set exogenously. 
-
-```{r, echo=F}
-library(data.table)
-tab = fread("mod_airquality_timer_exo.csv",sep=",",header=T)
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Matching technologies WITCH/TIMER for exogenous air pollutants emission'
-)
-```
 
 The pollutant NH~3~ and some sectors such as Solvents, Waste (landfills, waste water, non-energy incineration), Agriculture waste burning on fields, Agriculture, Grassland burning and Forest burning are completely exogenous to the model. Their emissions follow the RCP8.5 emissions.
 

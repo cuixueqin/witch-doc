@@ -5,18 +5,7 @@ The system integration module is dedicated to modelling the issues related to th
 
 ### System integration
 
-The relevant variables and parameters in this section are:
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 161:167,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'System integration symbolic terms'
-)
-```
-
+The relevant variables and parameters in this section are given in the appendix.
 
 The limitation to VRE penetration into the electrical grid is modelled through two constraints, described in @SullivanKreyRiahi2013.
 
@@ -77,17 +66,6 @@ $$
 
 ### Electrical grid
 
-The relevant variables and parameters in this section are:
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 168:172,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'System integration symbolic terms'
-)
-```
 
 Analogously to the power generation technologies, grid capital accumulates as follows:
 

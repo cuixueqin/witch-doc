@@ -8,16 +8,6 @@ Unit costs of extractive capacity are increasing in both cumulative extraction a
 
 The WITCH model database provides for eight grades of oil resources in each region. (A more aggregated set of four grades has also been defined and can be used instead if desired.) Higher grades have higher base unit costs of extractive capacity and higher CO~2~ emissions coefficients. The higher costs are intended to reflect both increasingly difficult geologies and increasing difficulty and uncertainty of discovery. 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 133:141,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Oil extraction symbolic terms'
-)
-```
-
 ### Oil production
 
     
@@ -61,16 +51,6 @@ $$
 $$
 
 
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 142:145,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Oil investment symbolic terms'
-)
-```
-
 For the current version of WITCH, the following parameters are used by default:
 
  | Symbol          | Default value | 
@@ -82,16 +62,6 @@ For the current version of WITCH, the following parameters are used by default:
 ### Emission from Oil extraction
 
 Emissions from the oil extraction sector are obtained using a stoichiometric coefficient for oil combustion. We assume that the ratio of extraction to combustion emissions increases by category and that there are no extraction emissions for the first category. The idea behind this assumption is that non conventional oil requires higher consumption of energy for extraction, and thus higher emissions. 
-
-```{r, echo=F}
-library(data.table)
-sym_witch = fread("symbols.csv",sep=",",header=T)
-tab = sym_witch[id %in% 146,.(Symbol,Definition,GAMS,Unit)]
-knitr::kable(
-tab, booktabs = TRUE,
-caption = 'Emission from Oil extraction symbolic terms'
-)
-```
 
 Total emissions are then computed by summing the quantities emitted over all categories
 
