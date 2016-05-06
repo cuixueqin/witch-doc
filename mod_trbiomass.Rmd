@@ -1,0 +1,51 @@
+---
+output: pdf_document
+---
+
+# Traditional Biomass
+
+Traditional Biomass: definition and key facts
+
+Brief introduction on the importance of including Traditional Biomass in a IAM
+
+## Traditional Biomass and Economic Growth
+
+First we model the correlation between economic growth and use of tradional biomass as source of energy.
+As fully discussed in the literature (references) the economic growth is inversely related with demand of biomass.
+
+The parameter is represented as follows:
+
+$$ r = min \left(1, \quad \alpha + \beta \cdot \ln \left( GDP_{PPP} \right)  \right)  $$
+
+
+As previously stated the above function takes as maximum value 1. The reason of this upper bound is that the quantity supply of traditional biomass cannot exeed the total primary energy suuply. 
+
+##Traditional Biomass and Total Primary Energy Supply
+
+The next step is then to represent the share of traditional biomass on total primary energy supply taking into account the relationship between traditional biomass and GDP growth over time. Such share is thus represented as follows:
+
+$$ \phi_{n} = \left(\frac{Q_{trbiomass_{t_{0}}}}{TPES_{t_{0}}}\right) \cdot \left( \frac{1}{r}\right)$$
+
+where $Q_{trbiomass_{t_{0}}}$ is the supply quantity of traditional biomass at time $t_0$ which is used to calibrate the model.
+
+## Primary Energy Suppy of Traditional Biomass
+
+Finally quantity of primary energy supply of traditional biomass at time $t$ and for each witch region $n$ is defined as follow:
+
+$$ Q_{trbiomass, t, n} = TPES_{t,n} \cdot \frac{\phi_n \cdot (1- r)}{1+ \phi_n \cdot (1- r)}$$
+
+### Parameters and Calibration 
+```{r echo = FALSE, warning=FALSE,}
+library(ggplot2)
+library(tidyr)
+grafico <- read.delim("C:/Users/Malpede/Desktop/grafico")
+graph<-gather(grafico, "Region", "PES", 2:7)
+
+ggplot(graph, aes(x=Time, y=PES, group=Region, colour=Region)) +geom_line() +theme_bw()  
+
+```
+
+
+
+
+
