@@ -17,10 +17,7 @@ This is the documentation of the WITCH model written using Markdown and the R pa
   - Write the package name you want to install under the Packages field and then click install.
 - R package bookdown, E.g.:
   - Open R console (e.g. in RStudio)
-  - type:
-    ```{r}
-    devtools::install_github("rstudio/bookdown")
-    ```
+  - type: `devtools::install_github("rstudio/bookdown")`
 
 # Usage
 
