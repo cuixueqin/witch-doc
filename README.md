@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 This is the documentation of the WITCH model written using Markdown and the R package **bookdown**. To compile the documentation in html, open `index.Rmd` in RStudio and click the `Knit` button.
 
 ```{r}
@@ -29,4 +28,3 @@ Additional resources:
  - generate a custom template for tables: http://www.tablesgenerator.com/markdown_tables
  - some tools for Markdown editing: https://github.com/karthik/markdown_science/wiki/Tools-to-support-your-markdown-authoring
  - Want to write equations via touchscreen/mouse? http://webdemo.myscript.com/#/demo/equation
->>>>>>> master
