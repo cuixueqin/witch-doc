@@ -7,6 +7,7 @@
 Total CO~2~ emissions are the sum of CO~2~ emissions from fossil-fuel and industry and from land-use change
 minus emissions from avoided deforestation
 
+
 $$
     Q_{CO2}(t,n) = Q_{CO2ind}(t,n) + Q_{CO2lu}(t,n) - Q_{redd}(t,n)
 $$
