@@ -2,6 +2,7 @@
 
 This is the documentation of the WITCH model written using Markdown and the R package [**bookdown**](https://bookdown.org/).
 
+<<<<<<< HEAD
 # Requirements
 
 - Git + Github set up, e.g. via [GitKraken](https://www.gitkraken.com/) (cooler, more control) or via
@@ -35,6 +36,9 @@ render_book("index.Rmd",output_format = "bookdown::pdf_book")
 ```
 
 # Additional Resources
+=======
+Additional resources:
+>>>>>>> 7f1e0d8002fb39ec3c8e66bf4901e38c4cc2929f
 
  - quick one page overview cheat sheet for the Rmd language: https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
  - edit Markdown files in a simple online WYSIWYM editor: https://stackedit.io/editor
